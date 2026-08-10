@@ -1,0 +1,112 @@
+/* Finova Capital - Global Design System Variables */
+
+:root {
+    /* Fonts */
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Visual Separation Layer Colors (Mandatory Design Rules) */
+    --color-body-bg: #F8FAFC;            /* Clean light grey-blue page backdrop */
+    --color-hero-bg: #071827;            /* Premium dark navy for primary focus */
+    --color-section-bg-1: #FFFFFF;       /* Pure white base for primary text content */
+    --color-section-bg-2: #EEF6FF;       /* Soft luxury blue tint for alternate blocks */
+    --color-section-bg-3: #F7F9FC;       /* Soft clean slate for tertiary information */
+    --color-grid-bg: #E2E8F0;            /* High contrast divider grid spacing base */
+    --color-card-bg: #FFFFFF;            /* Cards stand out over body/section backgrounds */
+    --color-content-box-bg: #F9FAFB;     /* Content boxes stand out from parent white sections */
+    --color-stats-card-bg: #FFFFFF;      /* Clean stat modules */
+    --color-table-bg: #FFFFFF;           /* Data tables visual container */
+    --color-form-bg: #FFFFFF;            /* Floating forms container */
+    --color-cta-dark: #0B1F36;           /* Premium CTA block background */
+    --color-footer-bg: #071827;          /* Sleek black-navy footer structure */
+
+    /* Typography Color Spectrum */
+    --color-text-main: #111827;          /* Near black, premium corporate readability */
+    --color-text-muted: #64748B;         /* Cool gray for description text */
+    --color-text-light: #94A3B8;         /* Subdued text/labels */
+    --color-text-white: #FFFFFF;         /* Inverted text */
+    --color-text-white-muted: #94A3B8;   /* Inverted muted text */
+
+    /* Branding Colors & Interactive States */
+    --color-primary: #0F6FFF;            /* Finova Primary Corporate Blue */
+    --color-primary-hover: #0056D2;      /* Hover states for primary buttons */
+    --color-secondary: #10B981;          /* Finova Secondary Wealth Emerald */
+    --color-secondary-hover: #059669;    /* Hover states for secondary buttons */
+    --color-accent: #38BDF8;             /* Sky blue accents / progress marks */
+    --color-accent-gold: #F59E0B;        /* Gold accent for achievements/values */
+    --color-danger: #EF4444;             /* Warning alerts / negative change */
+    
+    /* Layer Borders & Outlines */
+    --border-color: #E2E8F0;             /* Standard slate border for separation */
+    --border-color-dark: #1E293B;        /* Borders within dark hero/footer elements */
+    --border-card: 1px solid #E2E8F0;    /* Card boundary outline */
+    --border-content-box: 1px solid #F1F5F9;
+
+    /* Shadow Systems (Apple & Stripe inspired soft depths) */
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-premium: 0 20px 40px -15px rgba(15, 111, 255, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+    --shadow-lift: 0 30px 60px -15px rgba(0, 0, 0, 0.08), 0 10px 20px -10px rgba(0, 0, 0, 0.04);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+
+    /* Rounded Corners */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    /* Spacing Dimensions */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+    --spacing-xxl: 8rem;
+
+    /* Transition Profiles */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medium: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-body-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: var(--radius-full);
+    border: 3px solid var(--color-body-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Utility Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; box-shadow: 0 0 15px rgba(15, 111, 255, 0.2); }
+    50% { opacity: 1; box-shadow: 0 0 30px rgba(15, 111, 255, 0.4); }
+}
+
+@keyframes preloader-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes preloader-coin {
+    0%, 100% { transform: translateY(0) rotateY(0); }
+    50% { transform: translateY(-8px) rotateY(180deg); }
+}
+
+@keyframes gradient-bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

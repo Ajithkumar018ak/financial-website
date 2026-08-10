@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advisory Access Portal | Finova Capital</title>
+    <meta name="description" content="Sign in to your Finova Capital Wealth Portal or Administrator desk. Access secure transactional logs, advisory communications, and vaults.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Core CSS Libraries -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- 1. Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-graphics">
+                <svg class="preloader-svg" viewBox="0 0 100 100" fill="none">
+                    <path class="building-path" d="M20 75 V45 H80 V75 M15 75 H85 M35 75 V45 M50 75 V45 M65 75 V45 M25 45 L50 25 L75 45" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="graph-path" d="M10 80 L30 60 L45 70 L70 45 L90 15" stroke="#0F6FFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="preloader-percentage-container">
+                <span id="preloader-percent">0</span>
+            </div>
+            <div class="preloader-bar">
+                <div id="preloader-progress" class="preloader-progress"></div>
+            </div>
+            <span class="preloader-title">Finova Capital</span>
+        </div>
+    </div>
+
+    <!-- Split Page Container -->
+    <div class="login-split-container">
+        
+        <!-- Left Panel: Graphic Branding -->
+        <div class="login-visual-panel">
+            <a href="index.html" class="logo-link" style="color:var(--color-text-white);">
+                <i data-lucide="gem" class="logo-icon" style="color:var(--color-primary);"></i>
+                <span class="logo-text" style="color:var(--color-text-white);">FINOVA <span style="color:var(--color-primary);">CAPITAL</span></span>
+            </a>
+            
+            <div style="margin-top:auto; margin-bottom:auto; max-width:480px; display:flex; flex-direction:column; gap:1.5rem;">
+                <span class="badge badge-primary" style="background-color:rgba(15,111,255,0.25); align-self:flex-start;">Fiduciary Portal</span>
+                <h1 style="font-family:var(--font-heading); font-size:2.8rem; font-weight:800; line-height:1.1;">Secure Wealth Management Portal</h1>
+                <p style="color:var(--color-text-white-muted); font-size:1.05rem; line-height:1.6;">Review real-time portfolio allocations, communicate directly with your dedicated advisor, and audit transactional filings in our SEC-accredited data vault.</p>
+            </div>
+            
+            <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.8rem; color:var(--color-text-white-muted);">
+                <span>&copy; 2026 Finova Capital LLC.</span>
+                <span>Fiduciary SEC #401-20948</span>
+            </div>
+        </div>
+
+        <!-- Right Panel: Interactive Forms -->
+        <div class="login-form-panel">
+            <div class="login-form-wrapper reveal-hidden reveal-fade-up">
+                
+                <!-- Logo Display for Mobile View (Hidden on Desktop) -->
+                <div style="display:flex; flex-direction:column; align-items:center; gap:0.5rem; margin-bottom:2rem;" class="logo-link mobile-logo">
+                    <a href="index.html" style="display:flex; align-items:center; gap:0.5rem;">
+                        <i data-lucide="gem" class="logo-icon" style="width:28px; height:28px;"></i>
+                        <span class="logo-text" style="font-size:1.2rem;">FINOVA <span style="color:var(--color-primary);">CAPITAL</span></span>
+                    </a>
+                </div>
+
+                <!-- Tabs to Swap Client / Admin portals -->
+                <div class="login-tabs" id="portal-tabs">
+                    <button class="login-tab-btn active" data-portal="client">Client Access</button>
+                    <button class="login-tab-btn" data-portal="admin">Advisor Access</button>
+                </div>
+
+                <!-- Core Form Box -->
+                <div id="auth-forms-container">
+                    
+                    <!-- Form 1: Client Login -->
+                    <form id="client-login-form" class="auth-form" onsubmit="event.preventDefault(); window.location.href='dashboard-user.html';">
+                        <h3 style="font-family:var(--font-heading); font-weight:700; margin-bottom:0.5rem; font-size:1.4rem;">Sign In</h3>
+                        <p class="card-desc" style="margin-bottom:1.5rem;">Access your personal wealth allocation dashboard.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="client-email">Email Address</label>
+                            <input type="email" id="client-email" class="form-control" placeholder="client@institutional.com" required>
+                        </div>
+                        <div class="form-group">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                                <label class="form-label" for="client-pass" style="margin-bottom:0;">Password</label>
+                                <a href="#" onclick="showForm('forgot')" style="font-size:0.8rem; color:var(--color-primary); font-weight:600;">Forgot Password?</a>
+                            </div>
+                            <input type="password" id="client-pass" class="form-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:1rem;">Access Wealth Portal</button>
+                        
+                        <div style="text-align:center; font-size:0.85rem; color:var(--color-text-muted);">
+                            Don't have an account? <a href="#" onclick="showForm('register')" style="color:var(--color-primary); font-weight:600;">Register here</a>
+                        </div>
+                    </form>
+
+                    <!-- Form 2: Advisor/Admin Login -->
+                    <form id="admin-login-form" class="auth-form" style="display:none;" onsubmit="event.preventDefault(); window.location.href='dashboard-admin.html';">
+                        <h3 style="font-family:var(--font-heading); font-weight:700; margin-bottom:0.5rem; font-size:1.4rem;">Advisor Access</h3>
+                        <p class="card-desc" style="margin-bottom:1.5rem;">Sign in to your strategic administrator console.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="admin-email">Corporate Email</label>
+                            <input type="email" id="admin-email" class="form-control" placeholder="advisor@finovacapital.com" required>
+                        </div>
+                        <div class="form-group">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                                <label class="form-label" for="admin-pass" style="margin-bottom:0;">Password</label>
+                                <a href="#" onclick="showForm('forgot')" style="font-size:0.8rem; color:var(--color-primary); font-weight:600;">Forgot Password?</a>
+                            </div>
+                            <input type="password" id="admin-pass" class="form-control" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary" style="width:100%;">Access Management Desk</button>
+                    </form>
+
+                    <!-- Form 3: Register Form -->
+                    <form id="register-form" class="auth-form" style="display:none;" onsubmit="event.preventDefault(); alert('Account request submitted. A compliance coordinator will email you verification links.'); showForm('client');">
+                        <h3 style="font-family:var(--font-heading); font-weight:700; margin-bottom:0.5rem; font-size:1.4rem;">Request Portal Account</h3>
+                        <p class="card-desc" style="margin-bottom:1.5rem;">Submit your tax details to establish credentials.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="reg-name">Full Name</label>
+                            <input type="text" id="reg-name" class="form-control" placeholder="Johnathan Hayes" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reg-email">Email Address</label>
+                            <input type="email" id="reg-email" class="form-control" placeholder="client@institutional.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reg-account">Wealth Custody Account # (Charles Schwab / Fidelity)</label>
+                            <input type="text" id="reg-account" class="form-control" placeholder="SCH-82948-28" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:1rem;">Request Portal Credentials</button>
+                        
+                        <div style="text-align:center; font-size:0.85rem; color:var(--color-text-muted);">
+                            Already have an account? <a href="#" onclick="showForm('client')" style="color:var(--color-primary); font-weight:600;">Sign In</a>
+                        </div>
+                    </form>
+
+                    <!-- Form 4: Forgot Password Form -->
+                    <form id="forgot-form" class="auth-form" style="display:none;" onsubmit="event.preventDefault(); alert('Password reset links dispatched to your registered address.'); showForm('client');">
+                        <h3 style="font-family:var(--font-heading); font-weight:700; margin-bottom:0.5rem; font-size:1.4rem;">Password Reset</h3>
+                        <p class="card-desc" style="margin-bottom:1.5rem;">Provide your email. We will send you verification instructions.</p>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="forgot-email">Registered Email Address</label>
+                            <input type="email" id="forgot-email" class="form-control" placeholder="client@institutional.com" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:1rem;">Send Reset Instructions</button>
+                        
+                        <div style="text-align:center; font-size:0.85rem; color:var(--color-text-muted);">
+                            Back to <a href="#" onclick="showForm('client')" style="color:var(--color-primary); font-weight:600;">Sign In</a>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Global Javascript libraries -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Tab toggles and form swapper scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('#portal-tabs .login-tab-btn');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Update active tab state
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    // Switch visible login form
+                    const targetPortal = tab.getAttribute('data-portal');
+                    hideAllForms();
+                    if (targetPortal === 'client') {
+                        document.getElementById('client-login-form').style.display = 'block';
+                    } else {
+                        document.getElementById('admin-login-form').style.display = 'block';
+                    }
+                });
+            });
+        });
+
+        function hideAllForms() {
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.style.display = 'none';
+            });
+        }
+
+        function showForm(formId) {
+            hideAllForms();
+            // Hide tabs bar if registering or resetting password
+            const tabsBar = document.getElementById('portal-tabs');
+            
+            if (formId === 'client') {
+                tabsBar.style.display = 'flex';
+                document.querySelector('[data-portal="client"]').classList.add('active');
+                document.querySelector('[data-portal="admin"]').classList.remove('active');
+                document.getElementById('client-login-form').style.display = 'block';
+            } else if (formId === 'register') {
+                tabsBar.style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            } else if (formId === 'forgot') {
+                tabsBar.style.display = 'none';
+                document.getElementById('forgot-form').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

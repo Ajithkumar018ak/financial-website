@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Services | Finova Capital Bespoke Allocations</title>
+    <meta name="description"
+        content="Review Finova Capital's institutional solutions: from personal wealth planning to corporate treasury advisory. Take our interactive Risk Assessment Quiz.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Core CSS Libraries -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- 1. Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-graphics">
+                <svg class="preloader-svg" viewBox="0 0 100 100" fill="none">
+                    <path class="building-path"
+                        d="M20 75 V45 H80 V75 M15 75 H85 M35 75 V45 M50 75 V45 M65 75 V45 M25 45 L50 25 L75 45"
+                        stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="graph-path" d="M10 80 L30 60 L45 70 L70 45 L90 15" stroke="#0F6FFF" stroke-width="3.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="preloader-percentage-container">
+                <span id="preloader-percent">0</span>
+            </div>
+            <div class="preloader-bar">
+                <div id="preloader-progress" class="preloader-progress"></div>
+            </div>
+            <span class="preloader-title">Finova Capital</span>
+        </div>
+    </div>
+
+    <!-- 2. Header Menu Navigation -->
+    <header class="main-header nav-dark">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.webp" alt="Finova Capital" class="logo-image">
+
+            </a>
+
+            <nav class="nav-menu-wrapper">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item active"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="market-insights.html" class="nav-link">Market Insights</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="careers.html" class="nav-link">Careers</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-sm btn-outline-white btn-login-desktop">Client Portal</a>
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="sidebar-overlay"></div>
+    <aside class="mobile-sidebar">
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></li>
+            <li class="mobile-nav-item active"><a href="services.html" class="mobile-nav-link">Financial Services</a>
+            </li>
+            <li class="mobile-nav-item"><a href="market-insights.html" class="mobile-nav-link">Market Insights</a></li>
+            <li class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></li>
+            <li class="mobile-nav-item"><a href="careers.html" class="mobile-nav-link">Careers</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-primary">Client Portal</a>
+            <a href="contact.html" class="btn btn-outline">Book Consultation</a>
+        </div>
+    </aside>
+
+    <!-- 3. Services Hero -->
+    <section class="fv-hero" id="services-hero">
+        <div class="fv-hero-blob fv-hero-blob--1"></div>
+        <div class="fv-hero-blob fv-hero-blob--2"></div>
+        <div class="fv-hero-blob fv-hero-blob--3"></div>
+
+        <div class="fv-hero__inner">
+            <!-- Left: Content -->
+            <div class="fv-hero__content">
+                <div class="fv-hero__badge">
+                    <span class="fv-hero__badge-dot"></span>
+                    Comprehensive Wealth Solutions
+                </div>
+
+                <h1 class="fv-hero__title">
+                    One Strategy.<br>
+                    <span class="hl">Every Financial Goal.</span>
+                </h1>
+
+                <p class="fv-hero__desc">
+                    From investment planning to retirement, insurance, taxation, and wealth management, build a financial strategy designed around your life.
+                </p>
+
+                <!-- Stats -->
+                <div class="fv-hero__stats">
+                    <div class="fv-hero__stat">
+                        <span class="fv-hero__stat-value">12+</span>
+                        <span class="fv-hero__stat-label">Financial Services</span>
+                    </div>
+                    <div class="fv-hero__stat">
+                        <span class="fv-hero__stat-value">50+</span>
+                        <span class="fv-hero__stat-label">Investment Options</span>
+                    </div>
+                    <div class="fv-hero__stat">
+                        <span class="fv-hero__stat-value">24/7</span>
+                        <span class="fv-hero__stat-label">Digital Access</span>
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="fv-hero__actions">
+                    <a href="#services-list" class="fv-hero__btn-primary">Explore Services</a>
+                    <a href="contact.html" class="fv-hero__btn-secondary">Book Consultation</a>
+                </div>
+            </div>
+
+            <!-- Right: Image -->
+            <div class="fv-hero__visual">
+                <div class="fv-hero__img-wrap">
+                    <img src="assets/hero-services.webp" alt="Finova Capital Services" class="fv-hero__img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Wealth Management & Personal Advisory (Section 1 - White) -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Private Wealth</span>
+                <h2 class="section-title">Personal Advisory Services</h2>
+                <p class="section-desc">Tailored strategies to grow, preserve, and transfer your private wealth.</p>
+            </div>
+
+            <div class="grid grid-3 reveal-hidden reveal-fade-up">
+                <!-- Investment Planning -->
+                <div class="card"
+                    style="padding: 2.2rem; display:flex; flex-direction:column; justify-content:space-between; min-height:420px;">
+                    <div>
+                        <div class="card-icon-container" style="margin-bottom:1.5rem;"><i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <h3 class="card-title">Investment Planning</h3>
+                        <p class="card-desc" style="margin-bottom:1.2rem;">Direct allocation profiles spanning global
+                            sovereign debt, primary technology equities, and private equity investments.</p>
+                        <ul
+                            style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Multi-asset class dispersion
+                            </li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Systematic rebalancing
+                                triggers</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Direct stock/bond custody
+                                accounts</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1.5rem;"><a href="investments.html" class="btn btn-outline"
+                            style="width:100%;">View Investment Portal</a></div>
+                </div>
+
+                <!-- Retirement Planner -->
+                <div class="card"
+                    style="padding: 2.2rem; display:flex; flex-direction:column; justify-content:space-between; min-height:420px;">
+                    <div>
+                        <div class="card-icon-container" style="margin-bottom:1.5rem;"><i data-lucide="calendar"></i>
+                        </div>
+                        <h3 class="card-title">Retirement Systems</h3>
+                        <p class="card-desc" style="margin-bottom:1.2rem;">Structured plans to secure long-term cash
+                            flow and capital preservation when transitioning out of corporate management.</p>
+                        <ul
+                            style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Safe withdrawal optimization
+                            </li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Inflation-hedging annuity
+                                splits</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> 401(k) / IRA consolidation
+                                options</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1.5rem;"><a href="retirement.html" class="btn btn-outline"
+                            style="width:100%;">Calculate Corpus Needs</a></div>
+                </div>
+
+                <!-- Tax Planning -->
+                <div class="card"
+                    style="padding: 2.2rem; display:flex; flex-direction:column; justify-content:space-between; min-height:420px;">
+                    <div>
+                        <div class="card-icon-container" style="margin-bottom:1.5rem;"><i data-lucide="coins"></i></div>
+                        <h3 class="card-title">Tax Planning</h3>
+                        <p class="card-desc" style="margin-bottom:1.2rem;">Advanced fiscal planning focused on shielding
+                            portfolio appreciation and minimizing corporate distributions liability.</p>
+                        <ul
+                            style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Continuous tax-loss
+                                harvesting</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Charitable trust structuring
+                            </li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Estate allocation
+                                minimization</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1.5rem;"><a href="tax-planning.html" class="btn btn-outline"
+                            style="width:100%;">Run Tax Estimator</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Corporate Finance & Insurance (Section 2 - Blue) -->
+    <section class="section-blue">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Institutional Solutions</span>
+                <h2 class="section-title">Corporate & Shielding Frameworks</h2>
+                <p class="section-desc">Bespoke corporate financing model allocations, credit advice, and risk coverage
+                    options.</p>
+            </div>
+
+            <div class="grid grid-3 reveal-hidden reveal-scale">
+                <!-- Insurance Solutions -->
+                <div class="card"
+                    style="padding: 2.2rem; display:flex; flex-direction:column; justify-content:space-between; min-height:420px;">
+                    <div>
+                        <div class="card-icon-container" style="margin-bottom:1.5rem;"><i
+                                data-lucide="shield-alert"></i></div>
+                        <h3 class="card-title">Insurance Solutions</h3>
+                        <p class="card-desc" style="margin-bottom:1.2rem;">Complete protection policies safeguarding
+                            family entities and corporate directors from high-liability payouts.</p>
+                        <ul
+                            style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Private High-Value Life
+                                shielding</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Corporate Director liability
+                                wraps</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> International wealth-guard
+                                policies</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1.5rem;"><a href="insurance.html" class="btn btn-outline"
+                            style="width:100%;">Compare Coverages</a></div>
+                </div>
+
+                <!-- Loan Advisory -->
+                <div class="card"
+                    style="padding: 2.2rem; display:flex; flex-direction:column; justify-content:space-between; min-height:420px;">
+                    <div>
+                        <div class="card-icon-container" style="margin-bottom:1.5rem;"><i data-lucide="landmark"></i>
+                        </div>
+                        <h3 class="card-title">Loan Advisory</h3>
+                        <p class="card-desc" style="margin-bottom:1.2rem;">Asset-backed lending facilities providing
+                            quick liquidity lines without triggering capital gains taxes.</p>
+                        <ul
+                            style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Portfolio Lombard loans</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Commercial property
+                                acquisition</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Low interest financing lines
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1.5rem;"><a href="loans.html" class="btn btn-outline" style="width:100%;">Run
+                            EMI Calculator</a></div>
+                </div>
+
+                <!-- Estate Planning -->
+                <div class="card"
+                    style="padding: 2.2rem; display:flex; flex-direction:column; justify-content:space-between; min-height:420px;">
+                    <div>
+                        <div class="card-icon-container" style="margin-bottom:1.5rem;"><i data-lucide="book-open"></i>
+                        </div>
+                        <h3 class="card-title">Estate Planning</h3>
+                        <p class="card-desc" style="margin-bottom:1.2rem;">Establishing trusts, wills, and private
+                            foundations to secure succession policies and support philanthropic goals.</p>
+                        <ul
+                            style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Dynasty and GST trust
+                                creation</li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Executive power delegation
+                            </li>
+                            <li style="display:flex; align-items:center; gap:0.5rem;"><i data-lucide="check-circle"
+                                    style="color:var(--color-secondary); width:14px;"></i> Private foundations framework
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1.5rem;"><a href="contact.html" class="btn btn-outline"
+                            style="width:100%;">Book Succession Advisory</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Why Choose Us (Services Focus) (Section 1 - White) -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Fiduciary Guard</span>
+                <h2 class="section-title">The Service Standard</h2>
+                <p class="section-desc">Why premium entities and private families choose Finova Capital to secure their
+                    financial lineage.</p>
+            </div>
+
+            <div class="grid grid-3 reveal-hidden reveal-fade-up">
+                <div class="card" style="padding:2rem;">
+                    <div style="font-size:2rem; color:var(--color-primary); margin-bottom:1rem;"><i
+                            data-lucide="scale"></i></div>
+                    <h3
+                        style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;">
+                        Fiduciary Standard</h3>
+                    <p class="card-desc" style="font-size:0.85rem; line-height:1.5;">As a registered fiduciary advisor,
+                        our decisions align strictly with your optimal asset objectives. No hidden commissions.</p>
+                </div>
+                <div class="card" style="padding:2rem;">
+                    <div style="font-size:2rem; color:var(--color-secondary); margin-bottom:1rem;"><i
+                            data-lucide="fingerprint"></i></div>
+                    <h3
+                        style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;">
+                        Dual Custody Seals</h3>
+                    <p class="card-desc" style="font-size:0.85rem; line-height:1.5;">All client funds are held by
+                        independent third-party custodians (such as Charles Schwab or Fidelity Institutional).</p>
+                </div>
+                <div class="card" style="padding:2rem;">
+                    <div style="font-size:2rem; color:var(--color-accent-gold); margin-bottom:1rem;"><i
+                            data-lucide="award"></i></div>
+                    <h3
+                        style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;">
+                        Generational Transfers</h3>
+                    <p class="card-desc" style="font-size:0.85rem; line-height:1.5;">Dynasty and GST trust structures
+                        built to ensure next generation inherits capital with tax efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Service Comparison Matrix (Section 2 - Blue tint) -->
+    <section class="section-blue">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Structure Details</span>
+                <h2 class="section-title">Service Areas Comparison</h2>
+                <p class="section-desc">Audit the baseline boundaries, minimum assets, and pricing schedules across our
+                    offerings.</p>
+            </div>
+
+            <div class="table-responsive reveal-hidden reveal-scale"
+                style="background-color:var(--color-card-bg); border-radius:var(--radius-lg); border:var(--border-card); overflow:hidden;">
+                <table class="financial-table" style="margin-bottom:0;">
+                    <thead>
+                        <tr>
+                            <th>Service Category</th>
+                            <th>Accreditation</th>
+                            <th>Pricing Basis</th>
+                            <th>Dedicated Advisor</th>
+                            <th>Ideal Client NAV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:700; color:var(--color-text-main);">Investment Planning</td>
+                            <td>SEC Fiduciary standard</td>
+                            <td>0.75% AUM Annually</td>
+                            <td>Senior Advisor Committee</td>
+                            <td>$250k+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--color-text-main);">Retirement Systems</td>
+                            <td>RIA SEC Registered</td>
+                            <td>0.50% AUM Annually</td>
+                            <td>Retirement Committee</td>
+                            <td>$500k+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--color-text-main);">Tax Structuring</td>
+                            <td>Certified Public Accountant (CPA)</td>
+                            <td>Tiered flat fee</td>
+                            <td>Tax Law Specialists</td>
+                            <td>$1M+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--color-text-main);">Insurance Placement</td>
+                            <td>Accredited Fiduciary</td>
+                            <td>Asset coverage audit fee</td>
+                            <td>Shielding Team</td>
+                            <td>$100k+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:700; color:var(--color-text-main);">Estate Successions</td>
+                            <td>Estate & Trust Law Bar</td>
+                            <td>Flat document setup fee</td>
+                            <td>Senior Partner Committee</td>
+                            <td>$2.5M+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Service Process Timeline (Section 3 - Grey) -->
+    <section class="section-grey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Workflow Lifecycle</span>
+                <h2 class="section-title">The Client Services Timeline</h2>
+                <p class="section-desc">Track the onboarding progression from initial consulting to active portfolio
+                    tracking.</p>
+            </div>
+
+            <div class="timeline-container reveal-hidden reveal-fade-up">
+                <div class="timeline-line"></div>
+
+                <!-- Onboarding Day 1 -->
+                <div class="timeline-item timeline-item-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Day 1</div>
+                        <h4 class="timeline-title">Fiduciary Intake & Evaluation</h4>
+                        <p class="timeline-card-desc">We compile asset statements, run risk profiling questionnaires,
+                            and define capital targets.</p>
+                    </div>
+                </div>
+
+                <!-- Onboarding Day 7 -->
+                <div class="timeline-item timeline-item-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Day 7</div>
+                        <h4 class="timeline-title">Portfolio Model Drafting</h4>
+                        <p class="timeline-card-desc">The advisory committee reviews equity/debt ratios and draft
+                            structural tax harvesting parameters.</p>
+                    </div>
+                </div>
+
+                <!-- Onboarding Day 14 -->
+                <div class="timeline-item timeline-item-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Day 14</div>
+                        <h4 class="timeline-title">Custodial Seeding Approval</h4>
+                        <p class="timeline-card-desc">Accounts are opened with Schwab or Fidelity, and clients authorize
+                            asset transfers.</p>
+                    </div>
+                </div>
+
+                <!-- Onboarding Day 30 -->
+                <div class="timeline-item timeline-item-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Day 30</div>
+                        <h4 class="timeline-title">Asset Deployment & Review</h4>
+                        <p class="timeline-card-desc">Capital is seeded into target markets, and real-time monitoring
+                            begins on the Finova Portal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Interactive Risk Assessment Questionnaire Section (Section 3 - Grey) -->
+    <section id="risk-quiz" class="section-grey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Interactive Evaluation</span>
+                <h2 class="section-title">Risk Assessment Tool</h2>
+                <p class="section-desc">Assess your volatility index. Take our structured questionnaire to review a
+                    recommended macro allocation asset model.</p>
+            </div>
+
+            <!-- Risk Assessment Quiz Intro -->
+            <div id="risk-quiz-intro" class="risk-quiz-container" style="text-align:center;">
+                <div class="stat-icon" style="margin:0 auto 1.5rem auto; width:72px; height:72px;"><i
+                        data-lucide="help-circle" style="width:36px; height:36px;"></i></div>
+                <h3 class="risk-question-title">Allocate Assets Scientifically</h3>
+                <p class="card-desc"
+                    style="margin-bottom:2rem; font-size:1rem; max-width:550px; margin-left:auto; margin-right:auto;">
+                    This quick 5-step test calculates your volatility rating, determining whether conservative
+                    preservation or high-growth equity allocation is suitable for you.</p>
+                <button id="start-risk-quiz" class="btn btn-primary btn-lg">Begin Questionnaire</button>
+            </div>
+
+            <!-- Risk Assessment Steps Card -->
+            <div id="risk-quiz-card" class="risk-quiz-container reveal-hidden">
+                <div class="risk-step-header">
+                    <span
+                        style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--color-primary);">Fiduciary
+                        Audit</span>
+                    <div class="risk-progress-bar">
+                        <div id="risk-quiz-progress" class="risk-progress-fill"></div>
+                    </div>
+                </div>
+
+                <form id="risk-form" onsubmit="event.preventDefault();">
+                    <!-- Step 1: Investment target -->
+                    <div id="risk-step-1" class="risk-quiz-step active">
+                        <h3 class="risk-question-title">1. What is your primary investment goal?</h3>
+                        <div class="risk-options-list">
+                            <label class="risk-option-label">
+                                <input type="radio" name="q1" value="1" class="risk-option-input">
+                                Capital Preservation (Protect baseline capital, zero volatility)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q1" value="2" class="risk-option-input">
+                                Income Focus (Steady dividends/bond yield with low fluctuations)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q1" value="3" class="risk-option-input">
+                                Balanced Growth (A balance of dividend returns and capital appreciation)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q1" value="4" class="risk-option-input">
+                                Aggressive Growth (Focus entirely on maximizing compound returns)
+                            </label>
+                        </div>
+                        <div class="risk-quiz-navigation" style="justify-content:flex-end;">
+                            <button type="button" class="btn btn-primary risk-next-btn" data-step="1">Next Question <i
+                                    data-lucide="arrow-right" style="width:16px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Horizon -->
+                    <div id="risk-step-2" class="risk-quiz-step">
+                        <h3 class="risk-question-title">2. What is your investment time horizon?</h3>
+                        <div class="risk-options-list">
+                            <label class="risk-option-label">
+                                <input type="radio" name="q2" value="1" class="risk-option-input">
+                                Under 2 Years (Requires immediate liquidity access)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q2" value="2" class="risk-option-input">
+                                2 to 5 Years (Medium term, some capital lock-in allowed)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q2" value="3" class="risk-option-input">
+                                5 to 10 Years (Comfortable with market corrections)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q2" value="4" class="risk-option-input">
+                                10+ Years (Targeting multi-decade compound gains)
+                            </label>
+                        </div>
+                        <div class="risk-quiz-navigation">
+                            <button type="button" class="btn btn-outline risk-prev-btn" data-step="2"><i
+                                    data-lucide="arrow-left" style="width:16px;"></i> Back</button>
+                            <button type="button" class="btn btn-primary risk-next-btn" data-step="2">Next Question <i
+                                    data-lucide="arrow-right" style="width:16px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Volatility response -->
+                    <div id="risk-step-3" class="risk-quiz-step">
+                        <h3 class="risk-question-title">3. How do you react if your portfolio drops 20% in value?</h3>
+                        <div class="risk-options-list">
+                            <label class="risk-option-label">
+                                <input type="radio" name="q3" value="1" class="risk-option-input">
+                                Sell immediately (Prevent further capital loss)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q3" value="2" class="risk-option-input">
+                                Hold & worry (Panic, but keep investments)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q3" value="3" class="risk-option-input">
+                                Stay the course (Expect long-term market recovery)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q3" value="4" class="risk-option-input">
+                                Buy more at discount (Leverage market drops to compound)
+                            </label>
+                        </div>
+                        <div class="risk-quiz-navigation">
+                            <button type="button" class="btn btn-outline risk-prev-btn" data-step="3"><i
+                                    data-lucide="arrow-left" style="width:16px;"></i> Back</button>
+                            <button type="button" class="btn btn-primary risk-next-btn" data-step="3">Next Question <i
+                                    data-lucide="arrow-right" style="width:16px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Income flow scale -->
+                    <div id="risk-step-4" class="risk-quiz-step">
+                        <h3 class="risk-question-title">4. What is your current annual income stability?</h3>
+                        <div class="risk-options-list">
+                            <label class="risk-option-label">
+                                <input type="radio" name="q4" value="1" class="risk-option-input">
+                                Retired or Variable (Rely on capital reserves)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q4" value="2" class="risk-option-input">
+                                Self-employed / Variable business receipts
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q4" value="3" class="risk-option-input">
+                                Stable corporate salary
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q4" value="4" class="risk-option-input">
+                                High salary with multi-asset income flows
+                            </label>
+                        </div>
+                        <div class="risk-quiz-navigation">
+                            <button type="button" class="btn btn-outline risk-prev-btn" data-step="4"><i
+                                    data-lucide="arrow-left" style="width:16px;"></i> Back</button>
+                            <button type="button" class="btn btn-primary risk-next-btn" data-step="4">Next Question <i
+                                    data-lucide="arrow-right" style="width:16px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Volatility appetite -->
+                    <div id="risk-step-5" class="risk-quiz-step">
+                        <h3 class="risk-question-title">5. What percentage of assets are you comfortable risk-allocating
+                            in volatile stocks?</h3>
+                        <div class="risk-options-list">
+                            <label class="risk-option-label">
+                                <input type="radio" name="q5" value="1" class="risk-option-input">
+                                Under 10% (Prefer sovereign bonds)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q5" value="2" class="risk-option-input">
+                                10% to 30% (Standard conservative balance)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q5" value="3" class="risk-option-input">
+                                30% to 60% (Growth allocation weight)
+                            </label>
+                            <label class="risk-option-label">
+                                <input type="radio" name="q5" value="4" class="risk-option-input">
+                                Over 60% (Aggressive tech, crypto, venture placements)
+                            </label>
+                        </div>
+                        <div class="risk-quiz-navigation">
+                            <button type="button" class="btn btn-outline risk-prev-btn" data-step="5"><i
+                                    data-lucide="arrow-left" style="width:16px;"></i> Back</button>
+                            <button type="button" class="btn btn-primary risk-next-btn" data-step="5">Submit &
+                                Analyze</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Risk Results Panel -->
+            <div id="risk-results-panel" class="risk-quiz-container risk-results-panel">
+                <span class="badge badge-success" style="margin-bottom:1rem;">Assessment Complete</span>
+                <h3 class="risk-question-title">Your Target Allocation Model</h3>
+                <h4 id="risk-profile-name"
+                    style="font-family:var(--font-heading); color:var(--color-primary); font-size:1.6rem; margin-bottom:1rem;">
+                    -</h4>
+                <p id="risk-profile-desc" class="card-desc"
+                    style="max-width:550px; margin:0 auto 2rem auto; font-size:0.95rem;">-</p>
+
+                <div class="calculator-grid"
+                    style="grid-template-columns: 1fr 1fr; margin-bottom:2rem; align-items:center;">
+                    <div style="height: 280px; position:relative;">
+                        <canvas id="riskAllocChart"></canvas>
+                    </div>
+                    <div style="text-align:left; display:flex; flex-direction:column; gap:1rem;">
+                        <h4 style="font-family:var(--font-heading); font-weight:700;">Portfolio Implementation Plan</h4>
+                        <p class="card-desc" style="font-size:0.85rem;">This asset class weighting minimizes downside
+                            exposure based on your time horizon. Rebalancing targets are applied automatically twice a
+                            year.</p>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                            <a href="login.html" class="btn btn-sm btn-primary">Open Account</a>
+                            <button id="restart-risk-quiz" class="btn btn-sm btn-outline">Restart Assessment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Corporate Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <!-- Footer Top: Logo & Newsletter -->
+            <div class="footer-top-row">
+                <a href="index.html" class="footer-brand-logo" aria-label="Finova Capital Logo"> <img
+                        src="assets/logo.webp" alt="Finova Capital" class="footer-logo-image"> </a>
+                <div class="footer-newsletter-wrap">
+                    <span class="newsletter-title">Financial Insights</span>
+                    <div>
+                        <form class="newsletter-form" id="footer-newsletter-form-index"
+                            onsubmit="event.preventDefault(); document.getElementById('footer-toast-index').style.opacity='1'; document.getElementById('footer-toast-index').style.visibility='visible'; setTimeout(function(){ document.getElementById('footer-toast-index').style.opacity='0'; document.getElementById('footer-toast-index').style.visibility='hidden'; }, 4000);">
+                            <div class="newsletter-input-group">
+                                <input type="email" placeholder="Enter your email address" class="newsletter-input"
+                                    required>
+                                <button type="submit" class="newsletter-btn"
+                                    aria-label="Subscribe to Insights">Subscribe to Insights</button>
+                            </div>
+                        </form>
+                        <div id="footer-toast-index"
+                            style="opacity:0; visibility:hidden; transition:opacity 0.4s; margin-top:0.6rem; font-size:0.8rem; color:#10B981; font-weight:600;">
+                            ✓ You're subscribed to Finova Capital Insights!
+                        </div>
+                        <p class="newsletter-privacy"><i data-lucide="lock" style="width:11px;"></i> Your email is kept
+                            confidential. Unsubscribe anytime.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Columns -->
+            <div class="footer-columns-grid">
+                <!-- Column 1: Brand + Socials -->
+                <div class="footer-col brand-col">
+                    <p class="footer-desc">Helping individuals, families, and businesses make smarter financial
+                        decisions through trusted planning, investment guidance, and long-term wealth strategies.</p>
+                    <div class="footer-trust-badges">
+                        <div class="footer-trust-badge">
+                            <span class="badge-check"><i data-lucide="check" style="width:9px;"></i></span>
+                            Trusted Financial Partner
+                        </div>
+                        <div class="footer-trust-badge">
+                            <span class="badge-check"><i data-lucide="check" style="width:9px;"></i></span>
+                            Secure &amp; Confidential
+                        </div>
+                    </div>
+                    <div class="footer-socials">
+                        <a href="404.html" class="social-icon-btn" aria-label="LinkedIn"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg></a>
+                        <a href="404.html" class="social-icon-btn" aria-label="Facebook"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg></a>
+                        <a href="404.html" class="social-icon-btn" aria-label="Instagram"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                            </svg></a>
+                        <a href="404.html" class="social-icon-btn" aria-label="X (Twitter)"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg></a>
+                        <a href="404.html" class="social-icon-btn" aria-label="YouTube"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Navigation -->
+                <div class="footer-col">
+                    <span class="footer-col-title">Navigation</span>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="market-insights.html" class="footer-link">Market Insights</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="careers.html" class="footer-link">Careers</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Financial Services -->
+                <div class="footer-col">
+                    <span class="footer-col-title">Financial Services</span>
+                    <ul class="footer-links">
+                        <li><a href="investments.html" class="footer-link">Investment Planning</a></li>
+                        <li><a href="404.html" class="footer-link">Wealth Management</a></li>
+                        <li><a href="retirement.html" class="footer-link">Retirement Planning</a></li>
+                        <li><a href="tax-planning.html" class="footer-link">Tax Planning</a></li>
+                        <li><a href="insurance.html" class="footer-link">Insurance Planning</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact Directory -->
+                <div class="footer-col contact-col">
+                    <span class="footer-col-title">Contact Directory</span>
+                    <div class="footer-contact-card">
+                        <div class="footer-contact-card-icon"><i data-lucide="map-pin" style="width:15px;"></i></div>
+                        <div class="footer-contact-card-text">
+                            <span class="footer-contact-card-label">Head Office</span>
+                            <span class="footer-contact-card-value">Chennai, Tamil Nadu, India</span>
+                        </div>
+                    </div>
+                    <div class="footer-contact-card">
+                        <div class="footer-contact-card-icon"><i data-lucide="mail" style="width:15px;"></i></div>
+                        <div class="footer-contact-card-text">
+                            <span class="footer-contact-card-label">Email</span>
+                            <span class="footer-contact-card-value"><a
+                                    href="mailto:support@finovacapital.com">support@finovacapital.com</a></span>
+                        </div>
+                    </div>
+                    <div class="footer-contact-card">
+                        <div class="footer-contact-card-icon"><i data-lucide="phone" style="width:15px;"></i></div>
+                        <div class="footer-contact-card-text">
+                            <span class="footer-contact-card-label">Phone</span>
+                            <span class="footer-contact-card-value"><a href="tel:+919875409805">+91 98754
+                                    09805</a></span>
+                        </div>
+                    </div>
+                    <div class="footer-contact-card">
+                        <div class="footer-contact-card-icon"><i data-lucide="clock" style="width:15px;"></i></div>
+                        <div class="footer-contact-card-text">
+                            <span class="footer-contact-card-label">Working Hours</span>
+                            <span class="footer-contact-card-value">Mon – Sat<br>9:00 AM – 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 5: Tagline (newsletter already in top row) -->
+                <div class="footer-col" style="display:flex; flex-direction:column; gap:1.2rem;">
+                    <span class="footer-col-title"
+                        style="font-size:1rem; font-weight:700; font-family:var(--font-heading); color:#fff; letter-spacing:0; text-transform:none;">Plan
+                        Smart. Grow Wealth. Secure Tomorrow.</span>
+                    <p class="footer-desc">Subscribe to our latest market insights, investment ideas, financial planning
+                        tips, and wealth management updates.</p>
+                    <div style="margin-top:0.5rem; display:flex; flex-direction:column; gap:0.5rem;">
+                        <div
+                            style="display:flex; align-items:center; gap:0.6rem; font-size:0.82rem; color:rgba(255,255,255,0.5);">
+                            <i data-lucide="trending-up" style="width:14px; color:var(--color-primary);"></i> Real-time
+                            Market Insights
+                        </div>
+                        <div
+                            style="display:flex; align-items:center; gap:0.6rem; font-size:0.82rem; color:rgba(255,255,255,0.5);">
+                            <i data-lucide="shield-check" style="width:14px; color:var(--color-secondary);"></i>
+                            Fiduciary-Grade Advice
+                        </div>
+                        <div
+                            style="display:flex; align-items:center; gap:0.6rem; font-size:0.82rem; color:rgba(255,255,255,0.5);">
+                            <i data-lucide="bar-chart-2" style="width:14px; color:var(--color-accent-gold);"></i>
+                            Portfolio Growth Strategies
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom-row">
+
+                <div class="footer-copyright-wrap">
+                    <span>&copy; 2026 Finova Capital. All Rights Reserved.</span>
+                    <ul class="footer-bottom-links">
+                        <li><a href="404.html" class="footer-bottom-link">Privacy Policy</a></li>
+                        <li><a href="404.html" class="footer-bottom-link">Terms &amp; Conditions</a></li>
+                        <li><a href="404.html" class="footer-bottom-link">Financial Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top"><i data-lucide="arrow-up"
+            style="width:20px;"></i></button>
+
+    <!-- Global Javascript libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/calculators.js"></script>
+</body>
+
+</html>

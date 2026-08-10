@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Wealth Portal | Finova Capital</title>
+    <meta name="description" content="Management portal dashboard for Finova Capital wealth managers. Audit compliance, index client portfolios, and review corporate metrics.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Core CSS Libraries -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body id="admin-dashboard-root" style="overflow-x:hidden;">
+
+    <!-- 1. Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-graphics">
+                <svg class="preloader-svg" viewBox="0 0 100 100" fill="none">
+                    <path class="building-path" d="M20 75 V45 H80 V75 M15 75 H85 M35 75 V45 M50 75 V45 M65 75 V45 M25 45 L50 25 L75 45" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="graph-path" d="M10 80 L30 60 L45 70 L70 45 L90 15" stroke="#0F6FFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="preloader-percentage-container">
+                <span id="preloader-percent">0</span>
+            </div>
+            <div class="preloader-bar">
+                <div id="preloader-progress" class="preloader-progress"></div>
+            </div>
+            <span class="preloader-title">Finova Capital</span>
+        </div>
+    </div>
+
+    <!-- Dashboard Core Container -->
+    <div class="dashboard-layout">
+        
+        <!-- Left Menu Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-sidebar-header" style="border-bottom-color: rgba(255,255,255,0.08);">
+                <a href="index.html" style="display:flex; align-items:center; gap:0.5rem;">
+                    <i data-lucide="gem" class="logo-icon" style="color:var(--color-secondary); width:24px; height:24px;"></i>
+                    <span class="logo-text" style="color:var(--color-text-white); font-size:1.1rem; letter-spacing:0.02em;">FINOVA <span style="font-size:0.9rem; color:var(--color-secondary);">ADMIN</span></span>
+                </a>
+            </div>
+
+            <ul class="dashboard-sidebar-menu">
+                <!-- Overview -->
+                <li class="dashboard-menu-item active">
+                    <a href="#" class="dashboard-menu-link" data-panel="admin-overview">
+                        <i data-lucide="bar-chart-2" style="width:18px;"></i> System KPIs
+                    </a>
+                </li>
+                <!-- Clients -->
+                <li class="dashboard-menu-item">
+                    <a href="#" class="dashboard-menu-link" data-panel="admin-clients">
+                        <i data-lucide="users" style="width:18px;"></i> Fiduciary Clients
+                    </a>
+                </li>
+                <!-- Settings -->
+                <li class="dashboard-menu-item">
+                    <a href="#" class="dashboard-menu-link" data-panel="admin-settings">
+                        <i data-lucide="sliders" style="width:18px;"></i> Console Settings
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar User Box -->
+            <div class="dashboard-sidebar-footer" style="border-top-color: rgba(255,255,255,0.08);">
+                <div class="dashboard-avatar" style="background-color:var(--color-secondary);">MV</div>
+                <div class="dashboard-user-info">
+                    <span class="dashboard-user-name">Marcus Vance</span>
+                    <span class="dashboard-user-role">Managing Partner</span>
+                </div>
+                <a href="login.html" class="dashboard-btn-logout" aria-label="Sign Out"><i data-lucide="log-out" style="width:16px;"></i></a>
+            </div>
+        </aside>
+
+        <!-- Right Main Board -->
+        <main class="dashboard-main">
+            
+            <!-- Dashboard Navbar Header -->
+            <div class="dashboard-navbar">
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <button class="dashboard-sidebar-toggle" aria-label="Toggle sidebar menu"><i data-lucide="menu"></i></button>
+                    <h2 class="dashboard-page-title">Administrator Workspace</h2>
+                </div>
+                
+                <div class="dashboard-nav-actions">
+                    <div style="font-size:0.85rem; font-weight:600; color:var(--color-text-muted);">
+                        SEC Compliance Audit: <span style="color:var(--color-secondary);">Declaring Active</span>
+                    </div>
+                    <button class="dashboard-notification-trigger" aria-label="Read notifications">
+                        <i data-lucide="bell" style="width:20px;"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Panel 1: Overview Panel (Active) -->
+            <div id="admin-overview" class="dashboard-panel active">
+                <!-- KPI Indicators Grid -->
+                <div class="dash-kpi-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color:rgba(16,185,129,0.08); color:var(--color-secondary);"><i data-lucide="trending-up"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Total Assets Managed</span>
+                            <span class="stat-value" style="font-size:1.6rem;">$624.8 Million</span>
+                            <span class="stat-change up"><i data-lucide="arrow-up-right" style="width:14px;"></i> +14.8% YoY</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color:rgba(15,111,255,0.08); color:var(--color-primary);"><i data-lucide="users"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Fiduciary Clients</span>
+                            <span class="stat-value" style="font-size:1.6rem;">1,245 Accounts</span>
+                            <span class="stat-change up"><i data-lucide="check" style="width:14px;"></i> 99.8% Retention</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color:rgba(245,158,11,0.08); color:var(--color-accent-gold);"><i data-lucide="award"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Active Advisors</span>
+                            <span class="stat-value" style="font-size:1.6rem;">12 Partners</span>
+                            <span class="stat-label" style="font-size:0.7rem; color:var(--color-text-muted);">Global Coverage</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background-color:rgba(239, 68, 68, 0.08); color:var(--color-danger);"><i data-lucide="alert-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-label">Compliance Queries</span>
+                            <span class="stat-value" style="font-size:1.6rem;">2 Pending</span>
+                            <span class="stat-change down" style="color:var(--color-danger);"><i data-lucide="alert-triangle" style="width:14px;"></i> Audits Required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graph Charts Section -->
+                <div class="dash-chart-section">
+                    <div class="card" style="padding:1.5rem;">
+                        <h3 style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="trending-up" style="color:var(--color-secondary);"></i> AUM Scaling History</h3>
+                        <div style="height:250px; position:relative;">
+                            <canvas id="adminAumChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="padding:1.5rem;">
+                        <h3 style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="pie-chart" style="color:var(--color-primary);"></i> System Allocations Dispersion</h3>
+                        <div style="height:250px; position:relative;">
+                            <canvas id="adminShareChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: Clients Portal Grid -->
+            <div id="admin-clients" class="dashboard-panel">
+                <div class="card" style="padding:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+                        <h3 style="font-family:var(--font-heading); font-weight:700;">SEC Fiduciary Client Index</h3>
+                        
+                        <div class="newsletter-input-group" style="width:100%; max-width:320px; border-color:var(--border-color); background-color:var(--color-body-bg);">
+                            <input type="text" id="client-search" placeholder="Search clients..." class="newsletter-input" style="color:var(--color-text-main); padding:0.5rem 1rem;">
+                            <span style="display:flex; align-items:center; padding:0 0.8rem; color:var(--color-text-light);"><i data-lucide="search" style="width:16px;"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="financial-table">
+                            <thead>
+                                <tr>
+                                    <th>Client Name</th>
+                                    <th>Email Address</th>
+                                    <th>Schwab Custody ID</th>
+                                    <th>Portfolio NAV</th>
+                                    <th>Risk profile</th>
+                                    <th>Assigned Advisor</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Client 1 -->
+                                <tr class="client-row" style="cursor:pointer;" 
+                                    data-name="Jonathan Hayes" 
+                                    data-email="client@institutional.com" 
+                                    data-portfolio="$324,500" 
+                                    data-risk="Balanced Growth" 
+                                    data-advisor="Marcus Vance" 
+                                    data-status="Active">
+                                    <td class="client-name" style="font-weight:700; font-family:var(--font-heading);">Jonathan Hayes</td>
+                                    <td class="client-email">client@institutional.com</td>
+                                    <td style="font-family:monospace; font-size:0.85rem;">SCH-82948-28</td>
+                                    <td style="font-weight:600;">$324,500</td>
+                                    <td>Growth</td>
+                                    <td>Marcus Vance</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                </tr>
+                                <!-- Client 2 -->
+                                <tr class="client-row" style="cursor:pointer;" 
+                                    data-name="Sarah Al-Sayed" 
+                                    data-email="sarah@doctorhealth.net" 
+                                    data-portfolio="$1,850,000" 
+                                    data-risk="Moderate Balanced" 
+                                    data-advisor="Elena Rostova" 
+                                    data-status="Active">
+                                    <td class="client-name" style="font-weight:700; font-family:var(--font-heading);">Sarah Al-Sayed</td>
+                                    <td class="client-email">sarah@doctorhealth.net</td>
+                                    <td style="font-family:monospace; font-size:0.85rem;">SCH-72304-94</td>
+                                    <td style="font-weight:600;">$1,850,000</td>
+                                    <td>Moderate</td>
+                                    <td>Elena Rostova</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                </tr>
+                                <!-- Client 3 -->
+                                <tr class="client-row" style="cursor:pointer;" 
+                                    data-name="Hayes Holding Corp" 
+                                    data-email="finance@hayesholdings.com" 
+                                    data-portfolio="$12,480,000" 
+                                    data-risk="Aggressive Alpha" 
+                                    data-advisor="Marcus Vance" 
+                                    data-status="Review Needed">
+                                    <td class="client-name" style="font-weight:700; font-family:var(--font-heading);">Hayes Holding Corp</td>
+                                    <td class="client-email">finance@hayesholdings.com</td>
+                                    <td style="font-family:monospace; font-size:0.85rem;">FID-92049-18</td>
+                                    <td style="font-weight:600;">$12,480,000</td>
+                                    <td>Aggressive</td>
+                                    <td>Marcus Vance</td>
+                                    <td><span class="badge badge-warning">Review Needed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 3: Settings Panel -->
+            <div id="admin-settings" class="dashboard-panel">
+                <div class="form-card">
+                    <h3 style="font-family:var(--font-heading); margin-bottom:0.5rem; font-weight:700;">Console Parameters</h3>
+                    <p class="card-desc" style="margin-bottom:1.5rem;">Manage database keys, audit frequencies, and advisor permissions.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Administrative parameters saved.');">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="adm-firm">Firm Fiduciary Registry</label>
+                                <input type="text" id="adm-firm" value="Finova Capital LLC #401-20948" class="form-control" readonly style="background-color:#E2E8F0; cursor:not-allowed;">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="adm-seckey">SEC Fiduciary License Key</label>
+                                <input type="text" id="adm-seckey" value="SEC-ADVISOR-RIA-2026-FIDC" class="form-control" readonly style="background-color:#E2E8F0; cursor:not-allowed;">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="adm-freq">Audit Dispatch Frequency</label>
+                            <select id="adm-freq" class="form-control" style="background-image:none;">
+                                <option value="Monthly (First Friday)">Monthly (First Friday)</option>
+                                <option value="Quarterly (Tax-Cycle)">Quarterly (Tax-Cycle)</option>
+                                <option value="Semi-Annually">Semi-Annually</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary">Commit Console Updates</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Client Detail Modal Component (Used by Client search rows) -->
+    <div id="client-detail-modal" class="modal-overlay">
+        <div class="modal-container" style="max-width: 550px;">
+            <button id="close-client-modal" class="modal-close-btn" aria-label="Close modal"><i data-lucide="x" style="width:20px;"></i></button>
+            
+            <div style="background-color: var(--color-section-bg-3); padding: 1.8rem; border-bottom: 1px solid var(--border-color);">
+                <span class="badge badge-primary" style="margin-bottom:0.5rem;">Fiduciary Profile Record</span>
+                <h3 id="modal-client-name" style="font-family:var(--font-heading); font-size:1.6rem; font-weight:700; color:var(--color-text-main);">Client Name</h3>
+                <p id="modal-client-email" class="card-desc" style="font-size:0.85rem;">client@domain.com</p>
+            </div>
+            
+            <div style="padding: 1.8rem; display:flex; flex-direction:column; gap:1.2rem;">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.2rem;">
+                    <div>
+                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Account Status</div>
+                        <div id="modal-client-status" style="margin-top:0.3rem;">-</div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Portfolio Valuation</div>
+                        <div id="modal-client-portfolio" style="font-family:var(--font-heading); font-weight:700; font-size:1.15rem; color:var(--color-text-main); margin-top:0.2rem;">$0</div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Suggested Allocation</div>
+                        <div id="modal-client-risk" style="font-weight:600; margin-top:0.3rem;">-</div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Assigned Partner</div>
+                        <div id="modal-client-advisor" style="font-weight:600; margin-top:0.3rem;">-</div>
+                    </div>
+                </div>
+                
+                <div class="content-box" style="margin-bottom:0; background-color: var(--color-section-bg-2); border-color: rgba(15,111,255,0.15);">
+                    <h4 style="font-family:var(--font-heading); font-size:0.85rem; font-weight:700; color:var(--color-primary); margin-bottom:0.4rem; display:flex; align-items:center; gap:4px;"><i data-lucide="check-square" style="width:14px;"></i> Fiduciary Compliance Checked</h4>
+                    <p class="card-desc" style="font-size:0.8rem;">This profile contains validated tax files and independent custodial assets. Auditing records represent SEC declarations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Javascript libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
