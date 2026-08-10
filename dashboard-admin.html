@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -38,11 +39,16 @@
         </div>
     </div>
 
+    <!-- Mobile Sidebar Overlay -->
+    <div id="admin-sidebar-overlay" class="admin-sidebar-overlay"></div>
+
     <!-- Dashboard Core Container -->
     <div class="dashboard-layout">
-        
-        <!-- Left Menu Sidebar -->
-        <aside class="dashboard-sidebar">
+
+        <!-- ═══════════════════════════════════════════
+             LEFT SIDEBAR
+        ═══════════════════════════════════════════ -->
+        <aside class="dashboard-sidebar" id="admin-sidebar">
             <div class="dashboard-sidebar-header" style="border-bottom-color: rgba(255,255,255,0.08);">
                 <a href="index.html" style="display:flex; align-items:center; gap:0.5rem;">
                     <i data-lucide="gem" class="logo-icon" style="color:var(--color-secondary); width:24px; height:24px;"></i>
@@ -50,26 +56,77 @@
                 </a>
             </div>
 
-            <ul class="dashboard-sidebar-menu">
-                <!-- Overview -->
-                <li class="dashboard-menu-item active">
-                    <a href="#" class="dashboard-menu-link" data-panel="admin-overview">
-                        <i data-lucide="bar-chart-2" style="width:18px;"></i> System KPIs
-                    </a>
-                </li>
-                <!-- Clients -->
-                <li class="dashboard-menu-item">
-                    <a href="#" class="dashboard-menu-link" data-panel="admin-clients">
-                        <i data-lucide="users" style="width:18px;"></i> Fiduciary Clients
-                    </a>
-                </li>
-                <!-- Settings -->
-                <li class="dashboard-menu-item">
-                    <a href="#" class="dashboard-menu-link" data-panel="admin-settings">
-                        <i data-lucide="sliders" style="width:18px;"></i> Console Settings
-                    </a>
-                </li>
-            </ul>
+            <nav style="flex:1; overflow-y:auto; padding-bottom:1rem;">
+                <ul class="dashboard-sidebar-menu" style="padding-bottom:0;">
+
+                    <!-- GROUP: Operations -->
+                    <li><span class="sidebar-group-label">Operations</span></li>
+
+                    <li class="dashboard-menu-item active">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-overview" id="nav-link-admin-overview">
+                            <i data-lucide="bar-chart-2" style="width:18px;height:18px;"></i> System KPIs
+                        </a>
+                    </li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-clients" id="nav-link-admin-clients">
+                            <i data-lucide="users" style="width:18px;height:18px;"></i> Fiduciary Clients
+                        </a>
+                    </li>
+
+                    <div class="sidebar-sep"></div>
+
+                    <!-- GROUP: Portfolio & Investments -->
+                    <li><span class="sidebar-group-label">Portfolio & Investments</span></li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-portfolio" id="nav-link-admin-portfolio">
+                            <i data-lucide="briefcase" style="width:18px;height:18px;"></i> Portfolio Oversight
+                        </a>
+                    </li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-ops" id="nav-link-admin-ops">
+                            <i data-lucide="activity" style="width:18px;height:18px;"></i> Investment Operations
+                        </a>
+                    </li>
+
+                    <div class="sidebar-sep"></div>
+
+                    <!-- GROUP: Governance -->
+                    <li><span class="sidebar-group-label">Governance</span></li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-compliance" id="nav-link-admin-compliance">
+                            <i data-lucide="shield" style="width:18px;height:18px;"></i> Compliance & Risk
+                        </a>
+                    </li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-reports" id="nav-link-admin-reports">
+                            <i data-lucide="pie-chart" style="width:18px;height:18px;"></i> Reports & Analytics
+                        </a>
+                    </li>
+
+                    <div class="sidebar-sep"></div>
+
+                    <!-- GROUP: Administration -->
+                    <li><span class="sidebar-group-label">Administration</span></li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-team" id="nav-link-admin-team">
+                            <i data-lucide="users-2" style="width:18px;height:18px;"></i> Team & Access
+                        </a>
+                    </li>
+
+                    <li class="dashboard-menu-item">
+                        <a href="#" class="dashboard-menu-link" data-panel="admin-settings" id="nav-link-admin-settings">
+                            <i data-lucide="sliders" style="width:18px;height:18px;"></i> Console Settings
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
 
             <!-- Sidebar User Box -->
             <div class="dashboard-sidebar-footer" style="border-top-color: rgba(255,255,255,0.08);">
@@ -82,209 +139,1699 @@
             </div>
         </aside>
 
-        <!-- Right Main Board -->
+        <!-- ═══════════════════════════════════════════
+             RIGHT MAIN BOARD
+        ═══════════════════════════════════════════ -->
         <main class="dashboard-main">
-            
-            <!-- Dashboard Navbar Header -->
-            <div class="dashboard-navbar">
-                <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <button class="dashboard-sidebar-toggle" aria-label="Toggle sidebar menu"><i data-lucide="menu"></i></button>
-                    <h2 class="dashboard-page-title">Administrator Workspace</h2>
-                </div>
-                
-                <div class="dashboard-nav-actions">
-                    <div style="font-size:0.85rem; font-weight:600; color:var(--color-text-muted);">
-                        SEC Compliance Audit: <span style="color:var(--color-secondary);">Declaring Active</span>
-                    </div>
-                    <button class="dashboard-notification-trigger" aria-label="Read notifications">
-                        <i data-lucide="bell" style="width:20px;"></i>
-                        <span class="notification-badge"></span>
+
+            <!-- Fixed Top Header -->
+            <div class="dashboard-navbar" id="admin-navbar">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <button class="dashboard-sidebar-toggle" id="admin-hamburger" aria-label="Toggle sidebar menu" style="min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;">
+                        <i data-lucide="menu" style="width:20px;height:20px;"></i>
                     </button>
+                    <div>
+                        <div class="admin-breadcrumb">
+                            <span style="color:var(--color-text-muted);">Finova Admin</span>
+                            <i data-lucide="chevron-right" style="width:12px;height:12px;"></i>
+                            <span id="admin-breadcrumb-current">System KPIs</span>
+                        </div>
+                        <h2 class="dashboard-page-title" id="admin-page-title" style="font-size:1.15rem; line-height:1.2; margin-top:1px;">System KPIs</h2>
+                    </div>
+                </div>
+
+                <div class="dashboard-nav-actions" style="gap:0.75rem;">
+                    <div class="admin-header-search">
+                        <i data-lucide="search" style="width:14px;height:14px;flex-shrink:0;"></i>
+                        <input type="text" placeholder="Search admin portal..." aria-label="Global search">
+                    </div>
+                    <button class="admin-icon-btn" aria-label="Notifications" style="position:relative;">
+                        <i data-lucide="bell" style="width:18px;height:18px;"></i>
+                        <span style="position:absolute;top:4px;right:4px;width:7px;height:7px;background:var(--color-danger);border-radius:50%;border:1.5px solid white;"></span>
+                    </button>
+                    <button class="admin-icon-btn" aria-label="Settings" onclick="document.getElementById('nav-link-admin-settings').click()">
+                        <i data-lucide="settings" style="width:18px;height:18px;"></i>
+                    </button>
+                    <div class="admin-profile-chip">
+                        <div class="admin-profile-avatar">MV</div>
+                        <span style="display:none;" class="d-sm-inline">Marcus V.</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Panel 1: Overview Panel (Active) -->
+            <!-- ══════════════════════════════════════
+                 PANEL 1 — SYSTEM KPIs
+            ══════════════════════════════════════ -->
             <div id="admin-overview" class="dashboard-panel active">
-                <!-- KPI Indicators Grid -->
-                <div class="dash-kpi-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background-color:rgba(16,185,129,0.08); color:var(--color-secondary);"><i data-lucide="trending-up"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-label">Total Assets Managed</span>
-                            <span class="stat-value" style="font-size:1.6rem;">$624.8 Million</span>
-                            <span class="stat-change up"><i data-lucide="arrow-up-right" style="width:14px;"></i> +14.8% YoY</span>
+
+                <div class="admin-section-header">
+                    <h2>System KPIs</h2>
+                    <p>Firm-wide key performance indicators, portfolio metrics, and operational health across all managed accounts.</p>
+                </div>
+
+                <!-- 6 KPI Cards -->
+                <div class="admin-kpi-6">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);">
+                            <i data-lucide="trending-up" style="width:18px;height:18px;color:var(--color-secondary);"></i>
                         </div>
+                        <div class="admin-kpi-label">Total AUM</div>
+                        <div class="admin-kpi-value">$624.8M</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> +14.8% YoY</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background-color:rgba(15,111,255,0.08); color:var(--color-primary);"><i data-lucide="users"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-label">Fiduciary Clients</span>
-                            <span class="stat-value" style="font-size:1.6rem;">1,245 Accounts</span>
-                            <span class="stat-change up"><i data-lucide="check" style="width:14px;"></i> 99.8% Retention</span>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);">
+                            <i data-lucide="users" style="width:18px;height:18px;color:var(--color-primary);"></i>
                         </div>
+                        <div class="admin-kpi-label">Active Clients</div>
+                        <div class="admin-kpi-value">1,245</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> +8.6% MoM</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background-color:rgba(245,158,11,0.08); color:var(--color-accent-gold);"><i data-lucide="award"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-label">Active Advisors</span>
-                            <span class="stat-value" style="font-size:1.6rem;">12 Partners</span>
-                            <span class="stat-label" style="font-size:0.7rem; color:var(--color-text-muted);">Global Coverage</span>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(56,189,248,0.08);">
+                            <i data-lucide="briefcase" style="width:18px;height:18px;color:var(--color-accent);"></i>
                         </div>
+                        <div class="admin-kpi-label">Managed Portfolios</div>
+                        <div class="admin-kpi-value">486</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> +12.4%</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon" style="background-color:rgba(239, 68, 68, 0.08); color:var(--color-danger);"><i data-lucide="alert-circle"></i></div>
-                        <div class="stat-info">
-                            <span class="stat-label">Compliance Queries</span>
-                            <span class="stat-value" style="font-size:1.6rem;">2 Pending</span>
-                            <span class="stat-change down" style="color:var(--color-danger);"><i data-lucide="alert-triangle" style="width:14px;"></i> Audits Required</span>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);">
+                            <i data-lucide="dollar-sign" style="width:18px;height:18px;color:var(--color-accent-gold);"></i>
                         </div>
+                        <div class="admin-kpi-label">Quarterly Inflows</div>
+                        <div class="admin-kpi-value">$18.6M</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> +6.2% QoQ</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);">
+                            <i data-lucide="percent" style="width:18px;height:18px;color:var(--color-secondary);"></i>
+                        </div>
+                        <div class="admin-kpi-label">Avg Portfolio Return</div>
+                        <div class="admin-kpi-value">+11.7%</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> vs +8.3% benchmark</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);">
+                            <i data-lucide="shield-check" style="width:18px;height:18px;color:var(--color-primary);"></i>
+                        </div>
+                        <div class="admin-kpi-label">Compliance Score</div>
+                        <div class="admin-kpi-value">98.6%</div>
+                        <div class="admin-kpi-change neutral">SEC Audit Compliant</div>
                     </div>
                 </div>
 
-                <!-- Graph Charts Section -->
-                <div class="dash-chart-section">
-                    <div class="card" style="padding:1.5rem;">
-                        <h3 style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="trending-up" style="color:var(--color-secondary);"></i> AUM Scaling History</h3>
-                        <div style="height:250px; position:relative;">
+                <!-- Charts + Operational Health -->
+                <div class="admin-grid-2">
+                    <!-- AUM Growth Chart -->
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <i data-lucide="trending-up" style="color:var(--color-secondary);"></i>
+                            AUM Growth — Q1 2025 to Q2 2026
+                        </div>
+                        <div style="height:240px;position:relative;">
                             <canvas id="adminAumChart"></canvas>
                         </div>
                     </div>
-                    
-                    <div class="card" style="padding:1.5rem;">
-                        <h3 style="font-family:var(--font-heading); font-size:1.15rem; font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;"><i data-lucide="pie-chart" style="color:var(--color-primary);"></i> System Allocations Dispersion</h3>
-                        <div style="height:250px; position:relative;">
+
+                    <!-- Portfolio Allocation Doughnut -->
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <i data-lucide="pie-chart" style="color:var(--color-primary);"></i>
+                            Portfolio Allocation
+                        </div>
+                        <div style="height:200px;position:relative;">
                             <canvas id="adminShareChart"></canvas>
+                        </div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-top:0.8rem;">
+                            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--color-text-muted);">
+                                <span style="width:10px;height:10px;border-radius:2px;background:#0F6FFF;flex-shrink:0;"></span> Equities 42%
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--color-text-muted);">
+                                <span style="width:10px;height:10px;border-radius:2px;background:#10B981;flex-shrink:0;"></span> Fixed Income 26%
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--color-text-muted);">
+                                <span style="width:10px;height:10px;border-radius:2px;background:#38BDF8;flex-shrink:0;"></span> Alternatives 14%
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--color-text-muted);">
+                                <span style="width:10px;height:10px;border-radius:2px;background:#F59E0B;flex-shrink:0;"></span> Real Estate 12%
+                            </div>
+                            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--color-text-muted);">
+                                <span style="width:10px;height:10px;border-radius:2px;background:#EF4444;flex-shrink:0;"></span> Cash 6%
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Panel 2: Clients Portal Grid -->
-            <div id="admin-clients" class="dashboard-panel">
-                <div class="card" style="padding:1.5rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
-                        <h3 style="font-family:var(--font-heading); font-weight:700;">SEC Fiduciary Client Index</h3>
-                        
-                        <div class="newsletter-input-group" style="width:100%; max-width:320px; border-color:var(--border-color); background-color:var(--color-body-bg);">
-                            <input type="text" id="client-search" placeholder="Search clients..." class="newsletter-input" style="color:var(--color-text-main); padding:0.5rem 1rem;">
-                            <span style="display:flex; align-items:center; padding:0 0.8rem; color:var(--color-text-light);"><i data-lucide="search" style="width:16px;"></i></span>
+                <!-- Operational Health + Activity Table -->
+                <div class="admin-grid-2">
+                    <!-- Operational Health -->
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <i data-lucide="activity" style="color:var(--color-accent);"></i>
+                            Operational Health
+                        </div>
+                        <div class="op-health-grid">
+                            <div class="op-health-item">
+                                <div class="op-health-label">Client Onboarding</div>
+                                <div class="op-health-value">94%</div>
+                                <div class="op-health-bar"><div class="op-health-bar-fill" style="width:94%;background:var(--color-secondary);"></div></div>
+                            </div>
+                            <div class="op-health-item">
+                                <div class="op-health-label">Compliance Reviews</div>
+                                <div class="op-health-value">98.6%</div>
+                                <div class="op-health-bar"><div class="op-health-bar-fill" style="width:98.6%;background:var(--color-primary);"></div></div>
+                            </div>
+                            <div class="op-health-item">
+                                <div class="op-health-label">Pending Approvals</div>
+                                <div class="op-health-value">7</div>
+                                <div class="op-health-bar"><div class="op-health-bar-fill" style="width:30%;background:var(--color-accent-gold);"></div></div>
+                            </div>
+                            <div class="op-health-item">
+                                <div class="op-health-label">Open Service Requests</div>
+                                <div class="op-health-value">12</div>
+                                <div class="op-health-bar"><div class="op-health-bar-fill" style="width:45%;background:var(--color-accent);"></div></div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border-color);">
+                            <div style="font-size:0.8rem;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.8rem;">System Status</div>
+                            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
+                                    <span style="color:var(--color-text-main);">Core Platform</span>
+                                    <span class="adm-badge adm-badge-green">Operational</span>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
+                                    <span style="color:var(--color-text-main);">Data Feed</span>
+                                    <span class="adm-badge adm-badge-green">Live</span>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
+                                    <span style="color:var(--color-text-main);">SEC Reporting Module</span>
+                                    <span class="adm-badge adm-badge-amber">Maintenance</span>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
+                                    <span style="color:var(--color-text-main);">Custody Integration</span>
+                                    <span class="adm-badge adm-badge-green">Synced</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="financial-table">
+                    <!-- Recent Activity Table -->
+                    <div class="admin-card" style="padding:0;overflow:hidden;">
+                        <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-color);">
+                            <div class="admin-card-title" style="margin-bottom:0;">
+                                <i data-lucide="clock" style="color:var(--color-text-muted);"></i>
+                                Recent Administrative Activity
+                            </div>
+                        </div>
+                        <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Administrator</th>
+                                        <th>Action</th>
+                                        <th>Client / Portfolio</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#0F6FFF;">MV</span>Marcus Vance</div></td>
+                                        <td>Portfolio Rebalance</td>
+                                        <td>FN-10482 / Growth</td>
+                                        <td style="white-space:nowrap;">Aug 10, 2026</td>
+                                        <td><span class="adm-badge adm-badge-green">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#10B981;">SB</span>Sophia Bennett</div></td>
+                                        <td>KYC Review</td>
+                                        <td>FN-10831 / Balanced</td>
+                                        <td style="white-space:nowrap;">Aug 09, 2026</td>
+                                        <td><span class="adm-badge adm-badge-amber">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#F59E0B;">DM</span>Daniel Morgan</div></td>
+                                        <td>Compliance Audit</td>
+                                        <td>FN-10927 / Conservative</td>
+                                        <td style="white-space:nowrap;">Aug 08, 2026</td>
+                                        <td><span class="adm-badge adm-badge-blue">Review</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#38BDF8;">MR</span>Marcus Reed</div></td>
+                                        <td>Client Onboarding</td>
+                                        <td>FN-11024 / Moderate</td>
+                                        <td style="white-space:nowrap;">Aug 07, 2026</td>
+                                        <td><span class="adm-badge adm-badge-green">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#EF4444;">ER</span>Elena Rostova</div></td>
+                                        <td>Risk Assessment</td>
+                                        <td>FN-10615 / Aggressive</td>
+                                        <td style="white-space:nowrap;">Aug 06, 2026</td>
+                                        <td><span class="adm-badge adm-badge-red">Flagged</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#0F6FFF;">MV</span>Marcus Vance</div></td>
+                                        <td>Fee Schedule Update</td>
+                                        <td>FN-10301 / Income</td>
+                                        <td style="white-space:nowrap;">Aug 05, 2026</td>
+                                        <td><span class="adm-badge adm-badge-green">Completed</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /admin-overview -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 2 — FIDUCIARY CLIENTS
+            ══════════════════════════════════════ -->
+            <div id="admin-clients" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Fiduciary Client Management</h2>
+                    <p>Monitor client relationships, portfolio activity, onboarding status, and advisory service requirements from a centralized administrative workspace.</p>
+                </div>
+
+                <!-- Top 4 KPI Cards -->
+                <div class="admin-kpi-4">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);"><i data-lucide="users" style="width:18px;height:18px;color:var(--color-primary);"></i></div>
+                        <div class="admin-kpi-label">Total Clients</div>
+                        <div class="admin-kpi-value">1,245</div>
+                        <div class="admin-kpi-change neutral">All registered accounts</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="user-check" style="width:18px;height:18px;color:var(--color-secondary);"></i></div>
+                        <div class="admin-kpi-label">Active Clients</div>
+                        <div class="admin-kpi-value">1,198</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> 96.2% rate</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(56,189,248,0.08);"><i data-lucide="user-plus" style="width:18px;height:18px;color:var(--color-accent);"></i></div>
+                        <div class="admin-kpi-label">New This Month</div>
+                        <div class="admin-kpi-value">34</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> +8.6% MoM</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="clipboard-list" style="width:18px;height:18px;color:var(--color-accent-gold);"></i></div>
+                        <div class="admin-kpi-label">Pending Reviews</div>
+                        <div class="admin-kpi-value">7</div>
+                        <div class="admin-kpi-change down"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> Action required</div>
+                    </div>
+                </div>
+
+                <!-- Client Management Card -->
+                <div class="admin-card" style="padding:0;overflow:hidden;">
+                    <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+                        <div class="admin-card-title" style="margin-bottom:0;">
+                            <i data-lucide="users" style="color:var(--color-primary);"></i>
+                            Client Registry
+                        </div>
+                        <a href="404.html" class="btn btn-secondary" style="font-size:0.82rem;padding:0.5rem 1rem;"><i data-lucide="user-plus" style="width:14px;height:14px;margin-right:4px;"></i> Add Client</a>
+                    </div>
+
+                    <!-- Filters -->
+                    <div style="padding:1rem 1.5rem;border-bottom:1px solid var(--border-color);background:var(--color-section-bg-3);">
+                        <div class="admin-filter-bar">
+                            <input type="text" id="client-search" placeholder="Search by name, ID, or advisor..." style="flex:1;min-width:200px;">
+                            <select id="client-risk-filter" aria-label="Filter by risk profile">
+                                <option value="">All Risk Profiles</option>
+                                <option>Moderate</option>
+                                <option>Growth</option>
+                                <option>Balanced</option>
+                                <option>Aggressive</option>
+                                <option>Conservative</option>
+                            </select>
+                            <select id="client-status-filter" aria-label="Filter by status">
+                                <option value="">All Statuses</option>
+                                <option>Active</option>
+                                <option>Review</option>
+                                <option>Inactive</option>
+                            </select>
+                            <select id="client-advisor-filter" aria-label="Filter by advisor">
+                                <option value="">All Advisors</option>
+                                <option>Marcus Reed</option>
+                                <option>Sophia Bennett</option>
+                                <option>Daniel Morgan</option>
+                                <option>Elena Rostova</option>
+                                <option>Marcus Vance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                        <table class="admin-table">
                             <thead>
                                 <tr>
                                     <th>Client Name</th>
-                                    <th>Email Address</th>
-                                    <th>Schwab Custody ID</th>
-                                    <th>Portfolio NAV</th>
-                                    <th>Risk profile</th>
-                                    <th>Assigned Advisor</th>
+                                    <th>Portfolio ID</th>
+                                    <th>Advisor</th>
+                                    <th>AUM</th>
+                                    <th>Risk Profile</th>
+                                    <th>Last Review</th>
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Client 1 -->
-                                <tr class="client-row" style="cursor:pointer;" 
-                                    data-name="Jonathan Hayes" 
-                                    data-email="client@institutional.com" 
-                                    data-portfolio="$324,500" 
-                                    data-risk="Balanced Growth" 
-                                    data-advisor="Marcus Vance" 
-                                    data-status="Active">
-                                    <td class="client-name" style="font-weight:700; font-family:var(--font-heading);">Jonathan Hayes</td>
-                                    <td class="client-email">client@institutional.com</td>
-                                    <td style="font-family:monospace; font-size:0.85rem;">SCH-82948-28</td>
-                                    <td style="font-weight:600;">$324,500</td>
-                                    <td>Growth</td>
-                                    <td>Marcus Vance</td>
-                                    <td><span class="badge badge-success">Active</span></td>
+                                <tr class="client-row" data-name="Jonathan Hayes" data-email="j.hayes@institutional.com" data-portfolio="$2.84M" data-risk="Moderate" data-advisor="Marcus Reed" data-status="Active">
+                                    <td class="client-name"><div class="table-name-cell"><span class="table-avatar" style="background:#0F6FFF;">JH</span>Jonathan Hayes</div></td>
+                                    <td class="client-email"><code style="font-size:0.8rem;">FN-10482</code></td>
+                                    <td>Marcus Reed</td>
+                                    <td style="font-weight:600;font-family:var(--font-heading);">$2.84M</td>
+                                    <td><span class="adm-badge adm-badge-sky">Moderate</span></td>
+                                    <td style="white-space:nowrap;">Aug 04, 2026</td>
+                                    <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;flex-wrap:wrap;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Profile</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Review</a></div></td>
                                 </tr>
-                                <!-- Client 2 -->
-                                <tr class="client-row" style="cursor:pointer;" 
-                                    data-name="Sarah Al-Sayed" 
-                                    data-email="sarah@doctorhealth.net" 
-                                    data-portfolio="$1,850,000" 
-                                    data-risk="Moderate Balanced" 
-                                    data-advisor="Elena Rostova" 
-                                    data-status="Active">
-                                    <td class="client-name" style="font-weight:700; font-family:var(--font-heading);">Sarah Al-Sayed</td>
-                                    <td class="client-email">sarah@doctorhealth.net</td>
-                                    <td style="font-family:monospace; font-size:0.85rem;">SCH-72304-94</td>
-                                    <td style="font-weight:600;">$1,850,000</td>
-                                    <td>Moderate</td>
+                                <tr class="client-row" data-name="Emily Carter" data-email="e.carter@finova.com" data-portfolio="$1.72M" data-risk="Growth" data-advisor="Sophia Bennett" data-status="Active">
+                                    <td class="client-name"><div class="table-name-cell"><span class="table-avatar" style="background:#10B981;">EC</span>Emily Carter</div></td>
+                                    <td class="client-email"><code style="font-size:0.8rem;">FN-10831</code></td>
+                                    <td>Sophia Bennett</td>
+                                    <td style="font-weight:600;font-family:var(--font-heading);">$1.72M</td>
+                                    <td><span class="adm-badge adm-badge-green">Growth</span></td>
+                                    <td style="white-space:nowrap;">Aug 02, 2026</td>
+                                    <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;flex-wrap:wrap;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Profile</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Review</a></div></td>
+                                </tr>
+                                <tr class="client-row" data-name="Michael Anderson" data-email="m.anderson@corp.com" data-portfolio="$4.16M" data-risk="Balanced" data-advisor="Daniel Morgan" data-status="Review">
+                                    <td class="client-name"><div class="table-name-cell"><span class="table-avatar" style="background:#F59E0B;">MA</span>Michael Anderson</div></td>
+                                    <td class="client-email"><code style="font-size:0.8rem;">FN-10927</code></td>
+                                    <td>Daniel Morgan</td>
+                                    <td style="font-weight:600;font-family:var(--font-heading);">$4.16M</td>
+                                    <td><span class="adm-badge adm-badge-sky">Balanced</span></td>
+                                    <td style="white-space:nowrap;">Jul 29, 2026</td>
+                                    <td><span class="adm-badge adm-badge-amber">Review</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;flex-wrap:wrap;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Profile</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Review</a></div></td>
+                                </tr>
+                                <tr class="client-row" data-name="Sarah Al-Sayed" data-email="sarah@dochealth.net" data-portfolio="$1.85M" data-risk="Moderate" data-advisor="Elena Rostova" data-status="Active">
+                                    <td class="client-name"><div class="table-name-cell"><span class="table-avatar" style="background:#38BDF8;">SA</span>Sarah Al-Sayed</div></td>
+                                    <td class="client-email"><code style="font-size:0.8rem;">FN-10615</code></td>
                                     <td>Elena Rostova</td>
-                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td style="font-weight:600;font-family:var(--font-heading);">$1.85M</td>
+                                    <td><span class="adm-badge adm-badge-sky">Moderate</span></td>
+                                    <td style="white-space:nowrap;">Aug 01, 2026</td>
+                                    <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;flex-wrap:wrap;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Profile</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Review</a></div></td>
                                 </tr>
-                                <!-- Client 3 -->
-                                <tr class="client-row" style="cursor:pointer;" 
-                                    data-name="Hayes Holding Corp" 
-                                    data-email="finance@hayesholdings.com" 
-                                    data-portfolio="$12,480,000" 
-                                    data-risk="Aggressive Alpha" 
-                                    data-advisor="Marcus Vance" 
-                                    data-status="Review Needed">
-                                    <td class="client-name" style="font-weight:700; font-family:var(--font-heading);">Hayes Holding Corp</td>
-                                    <td class="client-email">finance@hayesholdings.com</td>
-                                    <td style="font-family:monospace; font-size:0.85rem;">FID-92049-18</td>
-                                    <td style="font-weight:600;">$12,480,000</td>
-                                    <td>Aggressive</td>
+                                <tr class="client-row" data-name="Hayes Holding Corp" data-email="finance@hayesholdings.com" data-portfolio="$12.48M" data-risk="Aggressive" data-advisor="Marcus Vance" data-status="Review">
+                                    <td class="client-name"><div class="table-name-cell"><span class="table-avatar" style="background:#EF4444;">HH</span>Hayes Holding Corp</div></td>
+                                    <td class="client-email"><code style="font-size:0.8rem;">FN-10301</code></td>
                                     <td>Marcus Vance</td>
-                                    <td><span class="badge badge-warning">Review Needed</span></td>
+                                    <td style="font-weight:600;font-family:var(--font-heading);">$12.48M</td>
+                                    <td><span class="adm-badge adm-badge-red">Aggressive</span></td>
+                                    <td style="white-space:nowrap;">Jul 22, 2026</td>
+                                    <td><span class="adm-badge adm-badge-amber">Review</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;flex-wrap:wrap;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Profile</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Review</a></div></td>
+                                </tr>
+                                <tr class="client-row" data-name="Priya Nair" data-email="p.nair@ventures.io" data-portfolio="$920K" data-risk="Growth" data-advisor="Marcus Reed" data-status="Active">
+                                    <td class="client-name"><div class="table-name-cell"><span class="table-avatar" style="background:#8B5CF6;">PN</span>Priya Nair</div></td>
+                                    <td class="client-email"><code style="font-size:0.8rem;">FN-11024</code></td>
+                                    <td>Marcus Reed</td>
+                                    <td style="font-weight:600;font-family:var(--font-heading);">$920K</td>
+                                    <td><span class="adm-badge adm-badge-green">Growth</span></td>
+                                    <td style="white-space:nowrap;">Aug 06, 2026</td>
+                                    <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;flex-wrap:wrap;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Profile</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Review</a></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="padding:1rem 1.5rem;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                        <span style="font-size:0.82rem;color:var(--color-text-muted);">Showing 6 of 1,245 clients</span>
+                        <a href="404.html" class="btn" style="font-size:0.82rem;padding:0.45rem 1rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View All Clients</a>
+                    </div>
+                </div>
+
+            </div><!-- /admin-clients -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 3 — PORTFOLIO OVERSIGHT
+            ══════════════════════════════════════ -->
+            <div id="admin-portfolio" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Portfolio Oversight</h2>
+                    <p>Monitor portfolio performance, allocation exposure, risk levels, and strategic positioning across the firm's managed assets.</p>
+                </div>
+
+                <!-- 4 KPI Cards -->
+                <div class="admin-kpi-4">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="trending-up" style="width:18px;height:18px;color:var(--color-secondary);"></i></div>
+                        <div class="admin-kpi-label">Total Portfolio Value</div>
+                        <div class="admin-kpi-value">$624.8M</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> +14.8% YoY</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);"><i data-lucide="percent" style="width:18px;height:18px;color:var(--color-primary);"></i></div>
+                        <div class="admin-kpi-label">Average Return</div>
+                        <div class="admin-kpi-value">+11.7%</div>
+                        <div class="admin-kpi-change up"><i data-lucide="arrow-up-right" style="width:13px;height:13px;"></i> vs 8.3% benchmark</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(56,189,248,0.08);"><i data-lucide="check-circle" style="width:18px;height:18px;color:var(--color-accent);"></i></div>
+                        <div class="admin-kpi-label">Above Benchmark</div>
+                        <div class="admin-kpi-value">82%</div>
+                        <div class="admin-kpi-change neutral">of all portfolios</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="alert-circle" style="width:18px;height:18px;color:var(--color-accent-gold);"></i></div>
+                        <div class="admin-kpi-label">Requiring Review</div>
+                        <div class="admin-kpi-value">14</div>
+                        <div class="admin-kpi-change down"><i data-lucide="clock" style="width:13px;height:13px;"></i> Action needed</div>
+                    </div>
+                </div>
+
+                <!-- Performance Chart -->
+                <div class="admin-card" style="margin-bottom:1.5rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:0.5rem;">
+                        <div class="admin-card-title" style="margin-bottom:0;">
+                            <i data-lucide="line-chart" style="color:var(--color-primary);"></i>
+                            Portfolio Performance vs Benchmark
+                        </div>
+                        <div style="display:flex;gap:1.2rem;font-size:0.8rem;">
+                            <span style="display:flex;align-items:center;gap:4px;color:var(--color-text-muted);"><span style="width:12px;height:3px;background:#0F6FFF;border-radius:2px;display:inline-block;"></span> Portfolio</span>
+                            <span style="display:flex;align-items:center;gap:4px;color:var(--color-text-muted);"><span style="width:12px;height:3px;background:#10B981;border-radius:2px;display:inline-block;"></span> Benchmark</span>
+                            <span style="display:flex;align-items:center;gap:4px;color:var(--color-text-muted);"><span style="width:12px;height:3px;background:#F59E0B;border-radius:2px;display:inline-block;border-style:dashed;"></span> Target</span>
+                        </div>
+                    </div>
+                    <div style="height:260px;position:relative;">
+                        <canvas id="adminPortfolioChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Portfolio Cards Grid -->
+                <div class="portfolio-cards-grid">
+                    <!-- Card 1 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <div>
+                                <div class="portfolio-card-name">Global Growth Fund</div>
+                                <div class="portfolio-card-id">PF-001 · FN-10482</div>
+                            </div>
+                            <span class="adm-badge adm-badge-green">+14.2%</span>
+                        </div>
+                        <div class="portfolio-card-aum">$148.4M</div>
+                        <div class="portfolio-card-meta">
+                            <span>Benchmark: <strong>S&amp;P 500</strong></span>
+                            <span>Risk: <strong>Moderate-High</strong></span>
+                        </div>
+                        <div style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.3rem;">Allocation: 65% Equity · 20% Fixed · 15% Alt</div>
+                        <div class="portfolio-alloc-bar">
+                            <div class="portfolio-alloc-fill" style="width:85%;"></div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <div>
+                                <div class="portfolio-card-name">Balanced Income Portfolio</div>
+                                <div class="portfolio-card-id">PF-002 · FN-10831</div>
+                            </div>
+                            <span class="adm-badge adm-badge-sky">+9.8%</span>
+                        </div>
+                        <div class="portfolio-card-aum">$92.6M</div>
+                        <div class="portfolio-card-meta">
+                            <span>Benchmark: <strong>60/40 Blend</strong></span>
+                            <span>Risk: <strong>Moderate</strong></span>
+                        </div>
+                        <div style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.3rem;">Allocation: 50% Equity · 35% Fixed · 15% Cash</div>
+                        <div class="portfolio-alloc-bar">
+                            <div class="portfolio-alloc-fill" style="width:72%;"></div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <div>
+                                <div class="portfolio-card-name">Conservative Preservation</div>
+                                <div class="portfolio-card-id">PF-003 · FN-10927</div>
+                            </div>
+                            <span class="adm-badge adm-badge-amber">+5.4%</span>
+                        </div>
+                        <div class="portfolio-card-aum">$74.2M</div>
+                        <div class="portfolio-card-meta">
+                            <span>Benchmark: <strong>Barclays Agg</strong></span>
+                            <span>Risk: <strong>Low</strong></span>
+                        </div>
+                        <div style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.3rem;">Allocation: 20% Equity · 60% Fixed · 20% Cash</div>
+                        <div class="portfolio-alloc-bar">
+                            <div class="portfolio-alloc-fill" style="width:58%;"></div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <div>
+                                <div class="portfolio-card-name">Aggressive Alpha Strategy</div>
+                                <div class="portfolio-card-id">PF-004 · FN-10301</div>
+                            </div>
+                            <span class="adm-badge adm-badge-green">+18.6%</span>
+                        </div>
+                        <div class="portfolio-card-aum">$186.3M</div>
+                        <div class="portfolio-card-meta">
+                            <span>Benchmark: <strong>Russell 2000</strong></span>
+                            <span>Risk: <strong>High</strong></span>
+                        </div>
+                        <div style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.3rem;">Allocation: 80% Equity · 10% Alt · 10% Cash</div>
+                        <div class="portfolio-alloc-bar">
+                            <div class="portfolio-alloc-fill" style="width:94%;"></div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <div>
+                                <div class="portfolio-card-name">Real Assets Fund</div>
+                                <div class="portfolio-card-id">PF-005 · FN-10615</div>
+                            </div>
+                            <span class="adm-badge adm-badge-sky">+7.1%</span>
+                        </div>
+                        <div class="portfolio-card-aum">$62.1M</div>
+                        <div class="portfolio-card-meta">
+                            <span>Benchmark: <strong>REIT Index</strong></span>
+                            <span>Risk: <strong>Moderate</strong></span>
+                        </div>
+                        <div style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.3rem;">Allocation: 30% RE · 40% Equity · 30% Fixed</div>
+                        <div class="portfolio-alloc-bar">
+                            <div class="portfolio-alloc-fill" style="width:65%;"></div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-card-header">
+                            <div>
+                                <div class="portfolio-card-name">ESG Sustainable Growth</div>
+                                <div class="portfolio-card-id">PF-006 · FN-11024</div>
+                            </div>
+                            <span class="adm-badge adm-badge-green">+12.3%</span>
+                        </div>
+                        <div class="portfolio-card-aum">$61.2M</div>
+                        <div class="portfolio-card-meta">
+                            <span>Benchmark: <strong>MSCI ESG</strong></span>
+                            <span>Risk: <strong>Moderate</strong></span>
+                        </div>
+                        <div style="font-size:0.78rem;color:var(--color-text-muted);margin-bottom:0.3rem;">Allocation: 70% ESG Equity · 20% Green Bonds · 10% Cash</div>
+                        <div class="portfolio-alloc-bar">
+                            <div class="portfolio-alloc-fill" style="width:80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Allocation Grid + Portfolio Alerts -->
+                <div class="admin-grid-2">
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <i data-lucide="grid" style="color:var(--color-text-muted);"></i>
+                            Allocation Exposure
+                        </div>
+                        <div class="admin-alloc-grid">
+                            <div class="alloc-item">
+                                <div class="alloc-item-label">US Equities</div>
+                                <div class="alloc-item-pct">32%</div>
+                                <div class="alloc-bar"><div class="alloc-bar-fill" style="width:32%;background:#0F6FFF;"></div></div>
+                            </div>
+                            <div class="alloc-item">
+                                <div class="alloc-item-label">Intl. Equities</div>
+                                <div class="alloc-item-pct">18%</div>
+                                <div class="alloc-bar"><div class="alloc-bar-fill" style="width:18%;background:#38BDF8;"></div></div>
+                            </div>
+                            <div class="alloc-item">
+                                <div class="alloc-item-label">Fixed Income</div>
+                                <div class="alloc-item-pct">24%</div>
+                                <div class="alloc-bar"><div class="alloc-bar-fill" style="width:24%;background:#10B981;"></div></div>
+                            </div>
+                            <div class="alloc-item">
+                                <div class="alloc-item-label">Alternatives</div>
+                                <div class="alloc-item-pct">12%</div>
+                                <div class="alloc-bar"><div class="alloc-bar-fill" style="width:12%;background:#F59E0B;"></div></div>
+                            </div>
+                            <div class="alloc-item">
+                                <div class="alloc-item-label">Cash</div>
+                                <div class="alloc-item-pct">6%</div>
+                                <div class="alloc-bar"><div class="alloc-bar-fill" style="width:6%;background:#EF4444;"></div></div>
+                            </div>
+                            <div class="alloc-item">
+                                <div class="alloc-item-label">Real Assets</div>
+                                <div class="alloc-item-pct">8%</div>
+                                <div class="alloc-bar"><div class="alloc-bar-fill" style="width:8%;background:#8B5CF6;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <i data-lucide="alert-triangle" style="color:var(--color-accent-gold);"></i>
+                            Portfolio Alerts
+                        </div>
+                        <div class="admin-alert-list">
+                            <div class="admin-alert-item high">
+                                <div class="admin-alert-icon"><i data-lucide="alert-octagon" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Concentration Threshold Exceeded</div>
+                                    <div class="admin-alert-desc">PF-004 exceeds 80% equity cap — requires review</div>
+                                </div>
+                                <span class="adm-badge adm-badge-red">High</span>
+                            </div>
+                            <div class="admin-alert-item medium">
+                                <div class="admin-alert-icon"><i data-lucide="arrow-left-right" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Allocation Drift Detected</div>
+                                    <div class="admin-alert-desc">PF-002 has drifted 4.2% from target allocation</div>
+                                </div>
+                                <span class="adm-badge adm-badge-amber">Medium</span>
+                            </div>
+                            <div class="admin-alert-item medium">
+                                <div class="admin-alert-icon"><i data-lucide="calendar" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Quarterly Review Due</div>
+                                    <div class="admin-alert-desc">3 portfolios due for Q3 2026 review by Aug 15</div>
+                                </div>
+                                <span class="adm-badge adm-badge-amber">Medium</span>
+                            </div>
+                            <div class="admin-alert-item low">
+                                <div class="admin-alert-icon"><i data-lucide="user-x" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Risk Profile Mismatch</div>
+                                    <div class="admin-alert-desc">PF-006 may exceed client's stated risk tolerance</div>
+                                </div>
+                                <span class="adm-badge adm-badge-sky">Low</span>
+                            </div>
+                            <div class="admin-alert-item low">
+                                <div class="admin-alert-icon"><i data-lucide="wallet" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Cash Allocation Above Target</div>
+                                    <div class="admin-alert-desc">PF-003 holds 20% cash vs. 15% policy maximum</div>
+                                </div>
+                                <span class="adm-badge adm-badge-sky">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /admin-portfolio -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 4 — INVESTMENT OPERATIONS
+            ══════════════════════════════════════ -->
+            <div id="admin-ops" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Investment Operations</h2>
+                    <p>Track investment instructions, trade processing, settlement activity, cash movements, and operational exceptions.</p>
+                </div>
+
+                <!-- 4 KPI Cards -->
+                <div class="admin-kpi-4">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="clock" style="width:18px;height:18px;color:var(--color-accent-gold);"></i></div>
+                        <div class="admin-kpi-label">Pending Trades</div>
+                        <div class="admin-kpi-value">24</div>
+                        <div class="admin-kpi-change down"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> Awaiting execution</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="check-circle-2" style="width:18px;height:18px;color:var(--color-secondary);"></i></div>
+                        <div class="admin-kpi-label">Settlements Today</div>
+                        <div class="admin-kpi-value">18</div>
+                        <div class="admin-kpi-change up"><i data-lucide="check" style="width:13px;height:13px;"></i> All T+2 compliant</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);"><i data-lucide="dollar-sign" style="width:18px;height:18px;color:var(--color-primary);"></i></div>
+                        <div class="admin-kpi-label">Cash Movements</div>
+                        <div class="admin-kpi-value">$8.4M</div>
+                        <div class="admin-kpi-change neutral">Aug 10, 2026</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(239,68,68,0.08);"><i data-lucide="alert-triangle" style="width:18px;height:18px;color:var(--color-danger);"></i></div>
+                        <div class="admin-kpi-label">Operational Exceptions</div>
+                        <div class="admin-kpi-value">3</div>
+                        <div class="admin-kpi-change down"><i data-lucide="alert-circle" style="width:13px;height:13px;"></i> Require resolution</div>
+                    </div>
+                </div>
+
+                <!-- Transaction Table + Timeline -->
+                <div class="admin-grid-2">
+                    <!-- Transaction Table -->
+                    <div class="admin-card" style="padding:0;overflow:hidden;">
+                        <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                            <div class="admin-card-title" style="margin-bottom:0;"><i data-lucide="receipt" style="color:var(--color-primary);"></i> Transaction Ledger</div>
+                            <a href="404.html" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 0.9rem;">Export</a>
+                        </div>
+                        <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Txn ID</th>
+                                        <th>Client</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Settle Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">TXN-8820</code></td>
+                                        <td>Jonathan Hayes</td>
+                                        <td><span class="adm-badge adm-badge-green">Buy</span></td>
+                                        <td style="font-weight:600;">$142,000</td>
+                                        <td style="white-space:nowrap;">Aug 12, 2026</td>
+                                        <td><span class="adm-badge adm-badge-sky">Processing</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">TXN-8821</code></td>
+                                        <td>Emily Carter</td>
+                                        <td><span class="adm-badge adm-badge-red">Sell</span></td>
+                                        <td style="font-weight:600;">$78,500</td>
+                                        <td style="white-space:nowrap;">Aug 11, 2026</td>
+                                        <td><span class="adm-badge adm-badge-green">Settled</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">TXN-8822</code></td>
+                                        <td>Hayes Holdings</td>
+                                        <td><span class="adm-badge adm-badge-blue">Transfer</span></td>
+                                        <td style="font-weight:600;">$2,480,000</td>
+                                        <td style="white-space:nowrap;">Aug 14, 2026</td>
+                                        <td><span class="adm-badge adm-badge-amber">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">TXN-8823</code></td>
+                                        <td>Sarah Al-Sayed</td>
+                                        <td><span class="adm-badge adm-badge-sky">Dividend</span></td>
+                                        <td style="font-weight:600;">$12,400</td>
+                                        <td style="white-space:nowrap;">Aug 10, 2026</td>
+                                        <td><span class="adm-badge adm-badge-green">Settled</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">TXN-8824</code></td>
+                                        <td>Michael Anderson</td>
+                                        <td><span class="adm-badge adm-badge-green">Contribution</span></td>
+                                        <td style="font-weight:600;">$250,000</td>
+                                        <td style="white-space:nowrap;">Aug 13, 2026</td>
+                                        <td><span class="adm-badge adm-badge-sky">Processing</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">TXN-8825</code></td>
+                                        <td>Priya Nair</td>
+                                        <td><span class="adm-badge adm-badge-amber">Withdrawal</span></td>
+                                        <td style="font-weight:600;">$45,000</td>
+                                        <td style="white-space:nowrap;">Aug 10, 2026</td>
+                                        <td><span class="adm-badge adm-badge-red">Exception</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Operational Timeline + Pending Actions -->
+                    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                        <div class="admin-card">
+                            <div class="admin-card-title">
+                                <i data-lucide="git-branch" style="color:var(--color-secondary);"></i>
+                                Operational Timeline — TXN-8822
+                            </div>
+                            <div class="ops-timeline">
+                                <div class="ops-timeline-item">
+                                    <div class="ops-timeline-dot done"></div>
+                                    <div class="ops-timeline-label">Trade Instruction Received</div>
+                                    <div class="ops-timeline-time">Aug 09, 2026 · 09:14 AM</div>
+                                </div>
+                                <div class="ops-timeline-item">
+                                    <div class="ops-timeline-dot done"></div>
+                                    <div class="ops-timeline-label">Compliance Review Completed</div>
+                                    <div class="ops-timeline-time">Aug 09, 2026 · 11:42 AM</div>
+                                </div>
+                                <div class="ops-timeline-item">
+                                    <div class="ops-timeline-dot done"></div>
+                                    <div class="ops-timeline-label">Execution Confirmed</div>
+                                    <div class="ops-timeline-time">Aug 10, 2026 · 10:08 AM</div>
+                                </div>
+                                <div class="ops-timeline-item">
+                                    <div class="ops-timeline-dot active"></div>
+                                    <div class="ops-timeline-label">Settlement Initiated</div>
+                                    <div class="ops-timeline-time">Aug 10, 2026 · 2:30 PM — In Progress</div>
+                                </div>
+                                <div class="ops-timeline-item">
+                                    <div class="ops-timeline-dot pending"></div>
+                                    <div class="ops-timeline-label">Settlement Completed</div>
+                                    <div class="ops-timeline-time">Estimated Aug 14, 2026</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="admin-card">
+                            <div class="admin-card-title">
+                                <i data-lucide="list-checks" style="color:var(--color-accent-gold);"></i>
+                                Pending Actions
+                            </div>
+                            <div>
+                                <div class="pending-action-item">
+                                    <div class="pending-action-icon" style="background:rgba(239,68,68,0.08);"><i data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--color-danger);"></i></div>
+                                    <div>
+                                        <div class="pending-action-text">Resolve TXN-8825 Exception</div>
+                                        <div class="pending-action-sub">Withdrawal blocked — KYC verification pending</div>
+                                    </div>
+                                    <span class="adm-badge adm-badge-red">Urgent</span>
+                                </div>
+                                <div class="pending-action-item">
+                                    <div class="pending-action-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="file-check" style="width:16px;height:16px;color:var(--color-accent-gold);"></i></div>
+                                    <div>
+                                        <div class="pending-action-text">Approve TXN-8822 Transfer</div>
+                                        <div class="pending-action-sub">Awaiting second-tier approval from compliance</div>
+                                    </div>
+                                    <span class="adm-badge adm-badge-amber">High</span>
+                                </div>
+                                <div class="pending-action-item">
+                                    <div class="pending-action-icon" style="background:rgba(15,111,255,0.08);"><i data-lucide="refresh-cw" style="width:16px;height:16px;color:var(--color-primary);"></i></div>
+                                    <div>
+                                        <div class="pending-action-text">Reconcile 3 Settlement Fails</div>
+                                        <div class="pending-action-sub">DTC settlement discrepancies to be cleared</div>
+                                    </div>
+                                    <span class="adm-badge adm-badge-blue">Medium</span>
+                                </div>
+                                <div class="pending-action-item">
+                                    <div class="pending-action-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="send" style="width:16px;height:16px;color:var(--color-secondary);"></i></div>
+                                    <div>
+                                        <div class="pending-action-text">Issue Dividend Confirmations</div>
+                                        <div class="pending-action-sub">Q2 2026 dividend notices for 142 clients</div>
+                                    </div>
+                                    <span class="adm-badge adm-badge-green">Normal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /admin-ops -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 5 — COMPLIANCE & RISK
+            ══════════════════════════════════════ -->
+            <div id="admin-compliance" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Compliance & Risk</h2>
+                    <p>Maintain oversight of regulatory controls, portfolio risk exposure, suitability reviews, and outstanding compliance actions.</p>
+                </div>
+
+                <!-- 4 KPI Cards -->
+                <div class="admin-kpi-4">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="shield-check" style="width:18px;height:18px;color:var(--color-secondary);"></i></div>
+                        <div class="admin-kpi-label">Compliance Score</div>
+                        <div class="admin-kpi-value">98.6%</div>
+                        <div class="admin-kpi-change up">SEC Audit Compliant</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="file-search" style="width:18px;height:18px;color:var(--color-accent-gold);"></i></div>
+                        <div class="admin-kpi-label">Open Reviews</div>
+                        <div class="admin-kpi-value">7</div>
+                        <div class="admin-kpi-change down">Require attention</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(239,68,68,0.08);"><i data-lucide="alert-octagon" style="width:18px;height:18px;color:var(--color-danger);"></i></div>
+                        <div class="admin-kpi-label">High Risk Alerts</div>
+                        <div class="admin-kpi-value">2</div>
+                        <div class="admin-kpi-change down">Escalated for review</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="check-circle-2" style="width:18px;height:18px;color:var(--color-secondary);"></i></div>
+                        <div class="admin-kpi-label">Completed Reviews</div>
+                        <div class="admin-kpi-value">186</div>
+                        <div class="admin-kpi-change up">YTD 2026</div>
+                    </div>
+                </div>
+
+                <!-- Risk Overview Grid -->
+                <div class="risk-overview-grid" style="margin-bottom:1.5rem;">
+                    <div class="risk-overview-card">
+                        <div class="risk-overview-count" style="color:var(--color-secondary);">894</div>
+                        <div class="risk-overview-label"><span class="risk-overview-dot" style="background:var(--color-secondary);"></span>Low Risk</div>
+                    </div>
+                    <div class="risk-overview-card">
+                        <div class="risk-overview-count" style="color:#0284C7;">284</div>
+                        <div class="risk-overview-label"><span class="risk-overview-dot" style="background:#0284C7;"></span>Moderate Risk</div>
+                    </div>
+                    <div class="risk-overview-card">
+                        <div class="risk-overview-count" style="color:var(--color-accent-gold);">53</div>
+                        <div class="risk-overview-label"><span class="risk-overview-dot" style="background:var(--color-accent-gold);"></span>Elevated Risk</div>
+                    </div>
+                    <div class="risk-overview-card">
+                        <div class="risk-overview-count" style="color:var(--color-danger);">14</div>
+                        <div class="risk-overview-label"><span class="risk-overview-dot" style="background:var(--color-danger);"></span>High Risk</div>
+                    </div>
+                </div>
+
+                <!-- Compliance Queue Table + Risk Alerts -->
+                <div class="admin-grid-2">
+                    <!-- Compliance Review Queue -->
+                    <div class="admin-card" style="padding:0;overflow:hidden;">
+                        <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-color);">
+                            <div class="admin-card-title" style="margin-bottom:0;"><i data-lucide="clipboard-check" style="color:var(--color-primary);"></i> Compliance Review Queue</div>
+                        </div>
+                        <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Review ID</th>
+                                        <th>Client</th>
+                                        <th>Type</th>
+                                        <th>Officer</th>
+                                        <th>Due</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">CR-2026-044</code></td>
+                                        <td>Jonathan Hayes</td>
+                                        <td>KYC Review</td>
+                                        <td>D. Morgan</td>
+                                        <td style="white-space:nowrap;color:var(--color-danger);font-weight:600;">Aug 12</td>
+                                        <td><span class="adm-badge adm-badge-red">High</span></td>
+                                        <td><span class="adm-badge adm-badge-amber">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">CR-2026-045</code></td>
+                                        <td>Emily Carter</td>
+                                        <td>Suitability Review</td>
+                                        <td>S. Bennett</td>
+                                        <td style="white-space:nowrap;">Aug 15</td>
+                                        <td><span class="adm-badge adm-badge-amber">Medium</span></td>
+                                        <td><span class="adm-badge adm-badge-blue">In Review</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">CR-2026-046</code></td>
+                                        <td>Hayes Holdings</td>
+                                        <td>Portfolio Review</td>
+                                        <td>M. Vance</td>
+                                        <td style="white-space:nowrap;color:var(--color-danger);font-weight:600;">Aug 10</td>
+                                        <td><span class="adm-badge adm-badge-red">High</span></td>
+                                        <td><span class="adm-badge adm-badge-red">Overdue</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">CR-2026-047</code></td>
+                                        <td>Michael Anderson</td>
+                                        <td>Transaction Review</td>
+                                        <td>E. Rostova</td>
+                                        <td style="white-space:nowrap;">Aug 18</td>
+                                        <td><span class="adm-badge adm-badge-sky">Low</span></td>
+                                        <td><span class="adm-badge adm-badge-amber">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code style="font-size:0.78rem;">CR-2026-048</code></td>
+                                        <td>Priya Nair</td>
+                                        <td>Annual Compliance</td>
+                                        <td>D. Morgan</td>
+                                        <td style="white-space:nowrap;">Aug 22</td>
+                                        <td><span class="adm-badge adm-badge-sky">Low</span></td>
+                                        <td><span class="adm-badge adm-badge-green">Scheduled</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Risk Alerts -->
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <i data-lucide="shield-alert" style="color:var(--color-danger);"></i>
+                            Risk Alerts
+                        </div>
+                        <div class="admin-alert-list">
+                            <div class="admin-alert-item high">
+                                <div class="admin-alert-icon"><i data-lucide="trending-up" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">High Equity Concentration</div>
+                                    <div class="admin-alert-desc">PF-004 holds 82% equities — exceeds policy limit</div>
+                                </div>
+                                <span class="adm-badge adm-badge-red">Critical</span>
+                            </div>
+                            <div class="admin-alert-item high">
+                                <div class="admin-alert-icon"><i data-lucide="eye" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Unusual Transaction Activity</div>
+                                    <div class="admin-alert-desc">5 large withdrawals flagged on FN-10301 in 30 days</div>
+                                </div>
+                                <span class="adm-badge adm-badge-red">High</span>
+                            </div>
+                            <div class="admin-alert-item medium">
+                                <div class="admin-alert-icon"><i data-lucide="id-card" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">KYC Document Nearing Expiry</div>
+                                    <div class="admin-alert-desc">Hayes Holdings — passport expires Sep 2026</div>
+                                </div>
+                                <span class="adm-badge adm-badge-amber">Medium</span>
+                            </div>
+                            <div class="admin-alert-item medium">
+                                <div class="admin-alert-icon"><i data-lucide="arrow-left-right" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Portfolio Allocation Drift</div>
+                                    <div class="admin-alert-desc">PF-002 drifted 4.2% from IPS target allocation</div>
+                                </div>
+                                <span class="adm-badge adm-badge-amber">Medium</span>
+                            </div>
+                            <div class="admin-alert-item low">
+                                <div class="admin-alert-icon"><i data-lucide="calendar-x" style="width:16px;height:16px;"></i></div>
+                                <div class="admin-alert-text">
+                                    <div class="admin-alert-title">Suitability Review Overdue</div>
+                                    <div class="admin-alert-desc">CR-2026-046 missed review date — 2 days overdue</div>
+                                </div>
+                                <span class="adm-badge adm-badge-sky">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /admin-compliance -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 6 — REPORTS & ANALYTICS
+            ══════════════════════════════════════ -->
+            <div id="admin-reports" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Reports & Analytics</h2>
+                    <p>Analyze firm-wide performance, client growth, asset flows, operational efficiency, and portfolio trends through centralized reporting.</p>
+                </div>
+
+                <!-- 4 KPI Cards -->
+                <div class="admin-kpi-4">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(16,185,129,0.08);"><i data-lucide="trending-up" style="width:18px;height:18px;color:var(--color-secondary);"></i></div>
+                        <div class="admin-kpi-label">AUM Growth</div>
+                        <div class="admin-kpi-value">+14.8%</div>
+                        <div class="admin-kpi-change up">YoY to Q2 2026</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);"><i data-lucide="users" style="width:18px;height:18px;color:var(--color-primary);"></i></div>
+                        <div class="admin-kpi-label">Client Growth</div>
+                        <div class="admin-kpi-value">+8.6%</div>
+                        <div class="admin-kpi-change up">+98 new clients YTD</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(56,189,248,0.08);"><i data-lucide="dollar-sign" style="width:18px;height:18px;color:var(--color-accent);"></i></div>
+                        <div class="admin-kpi-label">Net Inflows</div>
+                        <div class="admin-kpi-value">$18.6M</div>
+                        <div class="admin-kpi-change up">Q2 2026</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="award" style="width:18px;height:18px;color:var(--color-accent-gold);"></i></div>
+                        <div class="admin-kpi-label">Benchmark Outperformance</div>
+                        <div class="admin-kpi-value">+3.4%</div>
+                        <div class="admin-kpi-change up">vs S&P 500 YTD</div>
+                    </div>
+                </div>
+
+                <!-- Chart Grid (3 charts) -->
+                <div class="reports-chart-grid">
+                    <div class="admin-card">
+                        <div class="admin-card-title" style="font-size:0.9rem;"><i data-lucide="trending-up" style="color:var(--color-secondary);"></i> AUM Growth</div>
+                        <div style="height:160px;position:relative;"><canvas id="adminReportsAumChart"></canvas></div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="admin-card-title" style="font-size:0.9rem;"><i data-lucide="users" style="color:var(--color-primary);"></i> Client Acquisition</div>
+                        <div style="height:160px;position:relative;"><canvas id="adminReportsClientChart"></canvas></div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="admin-card-title" style="font-size:0.9rem;"><i data-lucide="dollar-sign" style="color:var(--color-accent);"></i> Net Cash Flow</div>
+                        <div style="height:160px;position:relative;"><canvas id="adminReportsCashChart"></canvas></div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="admin-card-title" style="font-size:0.9rem;"><i data-lucide="percent" style="color:var(--color-accent-gold);"></i> Portfolio Performance</div>
+                        <div style="height:160px;position:relative;"><canvas id="adminReportsPerfChart"></canvas></div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="admin-card-title" style="font-size:0.9rem;"><i data-lucide="bar-chart" style="color:var(--color-primary);"></i> Revenue Trend</div>
+                        <div style="height:160px;position:relative;"><canvas id="adminReportsRevenueChart"></canvas></div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="admin-card-title" style="font-size:0.9rem;"><i data-lucide="pie-chart" style="color:var(--color-danger);"></i> Risk Distribution</div>
+                        <div style="height:160px;position:relative;"><canvas id="adminReportsRiskChart"></canvas></div>
+                    </div>
+                </div>
+
+                <!-- Generated Reports Table -->
+                <div class="admin-card" style="padding:0;overflow:hidden;">
+                    <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+                        <div class="admin-card-title" style="margin-bottom:0;"><i data-lucide="file-text" style="color:var(--color-text-muted);"></i> Generated Reports</div>
+                        <a href="404.html" class="btn btn-secondary" style="font-size:0.82rem;padding:0.45rem 1rem;"><i data-lucide="plus" style="width:14px;height:14px;margin-right:4px;"></i> Generate Report</a>
+                    </div>
+                    <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Report Name</th>
+                                    <th>Category</th>
+                                    <th>Generated By</th>
+                                    <th>Date</th>
+                                    <th>Format</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight:600;">Q2 2026 AUM Summary Report</td>
+                                    <td>Portfolio Analytics</td>
+                                    <td>Marcus Vance</td>
+                                    <td style="white-space:nowrap;">Aug 01, 2026</td>
+                                    <td><span class="adm-badge adm-badge-blue">PDF</span></td>
+                                    <td><span class="adm-badge adm-badge-green">Ready</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Export</a></div></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:600;">Risk Exposure Assessment</td>
+                                    <td>Compliance</td>
+                                    <td>Daniel Morgan</td>
+                                    <td style="white-space:nowrap;">Jul 28, 2026</td>
+                                    <td><span class="adm-badge adm-badge-blue">PDF</span></td>
+                                    <td><span class="adm-badge adm-badge-green">Ready</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Export</a></div></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:600;">Client Growth Analysis</td>
+                                    <td>Client Management</td>
+                                    <td>Sophia Bennett</td>
+                                    <td style="white-space:nowrap;">Jul 20, 2026</td>
+                                    <td><span class="adm-badge adm-badge-sky">XLSX</span></td>
+                                    <td><span class="adm-badge adm-badge-green">Ready</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Export</a></div></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:600;">Compliance Summary — H1 2026</td>
+                                    <td>Compliance</td>
+                                    <td>Marcus Vance</td>
+                                    <td style="white-space:nowrap;">Jul 10, 2026</td>
+                                    <td><span class="adm-badge adm-badge-blue">PDF</span></td>
+                                    <td><span class="adm-badge adm-badge-green">Ready</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View</a><a href="404.html" class="btn btn-secondary" style="font-size:0.75rem;padding:0.3rem 0.7rem;">Export</a></div></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:600;">Quarterly Net Cash Flow Report</td>
+                                    <td>Operations</td>
+                                    <td>Elena Rostova</td>
+                                    <td style="white-space:nowrap;">Aug 08, 2026</td>
+                                    <td><span class="adm-badge adm-badge-sky">XLSX</span></td>
+                                    <td><span class="adm-badge adm-badge-amber">Processing</span></td>
+                                    <td><div style="display:flex;gap:0.4rem;"><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-muted);" disabled>View</a><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-muted);" disabled>Export</a></div></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
 
-            <!-- Panel 3: Settings Panel -->
-            <div id="admin-settings" class="dashboard-panel">
-                <div class="form-card">
-                    <h3 style="font-family:var(--font-heading); margin-bottom:0.5rem; font-weight:700;">Console Parameters</h3>
-                    <p class="card-desc" style="margin-bottom:1.5rem;">Manage database keys, audit frequencies, and advisor permissions.</p>
-                    
-                    <form onsubmit="event.preventDefault(); alert('Administrative parameters saved.');">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="adm-firm">Firm Fiduciary Registry</label>
-                                <input type="text" id="adm-firm" value="Finova Capital LLC #401-20948" class="form-control" readonly style="background-color:#E2E8F0; cursor:not-allowed;">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="adm-seckey">SEC Fiduciary License Key</label>
-                                <input type="text" id="adm-seckey" value="SEC-ADVISOR-RIA-2026-FIDC" class="form-control" readonly style="background-color:#E2E8F0; cursor:not-allowed;">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="adm-freq">Audit Dispatch Frequency</label>
-                            <select id="adm-freq" class="form-control" style="background-image:none;">
-                                <option value="Monthly (First Friday)">Monthly (First Friday)</option>
-                                <option value="Quarterly (Tax-Cycle)">Quarterly (Tax-Cycle)</option>
-                                <option value="Semi-Annually">Semi-Annually</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-secondary">Commit Console Updates</button>
-                    </form>
+            </div><!-- /admin-reports -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 7 — TEAM & ACCESS
+            ══════════════════════════════════════ -->
+            <div id="admin-team" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Team & Access Management</h2>
+                    <p>Manage administrators, advisors, operational staff, permissions, and internal access controls.</p>
                 </div>
-            </div>
+
+                <!-- 4 KPI Cards -->
+                <div class="admin-kpi-4">
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(239,68,68,0.08);"><i data-lucide="shield" style="width:18px;height:18px;color:var(--color-danger);"></i></div>
+                        <div class="admin-kpi-label">Active Administrators</div>
+                        <div class="admin-kpi-value">18</div>
+                        <div class="admin-kpi-change neutral">Full platform access</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(15,111,255,0.08);"><i data-lucide="briefcase" style="width:18px;height:18px;color:var(--color-primary);"></i></div>
+                        <div class="admin-kpi-label">Financial Advisors</div>
+                        <div class="admin-kpi-value">42</div>
+                        <div class="admin-kpi-change neutral">Client-facing roles</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(56,189,248,0.08);"><i data-lucide="users-2" style="width:18px;height:18px;color:var(--color-accent);"></i></div>
+                        <div class="admin-kpi-label">Operations Staff</div>
+                        <div class="admin-kpi-value">27</div>
+                        <div class="admin-kpi-change neutral">Back-office support</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="admin-kpi-icon" style="background:rgba(245,158,11,0.08);"><i data-lucide="key" style="width:18px;height:18px;color:var(--color-accent-gold);"></i></div>
+                        <div class="admin-kpi-label">Pending Access Requests</div>
+                        <div class="admin-kpi-value">4</div>
+                        <div class="admin-kpi-change down">Awaiting approval</div>
+                    </div>
+                </div>
+
+                <!-- Team Table + Access Control -->
+                <div class="admin-grid-2">
+                    <!-- Team Table -->
+                    <div class="admin-card" style="padding:0;overflow:hidden;">
+                        <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                            <div class="admin-card-title" style="margin-bottom:0;"><i data-lucide="users" style="color:var(--color-primary);"></i> Team Directory</div>
+                            <a href="404.html" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 0.9rem;"><i data-lucide="user-plus" style="width:14px;height:14px;margin-right:4px;"></i> Add Member</a>
+                        </div>
+                        <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Last Active</th>
+                                        <th>Access Level</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#0F6FFF;">MV</span>Marcus Vance</div></td>
+                                        <td><span class="adm-badge adm-badge-red">Super Admin</span></td>
+                                        <td style="white-space:nowrap;">Aug 10, 2026</td>
+                                        <td><span class="perm-badge perm-full">Full Access</span></td>
+                                        <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                        <td><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Manage</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#10B981;">SB</span>Sophia Bennett</div></td>
+                                        <td><span class="adm-badge adm-badge-blue">Senior Advisor</span></td>
+                                        <td style="white-space:nowrap;">Aug 09, 2026</td>
+                                        <td><span class="perm-badge perm-read">Read Only</span></td>
+                                        <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                        <td><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Manage</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#F59E0B;">DM</span>Daniel Morgan</div></td>
+                                        <td><span class="adm-badge adm-badge-amber">Compliance Officer</span></td>
+                                        <td style="white-space:nowrap;">Aug 10, 2026</td>
+                                        <td><span class="perm-badge perm-full">Full Access</span></td>
+                                        <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                        <td><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Manage</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#38BDF8;">MR</span>Marcus Reed</div></td>
+                                        <td><span class="adm-badge adm-badge-sky">Portfolio Manager</span></td>
+                                        <td style="white-space:nowrap;">Aug 08, 2026</td>
+                                        <td><span class="perm-badge perm-read">Read Only</span></td>
+                                        <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                        <td><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Manage</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#8B5CF6;">ER</span>Elena Rostova</div></td>
+                                        <td><span class="adm-badge adm-badge-sky">Operations Manager</span></td>
+                                        <td style="white-space:nowrap;">Aug 10, 2026</td>
+                                        <td><span class="perm-badge perm-restricted">Restricted</span></td>
+                                        <td><span class="adm-badge adm-badge-green">Active</span></td>
+                                        <td><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Manage</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="table-name-cell"><span class="table-avatar" style="background:#64748B;">JK</span>James Kim</div></td>
+                                        <td><span class="adm-badge adm-badge-gray">Analyst</span></td>
+                                        <td style="white-space:nowrap;">Aug 07, 2026</td>
+                                        <td><span class="perm-badge perm-restricted">Restricted</span></td>
+                                        <td><span class="adm-badge adm-badge-amber">Pending</span></td>
+                                        <td><a href="404.html" class="btn" style="font-size:0.75rem;padding:0.3rem 0.7rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Manage</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Permission Matrix + Recent Access -->
+                    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                        <div class="admin-card">
+                            <div class="admin-card-title"><i data-lucide="lock" style="color:var(--color-primary);"></i> Permission Controls</div>
+                            <table class="perm-matrix">
+                                <thead>
+                                    <tr>
+                                        <th>Module</th>
+                                        <th>Admin</th>
+                                        <th>Advisor</th>
+                                        <th>Operations</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight:600;">Client Data</td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-read">Read</span></td>
+                                        <td><span class="perm-badge perm-restricted">Limited</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:600;">Portfolio Data</td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-read">Read</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:600;">Transactions</td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-read">Read</span></td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:600;">Reports</td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-read">Read</span></td>
+                                        <td><span class="perm-badge perm-restricted">Limited</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:600;">Compliance</td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-restricted">Limited</span></td>
+                                        <td><span class="perm-badge perm-read">Read</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:600;">System Settings</td>
+                                        <td><span class="perm-badge perm-full">Full</span></td>
+                                        <td><span class="perm-badge perm-restricted">None</span></td>
+                                        <td><span class="perm-badge perm-restricted">None</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="admin-card" style="padding:0;overflow:hidden;">
+                            <div style="padding:1rem 1.2rem;border-bottom:1px solid var(--border-color);">
+                                <div class="admin-card-title" style="margin-bottom:0;font-size:0.95rem;"><i data-lucide="activity" style="color:var(--color-text-muted);"></i> Recent Access Activity</div>
+                            </div>
+                            <div class="admin-table-wrap" style="border:none;border-radius:0;">
+                                <table class="admin-table" style="font-size:0.8rem;">
+                                    <thead>
+                                        <tr>
+                                            <th>User</th>
+                                            <th>Action</th>
+                                            <th>Module</th>
+                                            <th>Time</th>
+                                            <th>Result</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Marcus Vance</td>
+                                            <td>Login</td>
+                                            <td>Admin Portal</td>
+                                            <td style="white-space:nowrap;">08:02 AM</td>
+                                            <td><span class="adm-badge adm-badge-green">Success</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Daniel Morgan</td>
+                                            <td>Viewed Report</td>
+                                            <td>Compliance</td>
+                                            <td style="white-space:nowrap;">09:14 AM</td>
+                                            <td><span class="adm-badge adm-badge-green">Success</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Elena Rostova</td>
+                                            <td>Export Attempt</td>
+                                            <td>Transactions</td>
+                                            <td style="white-space:nowrap;">10:40 AM</td>
+                                            <td><span class="adm-badge adm-badge-red">Denied</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sophia Bennett</td>
+                                            <td>Login</td>
+                                            <td>Admin Portal</td>
+                                            <td style="white-space:nowrap;">11:18 AM</td>
+                                            <td><span class="adm-badge adm-badge-green">Success</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /admin-team -->
+
+            <!-- ══════════════════════════════════════
+                 PANEL 8 — CONSOLE SETTINGS
+            ══════════════════════════════════════ -->
+            <div id="admin-settings" class="dashboard-panel">
+
+                <div class="admin-section-header">
+                    <h2>Console Settings</h2>
+                    <p>Configure platform parameters, notification rules, security controls, user permissions, audit workflows, and system integrations.</p>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+
+                    <!-- General Configuration -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <i data-lucide="settings" style="width:18px;height:18px;color:var(--color-primary);"></i>
+                            General Configuration
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Firm Fiduciary Registry</h4>
+                                <p>Finova Capital LLC #401-20948 · RIA Registered</p>
+                            </div>
+                            <span class="adm-badge adm-badge-green">Verified</span>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>SEC Fiduciary License</h4>
+                                <p>SEC-ADVISOR-RIA-2026-FIDC · Active</p>
+                            </div>
+                            <span class="adm-badge adm-badge-green">Active</span>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Audit Dispatch Frequency</h4>
+                                <p>Monthly — First Friday of each month</p>
+                            </div>
+                            <a href="404.html" class="btn" style="font-size:0.78rem;padding:0.3rem 0.75rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Edit</a>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Base Currency</h4>
+                                <p>USD — United States Dollar</p>
+                            </div>
+                            <a href="404.html" class="btn" style="font-size:0.78rem;padding:0.3rem 0.75rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Change</a>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Data Retention Period</h4>
+                                <p>7 years — SEC Rule 17a-4 compliant</p>
+                            </div>
+                            <span class="adm-badge adm-badge-green">Compliant</span>
+                        </div>
+                    </div>
+
+                    <!-- Security Controls -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <i data-lucide="lock" style="width:18px;height:18px;color:var(--color-danger);"></i>
+                            Security Controls
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Two-Factor Authentication</h4>
+                                <p>Required for all administrative accounts</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Session Timeout</h4>
+                                <p>Auto-logout after 30 minutes of inactivity</p>
+                            </div>
+                            <a href="404.html" class="btn" style="font-size:0.78rem;padding:0.3rem 0.75rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Configure</a>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Login Monitoring</h4>
+                                <p>Track all authentication attempts and anomalies</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Password Policy</h4>
+                                <p>Minimum 14 chars · 90-day expiry · No reuse</p>
+                            </div>
+                            <a href="404.html" class="btn" style="font-size:0.78rem;padding:0.3rem 0.75rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">Edit Policy</a>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Device Verification</h4>
+                                <p>New device requires email confirmation before login</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Notification Preferences -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <i data-lucide="bell" style="width:18px;height:18px;color:var(--color-accent-gold);"></i>
+                            Notification Preferences
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Compliance Alert Emails</h4>
+                                <p>Send immediately for high-risk compliance events</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Portfolio Rebalance Alerts</h4>
+                                <p>Notify when allocation drift exceeds 3%</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Weekly Summary Digest</h4>
+                                <p>Email summary every Monday at 7:00 AM</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Transaction Exception Alerts</h4>
+                                <p>Notify compliance officer on every exception</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Audit Preferences -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">
+                            <i data-lucide="file-search" style="width:18px;height:18px;color:var(--color-accent);"></i>
+                            Audit Preferences
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Audit Log Retention</h4>
+                                <p>All admin actions stored for 7 years minimum</p>
+                            </div>
+                            <span class="adm-badge adm-badge-green">Active</span>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Real-Time Audit Trail</h4>
+                                <p>Log every data access, modification, and export</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Annual Audit Schedule</h4>
+                                <p>Next scheduled internal audit: Q4 2026</p>
+                            </div>
+                            <a href="404.html" class="btn" style="font-size:0.78rem;padding:0.3rem 0.75rem;background:transparent;border:1px solid var(--border-color);color:var(--color-text-main);">View Schedule</a>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-row-info">
+                                <h4>Export Audit Log</h4>
+                                <p>Download complete access and action logs</p>
+                            </div>
+                            <a href="404.html" class="btn btn-secondary" style="font-size:0.78rem;padding:0.3rem 0.75rem;">Export CSV</a>
+                        </div>
+                    </div>
+
+                    <!-- System Integrations -->
+                    <div class="settings-section" style="grid-column:1/-1;">
+                        <div class="settings-section-title">
+                            <i data-lucide="plug" style="width:18px;height:18px;color:var(--color-secondary);"></i>
+                            System Integrations
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+                            <div style="background:var(--color-section-bg-3);border:var(--border-card);border-radius:var(--radius-md);padding:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                                <div>
+                                    <div style="font-weight:700;font-size:0.9rem;color:var(--color-text-main);">Schwab Custody</div>
+                                    <div style="font-size:0.78rem;color:var(--color-text-muted);">Primary custodian link</div>
+                                </div>
+                                <span class="adm-badge adm-badge-green">Synced</span>
+                            </div>
+                            <div style="background:var(--color-section-bg-3);border:var(--border-card);border-radius:var(--radius-md);padding:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                                <div>
+                                    <div style="font-weight:700;font-size:0.9rem;color:var(--color-text-main);">Orion Portfolio</div>
+                                    <div style="font-size:0.78rem;color:var(--color-text-muted);">Portfolio management system</div>
+                                </div>
+                                <span class="adm-badge adm-badge-green">Active</span>
+                            </div>
+                            <div style="background:var(--color-section-bg-3);border:var(--border-card);border-radius:var(--radius-md);padding:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                                <div>
+                                    <div style="font-weight:700;font-size:0.9rem;color:var(--color-text-main);">Salesforce CRM</div>
+                                    <div style="font-size:0.78rem;color:var(--color-text-muted);">Client relationship management</div>
+                                </div>
+                                <span class="adm-badge adm-badge-green">Connected</span>
+                            </div>
+                            <div style="background:var(--color-section-bg-3);border:var(--border-card);border-radius:var(--radius-md);padding:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                                <div>
+                                    <div style="font-weight:700;font-size:0.9rem;color:var(--color-text-main);">Bloomberg Data</div>
+                                    <div style="font-size:0.78rem;color:var(--color-text-muted);">Market data & analytics feed</div>
+                                </div>
+                                <span class="adm-badge adm-badge-green">Live</span>
+                            </div>
+                            <div style="background:var(--color-section-bg-3);border:var(--border-card);border-radius:var(--radius-md);padding:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                                <div>
+                                    <div style="font-weight:700;font-size:0.9rem;color:var(--color-text-main);">SEC EDGAR</div>
+                                    <div style="font-size:0.78rem;color:var(--color-text-muted);">Regulatory filing system</div>
+                                </div>
+                                <span class="adm-badge adm-badge-amber">Maintenance</span>
+                            </div>
+                            <div style="background:var(--color-section-bg-3);border:var(--border-card);border-radius:var(--radius-md);padding:1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                                <div>
+                                    <div style="font-weight:700;font-size:0.9rem;color:var(--color-text-main);">DocuSign eSign</div>
+                                    <div style="font-size:0.78rem;color:var(--color-text-muted);">Document signing platform</div>
+                                </div>
+                                <span class="adm-badge adm-badge-green">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- /admin-settings -->
 
         </main>
-    </div>
+    </div><!-- /dashboard-layout -->
 
-    <!-- Client Detail Modal Component (Used by Client search rows) -->
+    <!-- Client Detail Modal Component -->
     <div id="client-detail-modal" class="modal-overlay">
         <div class="modal-container" style="max-width: 550px;">
             <button id="close-client-modal" class="modal-close-btn" aria-label="Close modal"><i data-lucide="x" style="width:20px;"></i></button>
-            
             <div style="background-color: var(--color-section-bg-3); padding: 1.8rem; border-bottom: 1px solid var(--border-color);">
                 <span class="badge badge-primary" style="margin-bottom:0.5rem;">Fiduciary Profile Record</span>
                 <h3 id="modal-client-name" style="font-family:var(--font-heading); font-size:1.6rem; font-weight:700; color:var(--color-text-main);">Client Name</h3>
                 <p id="modal-client-email" class="card-desc" style="font-size:0.85rem;">client@domain.com</p>
             </div>
-            
             <div style="padding: 1.8rem; display:flex; flex-direction:column; gap:1.2rem;">
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.2rem;">
                     <div>
@@ -296,18 +1843,17 @@
                         <div id="modal-client-portfolio" style="font-family:var(--font-heading); font-weight:700; font-size:1.15rem; color:var(--color-text-main); margin-top:0.2rem;">$0</div>
                     </div>
                     <div>
-                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Suggested Allocation</div>
+                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Risk Profile</div>
                         <div id="modal-client-risk" style="font-weight:600; margin-top:0.3rem;">-</div>
                     </div>
                     <div>
-                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Assigned Partner</div>
+                        <div style="font-size:0.75rem; color:var(--color-text-muted); text-transform:uppercase; font-weight:600;">Assigned Advisor</div>
                         <div id="modal-client-advisor" style="font-weight:600; margin-top:0.3rem;">-</div>
                     </div>
                 </div>
-                
                 <div class="content-box" style="margin-bottom:0; background-color: var(--color-section-bg-2); border-color: rgba(15,111,255,0.15);">
-                    <h4 style="font-family:var(--font-heading); font-size:0.85rem; font-weight:700; color:var(--color-primary); margin-bottom:0.4rem; display:flex; align-items:center; gap:4px;"><i data-lucide="check-square" style="width:14px;"></i> Fiduciary Compliance Checked</h4>
-                    <p class="card-desc" style="font-size:0.8rem;">This profile contains validated tax files and independent custodial assets. Auditing records represent SEC declarations.</p>
+                    <h4 style="font-family:var(--font-heading); font-size:0.85rem; font-weight:700; color:var(--color-primary); margin-bottom:0.4rem; display:flex; align-items:center; gap:4px;"><i data-lucide="check-square" style="width:14px;"></i> Fiduciary Compliance Verified</h4>
+                    <p class="card-desc" style="font-size:0.8rem;">This profile contains validated tax files and independent custodial assets. Records represent SEC-compliant declarations.</p>
                 </div>
             </div>
         </div>
@@ -317,5 +1863,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/admin-dashboard.js"></script>
 </body>
 </html>

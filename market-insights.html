@@ -154,70 +154,60 @@
     </section>
 
     <!-- 4. Real-time index feed (Section 1 - White) -->
-    <section class="section-white">
+    <section class="section-white" id="market-indices">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Market Indices</span>
                 <h2 class="section-title">Global Equity Indices</h2>
-                <p class="section-desc">Key global index performance logs. Feeds represent simulated updates from
-                    principal exchanges.</p>
+                <p class="section-desc">Key global index performance logs. Feeds represent simulated updates from principal exchanges.</p>
             </div>
 
-            <div class="market-indices-grid reveal-hidden reveal-scale" style="margin-bottom: var(--spacing-lg);">
+            <div class="premium-grid-4" style="margin-bottom: var(--spacing-lg);">
                 <!-- S&P -->
-                <div class="market-live-card" style="border-left: 4px solid var(--color-secondary);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <div class="premium-stat-card" style="border-left: 4px solid var(--color-secondary);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; width: 100%;">
                         <span style="font-weight:700; font-family:var(--font-heading);">S&P 500</span>
                         <span class="badge badge-success">+1.24%</span>
                     </div>
-                    <div
-                        style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">
-                        5,482.10</div>
+                    <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">5,482.10</div>
                     <div style="font-size:0.75rem; color:var(--color-text-muted);">Change: +67.20</div>
                 </div>
 
                 <!-- NASDAQ -->
-                <div class="market-live-card" style="border-left: 4px solid var(--color-secondary);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <div class="premium-stat-card" style="border-left: 4px solid var(--color-secondary);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; width: 100%;">
                         <span style="font-weight:700; font-family:var(--font-heading);">NASDAQ</span>
                         <span class="badge badge-success">+1.82%</span>
                     </div>
-                    <div
-                        style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">
-                        18,245.50</div>
+                    <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">18,245.50</div>
                     <div style="font-size:0.75rem; color:var(--color-text-muted);">Change: +326.10</div>
                 </div>
 
                 <!-- DOW JONES -->
-                <div class="market-live-card" style="border-left: 4px solid var(--color-danger);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <div class="premium-stat-card" style="border-left: 4px solid var(--color-danger);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; width: 100%;">
                         <span style="font-weight:700; font-family:var(--font-heading);">DOW JONES</span>
                         <span class="badge badge-danger">-0.15%</span>
                     </div>
-                    <div
-                        style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">
-                        39,280.90</div>
+                    <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">39,280.90</div>
                     <div style="font-size:0.75rem; color:var(--color-text-muted);">Change: -59.40</div>
                 </div>
 
                 <!-- FTSE -->
-                <div class="market-live-card" style="border-left: 4px solid var(--color-secondary);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                <div class="premium-stat-card" style="border-left: 4px solid var(--color-secondary);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; width: 100%;">
                         <span style="font-weight:700; font-family:var(--font-heading);">FTSE 100</span>
                         <span class="badge badge-success">+0.42%</span>
                     </div>
-                    <div
-                        style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">
-                        8,162.20</div>
+                    <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading); color:var(--color-text-main);">8,162.20</div>
                     <div style="font-size:0.75rem; color:var(--color-text-muted);">Change: +34.20</div>
                 </div>
             </div>
 
             <!-- Historical Performance Charts -->
-            <div class="calculator-grid reveal-hidden reveal-fade-up">
-                <div class="card" style="padding:2rem;">
-                    <h3
-                        style="font-family:var(--font-heading); font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+            <div class="premium-grid-2 reveal-hidden reveal-fade-up">
+                <div class="premium-card">
+                    <h3 style="font-family:var(--font-heading); font-weight:700; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
                         <i data-lucide="activity" style="color:var(--color-primary);"></i> Macro Performance Index (YTD)
                     </h3>
                     <div style="height: 280px; position:relative;">
@@ -225,96 +215,150 @@
                     </div>
                 </div>
 
-                <div class="card"
-                    style="padding:2rem; display:flex; flex-direction:column; justify-content:space-between;">
+                <div class="premium-card" style="display:flex; flex-direction:column; justify-content:space-between;">
                     <div>
-                        <h3
-                            style="font-family:var(--font-heading); font-weight:700; margin-bottom:1.2rem; border-bottom:1px solid var(--border-color); padding-bottom:0.5rem;">
-                            Market Snapshot</h3>
-
+                        <h3 style="font-family:var(--font-heading); font-weight:700; margin-bottom:1.2rem; border-bottom:1px solid var(--border-color); padding-bottom:0.5rem;">Market Snapshot</h3>
                         <div style="display:flex; flex-direction:column; gap:0.8rem;">
                             <!-- Gold -->
                             <div style="display:flex; justify-content:space-between; align-items:center;">
                                 <span style="font-weight:600;">Gold Spot (oz)</span>
-                                <span style="font-weight:700; font-family:var(--font-heading);">$2,382.40 <span
-                                        style="color:var(--color-secondary); font-size:0.8rem; font-weight:600;">(+0.8%)</span></span>
+                                <span style="font-weight:700; font-family:var(--font-heading);">$2,382.40 <span style="color:var(--color-secondary); font-size:0.8rem; font-weight:600;">(+0.8%)</span></span>
                             </div>
                             <!-- Brent Crude -->
                             <div style="display:flex; justify-content:space-between; align-items:center;">
                                 <span style="font-weight:600;">Brent Crude (bbl)</span>
-                                <span style="font-weight:700; font-family:var(--font-heading);">$82.15 <span
-                                        style="color:var(--color-danger); font-size:0.8rem; font-weight:600;">(-1.4%)</span></span>
+                                <span style="font-weight:700; font-family:var(--font-heading);">$82.15 <span style="color:var(--color-danger); font-size:0.8rem; font-weight:600;">(-1.4%)</span></span>
                             </div>
                             <!-- US 10Y Yield -->
                             <div style="display:flex; justify-content:space-between; align-items:center;">
                                 <span style="font-weight:600;">US 10-Yr Treasury Yield</span>
-                                <span style="font-weight:700; font-family:var(--font-heading);">4.18% <span
-                                        style="color:var(--color-text-muted); font-size:0.8rem; font-weight:600;">(Stable)</span></span>
+                                <span style="font-weight:700; font-family:var(--font-heading);">4.18% <span style="color:var(--color-text-muted); font-size:0.8rem; font-weight:600;">(Stable)</span></span>
                             </div>
                             <!-- Bitcoin -->
                             <div style="display:flex; justify-content:space-between; align-items:center;">
                                 <span style="font-weight:600;">Bitcoin (BTC)</span>
-                                <span style="font-weight:700; font-family:var(--font-heading);">$64,280 <span
-                                        style="color:var(--color-secondary); font-size:0.8rem; font-weight:600;">(+4.2%)</span></span>
+                                <span style="font-weight:700; font-family:var(--font-heading);">$64,280 <span style="color:var(--color-secondary); font-size:0.8rem; font-weight:600;">(+4.2%)</span></span>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top:1.5rem;"><a href="login.html" class="btn btn-primary"
-                            style="width:100%;">Access Full Terminal</a></div>
+                    <div style="margin-top:1.5rem;"><a href="login.html" class="btn btn-primary" style="width:100%;">Access Full Terminal</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Macro Economic News & Analysis (Section 2 - Blue) -->
-    <section class="section-blue">
+    <!-- 5. What We Watch (Section 2 - Blue) -->
+    <section class="section-blue" id="insights-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Market News</span>
-                <h2 class="section-title">Macroeconomic Updates</h2>
-                <p class="section-desc">Key fiscal announcements and regulatory updates parsed by our compliance
-                    advisors.</p>
+                <span class="section-tag">Macro Indicators</span>
+                <h2 class="section-title">What We Watch</h2>
+                <p class="section-desc">Key economic indicators and macro data streams our committee monitors daily.</p>
             </div>
 
-            <div class="grid grid-3 reveal-hidden reveal-scale">
-                <!-- News 1 -->
-                <div class="card">
-                    <div
-                        style="font-size:0.8rem; color:var(--color-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">
-                        Federal Reserve</div>
-                    <h3 class="card-title" style="font-size:1.15rem;">Federal Reserve signals potential rate moderation
-                        in Q3</h3>
-                    <p class="card-desc" style="font-size:0.85rem; margin-bottom:1rem;">FOMC minutes indicate growing
-                        confidence in inflation cooling metrics. Strategists anticipate 25bps rate reductions.</p>
-                    <a href="blog.html" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Read
-                        Analysis &rarr;</a>
+            <div class="premium-grid-3 reveal-hidden reveal-scale">
+                <!-- Equities -->
+                <div class="premium-card">
+                    <div class="card-header">
+                        <div class="card-icon-container"><i data-lucide="bar-chart-2"></i></div>
+                    </div>
+                    <h3 class="card-title">Equities</h3>
+                    <p class="card-desc">We track price-to-earnings multiples and corporate profit margins across major global sectors.</p>
+                </div>
+                <!-- Fixed Income -->
+                <div class="premium-card">
+                    <div class="card-header">
+                        <div class="card-icon-container"><i data-lucide="shield"></i></div>
+                    </div>
+                    <h3 class="card-title">Fixed Income</h3>
+                    <p class="card-desc">Analyzing yield curves, corporate credit spreads, and sovereign debt risk models.</p>
+                </div>
+                <!-- Interest Rates -->
+                <div class="premium-card">
+                    <div class="card-header">
+                        <div class="card-icon-container"><i data-lucide="percent"></i></div>
+                    </div>
+                    <h3 class="card-title">Interest Rates</h3>
+                    <p class="card-desc">Monitoring central bank policies, rate hike forecasts, and cash liquidity streams.</p>
+                </div>
+                <!-- Inflation -->
+                <div class="premium-card">
+                    <div class="card-header">
+                        <div class="card-icon-container"><i data-lucide="trending-up"></i></div>
+                    </div>
+                    <h3 class="card-title">Inflation</h3>
+                    <p class="card-desc">Tracking consumer price indices, producer input costs, and wage inflation indicators.</p>
+                </div>
+                <!-- Currencies -->
+                <div class="premium-card">
+                    <div class="card-header">
+                        <div class="card-icon-container"><i data-lucide="coins"></i></div>
+                    </div>
+                    <h3 class="card-title">Currencies</h3>
+                    <p class="card-desc">Analyzing G10 exchange rates, dollar strength trends, and trade balance metrics.</p>
+                </div>
+                <!-- Commodities -->
+                <div class="premium-card">
+                    <div class="card-header">
+                        <div class="card-icon-container"><i data-lucide="globe"></i></div>
+                    </div>
+                    <h3 class="card-title">Commodities</h3>
+                    <p class="card-desc">Monitoring energy spot prices, precious metals, and agricultural demand channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5b. Latest Insights (Section 1 - White -> Light Blue cards) -->
+    <section class="section-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Expert Analysis</span>
+                <h2 class="section-title">Latest Insights</h2>
+                <p class="section-desc">Strategic assessments of trending macroeconomic shifts and asset allocation strategies.</p>
+            </div>
+
+            <div class="premium-grid-3 reveal-hidden reveal-scale">
+                <!-- Analysis Card 1 -->
+                <div class="premium-card" style="padding:0; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <img src="assets/market-analysis.webp" alt="Market Analysis" style="width:100%; height:180px; object-fit:cover;">
+                        <div style="padding:1.5rem;">
+                            <div style="font-size:0.75rem; color:var(--color-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">Market Analysis</div>
+                            <h3 class="card-title" style="font-size:1.15rem; margin-bottom:0.5rem;">Federal Reserve rate moderation signals Q3 cuts</h3>
+                            <p class="card-desc" style="font-size:0.85rem;">FOMC minutes indicate growing confidence in inflation cooling. Anticipate 25bps reductions.</p>
+                        </div>
+                    </div>
+                    <div style="padding:1.5rem; border-top:1px solid var(--border-color);"><a href="blog.html" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Read Analysis &rarr;</a></div>
                 </div>
 
-                <!-- News 2 -->
-                <div class="card">
-                    <div
-                        style="font-size:0.8rem; color:var(--color-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">
-                        Fixed Income</div>
-                    <h3 class="card-title" style="font-size:1.15rem;">Treasury Yield Curve showing moderate inversion
-                        correction</h3>
-                    <p class="card-desc" style="font-size:0.85rem; margin-bottom:1rem;">The 2-year/10-year treasury
-                        yield correction reflects stabilizing economic growth forecasts. Excellent entry windows for
-                        long bonds.</p>
-                    <a href="blog.html" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Read
-                        Analysis &rarr;</a>
+                <!-- Analysis Card 2 -->
+                <div class="premium-card" style="padding:0; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <img src="assets/market-global.webp" alt="Global Economy" style="width:100%; height:180px; object-fit:cover;">
+                        <div style="padding:1.5rem;">
+                            <div style="font-size:0.75rem; color:var(--color-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">Global Economy</div>
+                            <h3 class="card-title" style="font-size:1.15rem; margin-bottom:0.5rem;">European technology index value compounding</h3>
+                            <p class="card-desc" style="font-size:0.85rem;">FTSE and DAX indexes register quarterly growth driven by automotive tech valuations.</p>
+                        </div>
+                    </div>
+                    <div style="padding:1.5rem; border-top:1px solid var(--border-color);"><a href="blog.html" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Read Analysis &rarr;</a></div>
                 </div>
 
-                <!-- News 3 -->
-                <div class="card">
-                    <div
-                        style="font-size:0.8rem; color:var(--color-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">
-                        Global Markets</div>
-                    <h3 class="card-title" style="font-size:1.15rem;">European indexes compound value on technology
-                        growth</h3>
-                    <p class="card-desc" style="font-size:0.85rem; margin-bottom:1rem;">FTSE and DAX indexes register
-                        quarterly growth driven by clean energy and automotive tech valuations.</p>
-                    <a href="blog.html" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Read
-                        Analysis &rarr;</a>
+                <!-- Analysis Card 3 -->
+                <div class="premium-card" style="padding:0; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;">
+                    <div>
+                        <!-- No image card to show layout variety -->
+                        <div style="padding:1.5rem; height:180px; background-color:var(--color-section-bg-2); display:flex; align-items:center; justify-content:center;">
+                            <div style="font-size:3rem; color:var(--color-accent-gold);"><i data-lucide="trending-up"></i></div>
+                        </div>
+                        <div style="padding:1.5rem;">
+                            <div style="font-size:0.75rem; color:var(--color-primary); font-weight:700; text-transform:uppercase; margin-bottom:0.5rem;">Fixed Income</div>
+                            <h3 class="card-title" style="font-size:1.15rem; margin-bottom:0.5rem;">Treasury Yield Curve correction entry windows</h3>
+                            <p class="card-desc" style="font-size:0.85rem;">The yield curve correction suggests favorable entry windows for intermediate and long bonds.</p>
+                        </div>
+                    </div>
+                    <div style="padding:1.5rem; border-top:1px solid var(--border-color);"><a href="blog.html" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Read Analysis &rarr;</a></div>
                 </div>
             </div>
         </div>

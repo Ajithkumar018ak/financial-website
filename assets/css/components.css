@@ -129,6 +129,124 @@
     .grid-4 { grid-template-columns: 1fr; }
 }
 
+
+/* Premium Grids (24px - 32px gap) */
+.premium-grid-2,
+.premium-grid-3,
+.premium-grid-4 {
+    display: grid;
+    gap: 28px;
+}
+
+.premium-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.premium-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.premium-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) { /* Tablet: 2-column grid */
+    .premium-grid-2,
+    .premium-grid-3,
+    .premium-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) { /* Mobile: 1-column grid */
+    .premium-grid-2,
+    .premium-grid-3,
+    .premium-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+/* Premium Card (18px-24px border radius, subtle border, soft shadow, comfortable padding) */
+.premium-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.premium-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+    border-color: rgba(15, 111, 255, 0.3);
+}
+
+/* Background Separation Layer Rules */
+/* 1. White Section parent -> Light Blue Card background */
+.section-white .premium-card {
+    background-color: var(--color-section-bg-2);
+    border-color: rgba(15, 111, 255, 0.12);
+}
+.section-white .premium-card:hover {
+    border-color: rgba(15, 111, 255, 0.35);
+}
+
+/* 2. Light Blue or Grey Section parent -> White Card background */
+.section-blue .premium-card,
+.section-grey .premium-card {
+    background-color: #FFFFFF;
+    border-color: var(--border-color);
+}
+.section-blue .premium-card:hover,
+.section-grey .premium-card:hover {
+    border-color: rgba(15, 111, 255, 0.3);
+}
+
+/* 3. Dark Section parent -> Glassmorphic / translucent cards */
+.section-dark .premium-card,
+.section-cta .premium-card,
+.fv-hero .premium-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-white);
+}
+.section-dark .premium-card:hover,
+.section-cta .premium-card:hover,
+.fv-hero .premium-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Premium Stat Cards (Used for statistics grids) */
+.premium-stat-card {
+    background-color: var(--color-stats-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+.premium-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+}
+
+.section-white .premium-stat-card {
+    background-color: var(--color-section-bg-2);
+    border-color: rgba(15, 111, 255, 0.12);
+}
+.section-blue .premium-stat-card,
+.section-grey .premium-stat-card {
+    background-color: #FFFFFF;
+    border-color: var(--border-color);
+}
+
 /* Grid layout with explicit visual separation background wrapper */
 .separated-grid {
     background-color: var(--color-grid-bg);
