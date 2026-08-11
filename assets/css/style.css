@@ -1072,3 +1072,299 @@ section {
 .mobile-contact-info a:hover {
     color: #22c55e;
 }
+
+/* ============================================================
+   PREMIUM ADVISORY ANIMATION SYSTEM OVERRIDES
+   ============================================================ */
+
+/* ── 1. Premium Scroll Progress Bar ── */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--color-primary);
+    z-index: 9999;
+    pointer-events: none;
+    transition: width 0.08s ease-out;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ── 2. Global Page Load Animations ── */
+body.preloader-complete .main-header {
+    animation: premium-header-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes premium-header-fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Initial state of Hero sub-elements before load */
+body:not(.preloader-complete) .fv-hero__badge,
+body:not(.preloader-complete) .fv-hero__title,
+body:not(.preloader-complete) .fv-hero__desc,
+body:not(.preloader-complete) .fv-hero__actions > *,
+body:not(.preloader-complete) .fv-hero__stats > *,
+body:not(.preloader-complete) .fv-hero__visual {
+    opacity: 0;
+    transform: translateY(20px);
+}
+body:not(.preloader-complete) .fv-hero__visual {
+    transform: translateY(10px) scale(0.96);
+}
+
+.fv-hero__badge,
+.fv-hero__title,
+.fv-hero__desc,
+.fv-hero__actions > *,
+.fv-hero__stats > *,
+.fv-hero__visual {
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stagger delays when preloader completes */
+body.preloader-complete .fv-hero__badge {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 50ms;
+}
+body.preloader-complete .fv-hero__title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 150ms;
+}
+body.preloader-complete .fv-hero__desc {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 250ms;
+}
+body.preloader-complete .fv-hero__stats > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+body.preloader-complete .fv-hero__stats > *:nth-child(1) { transition-delay: 350ms; }
+body.preloader-complete .fv-hero__stats > *:nth-child(2) { transition-delay: 430ms; }
+body.preloader-complete .fv-hero__stats > *:nth-child(3) { transition-delay: 510ms; }
+
+body.preloader-complete .fv-hero__actions > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+body.preloader-complete .fv-hero__actions > *:nth-child(1) { transition-delay: 400ms; }
+body.preloader-complete .fv-hero__actions > *:nth-child(2) { transition-delay: 480ms; }
+
+body.preloader-complete .fv-hero__visual {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 300ms;
+}
+
+/* ── 3. Dark/Blue Section Ambient Glow Animation ── */
+.fv-hero,
+.section-hero,
+.section-cta {
+    position: relative;
+    background-size: 200% 200%;
+    animation: premium-bg-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes premium-bg-drift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 50% 0%; }
+}
+
+.fv-hero-blob {
+    animation-duration: 20s !important;
+}
+
+/* ── 4. Scroll Reveal Offset Overrides ── */
+.reveal-scale {
+    transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+    .reveal-fade-up {
+        transform: translateY(15px) !important;
+    }
+    .reveal-fade-left {
+        transform: translateX(-15px) !important;
+    }
+    .reveal-fade-right {
+        transform: translateX(15px) !important;
+    }
+    body:not(.preloader-complete) .fv-hero__badge,
+    body:not(.preloader-complete) .fv-hero__title,
+    body:not(.preloader-complete) .fv-hero__desc,
+    body:not(.preloader-complete) .fv-hero__actions > *,
+    body:not(.preloader-complete) .fv-hero__stats > *,
+    body:not(.preloader-complete) .fv-hero__visual {
+        transform: translateY(10px);
+    }
+    body:not(.preloader-complete) .fv-hero__visual {
+        transform: translateY(5px) scale(0.98);
+    }
+}
+
+/* ── 5. Premium Navbar Underline Hover Animation ── */
+.nav-link {
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+.nav-link::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -4px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 2px !important;
+    transform: scaleX(0) !important;
+    transform-origin: left !important;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.main-header.nav-dark:not(.scrolled) .nav-link::after {
+    background-color: var(--color-text-white) !important;
+}
+.main-header.nav-dark.scrolled .nav-link::after,
+.main-header:not(.nav-dark) .nav-link::after {
+    background-color: var(--color-primary) !important;
+}
+
+.nav-link:hover::after,
+.nav-item.active .nav-link::after {
+    transform: scaleX(1) !important;
+}
+
+/* ── 6. Button Interactive Hover Animation States ── */
+.btn,
+.fv-hero__actions a {
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.22s ease,
+                border-color 0.22s ease,
+                color 0.22s ease !important;
+}
+
+.btn:hover,
+.fv-hero__actions a:hover {
+    transform: translateY(-2px) !important;
+}
+
+.btn-primary:hover,
+.fv-hero__btn-primary:hover {
+    box-shadow: 0 8px 20px rgba(15, 111, 255, 0.22) !important;
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.22) !important;
+}
+
+.btn-outline:hover,
+.fv-hero__btn-secondary:hover {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08) !important;
+}
+
+.btn:active,
+.fv-hero__actions a:active {
+    transform: translateY(0) scale(0.98) !important;
+    box-shadow: 0 4px 10px rgba(15, 111, 255, 0.1) !important;
+}
+
+/* ── 7. Premium Card Hover Animation ── */
+.premium-card,
+.premium-stat-card,
+.blog-post-card,
+.branch-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                border-color 0.3s ease,
+                background-color 0.3s ease !important;
+}
+
+.premium-card:hover,
+.premium-stat-card:hover,
+.blog-post-card:hover,
+.branch-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(15, 111, 255, 0.08), var(--shadow-lift) !important;
+}
+
+/* Subtle accent glow & border on stat card hover */
+.premium-stat-card:hover,
+.premium-card[class*="stat"]:hover {
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.08), 0 0 20px rgba(15, 111, 255, 0.06), var(--shadow-lift) !important;
+    border-color: rgba(15, 111, 255, 0.25) !important;
+}
+
+/* Move card icons slightly up/scale on card hover */
+.premium-card:hover .card-icon-container i,
+.premium-card:hover .card-icon-container svg,
+.premium-stat-card:hover i,
+.premium-stat-card:hover svg {
+    transform: scale(1.03) translateY(-2px) !important;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* ── 8. Image Container Overflow & Subtle Zoom ── */
+.fv-hero__img-wrap,
+.hero-image-container,
+.premium-card img,
+.blog-post-card img {
+    overflow: hidden !important;
+}
+
+.fv-hero__img,
+.hero-image-container img,
+.premium-card img,
+.blog-post-card img {
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.fv-hero__img-wrap:hover .fv-hero__img,
+.hero-image-container:hover img,
+.premium-card:hover img,
+.blog-post-card:hover img {
+    transform: scale(1.02) !important;
+}
+
+/* ── 9. Blog Page Arrow Movement ── */
+.blog-post-card:hover a[style*="color:var(--color-primary)"] svg,
+.blog-post-card:hover a[style*="color:var(--color-primary)"] i {
+    transform: translateX(4px) !important;
+    transition: transform 0.25s ease !important;
+}
+
+/* ── 10. Contact Page Form Smooth Focus Transitions ── */
+.form-control {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.form-control:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(15, 111, 255, 0.15) !important;
+    outline: none !important;
+}
+
+/* ── 11. Accessibility Support for Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        animation-delay: 0ms !important;
+        transition-delay: 0ms !important;
+    }
+    .scroll-progress-bar {
+        display: none !important;
+    }
+}

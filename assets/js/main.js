@@ -35,6 +35,9 @@ const initGlobal = () => {
 
     // 11. Hero Parallax Effects
     initHeroParallax();
+
+    // 12. Scroll Progress Bar
+    initScrollProgress();
 };
 
 if (document.readyState === 'loading') {
@@ -67,6 +70,7 @@ function initPreloader() {
             // Short delay at 100% for premium feel
             setTimeout(() => {
                 preloader.classList.add('fade-out');
+                document.body.classList.add('preloader-complete');
                 
                 // Allow page scroll after loading completes
                 document.body.style.overflow = '';
@@ -133,10 +137,44 @@ function initMobileNav() {
     });
 }
 
-/* ==========================================
-   5. Scroll Reveal Intersection Observer
-   ========================================== */
 function initScrollReveal() {
+    // 1. Automatically find grids/containers with reveal-hidden and distribute to children
+    const containers = document.querySelectorAll(
+        '.premium-grid-2.reveal-hidden, .premium-grid-3.reveal-hidden, .premium-grid-4.reveal-hidden, ' +
+        '.grid-2.reveal-hidden, .grid-3.reveal-hidden, .grid-4.reveal-hidden, ' +
+        '.timeline-container.reveal-hidden, .separated-grid.reveal-hidden'
+    );
+
+    containers.forEach(container => {
+        // Find reveal classes on the container to copy to children
+        const revealClasses = [];
+        container.classList.forEach(cls => {
+            if (cls.startsWith('reveal-')) {
+                revealClasses.push(cls);
+            }
+        });
+
+        // Get direct children (excluding line/decorative elements if timeline)
+        let children = Array.from(container.children);
+        if (container.classList.contains('timeline-container')) {
+            children = children.filter(child => child.classList.contains('timeline-item'));
+        } else {
+            children = children.filter(child => child.tagName !== 'SCRIPT' && child.tagName !== 'STYLE');
+        }
+
+        // Remove reveal classes from container so container itself doesn't animate/hide
+        revealClasses.forEach(cls => container.classList.remove(cls));
+
+        // Distribute to children with stagger delay
+        children.forEach((child, index) => {
+            revealClasses.forEach(cls => child.classList.add(cls));
+            // Card stagger delay: 80ms step
+            const delay = index * 80;
+            child.style.transitionDelay = `${delay}ms`;
+        });
+    });
+
+    // 2. Now observe all reveal-hidden elements (which now includes the children)
     const revealElements = document.querySelectorAll('.reveal-hidden');
     if (revealElements.length === 0) return;
 
@@ -144,13 +182,12 @@ function initScrollReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-visible');
-                // Unobserve once triggered to lock animation in place
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
@@ -160,45 +197,74 @@ function initScrollReveal() {
    6. Number Counter Animation
    ========================================== */
 function initNumberCounters() {
-    const counters = document.querySelectorAll('.counter');
-    if (counters.length === 0) return;
+    const elements = document.querySelectorAll('.stat-value, .fv-hero__stat-value, .counter');
+    if (elements.length === 0) return;
 
     const countObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const target = entry.target;
-                const targetNum = parseInt(target.getAttribute('data-target'), 10);
-                const duration = 2000; // Counter duration in ms
-                const startNum = 0;
-                let currentNum = startNum;
+                const originalText = target.textContent.trim();
+                
+                // Regex parses: optional prefix, followed by number with dots/commas, followed by optional suffix
+                const match = originalText.match(/^([^\d]*)([\d,.]+)([^\d]*)$/);
+                if (!match) {
+                    observer.unobserve(target);
+                    return;
+                }
+                
+                const prefix = match[1];
+                const numberStr = match[2];
+                const suffix = match[3];
+                
+                // Parse float from numberStr, removing commas
+                const targetNum = parseFloat(numberStr.replace(/,/g, ''));
+                if (isNaN(targetNum)) {
+                    observer.unobserve(target);
+                    return;
+                }
+                
+                // Detect decimals
+                const decimalMatch = numberStr.match(/\.(\d+)/);
+                const decimals = decimalMatch ? decimalMatch[1].length : 0;
+                
+                const duration = 1800; // Counter duration in ms
                 const startTime = performance.now();
-
+                
                 const updateCount = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     
                     // Out-cubic easing function
                     const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentNum = easeProgress * targetNum;
                     
-                    currentNum = Math.floor(easeProgress * (targetNum - startNum) + startNum);
+                    // Format number back
+                    let formattedNum = currentNum.toFixed(decimals);
                     
-                    // Format number with commas
-                    target.textContent = currentNum.toLocaleString();
-
+                    // Add back commas if present in original string
+                    if (numberStr.includes(',')) {
+                        const parts = formattedNum.split('.');
+                        parts[0] = parseInt(parts[0], 10).toLocaleString();
+                        formattedNum = parts.join('.');
+                    }
+                    
+                    target.textContent = prefix + formattedNum + suffix;
+                    
                     if (progress < 1) {
                         requestAnimationFrame(updateCount);
                     } else {
-                        target.textContent = targetNum.toLocaleString();
+                        target.textContent = originalText;
                     }
                 };
-
+                
                 requestAnimationFrame(updateCount);
                 observer.unobserve(target);
             }
         });
-    }, { threshold: 0.2 });
-
-    counters.forEach(counter => countObserver.observe(counter));
+    }, { threshold: 0.1 });
+    
+    elements.forEach(el => countObserver.observe(el));
 }
 
 /* ==========================================
@@ -315,5 +381,21 @@ function initHeroParallax() {
             const factor = (index + 1) * 0.5;
             widget.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
         });
+    });
+}
+
+/* ==========================================
+   12. Scroll Progress Bar
+   ========================================== */
+function initScrollProgress() {
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress-bar';
+    document.body.appendChild(bar);
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = scrolled + '%';
     });
 }
