@@ -113,27 +113,112 @@ function initMobileNav() {
     const hamburger = document.querySelector('.hamburger');
     const sidebar = document.querySelector('.mobile-sidebar');
     const overlay = document.querySelector('.sidebar-overlay');
-    const closeLinks = document.querySelectorAll('.mobile-nav-link');
+    const links = document.querySelectorAll('.mobile-nav-link, .mobile-nav-actions .btn');
 
     if (!hamburger || !sidebar || !overlay) return;
 
-    const toggleMenu = () => {
-        const isActive = hamburger.classList.toggle('is-active');
-        sidebar.classList.toggle('is-active', isActive);
-        overlay.classList.toggle('is-active', isActive);
-        document.body.style.overflow = isActive ? 'hidden' : '';
+    hamburger.setAttribute('aria-label', 'Open navigation');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-controls', 'mobile-sidebar');
+    sidebar.setAttribute('id', 'mobile-sidebar');
+
+    // Dynamically insert mobile brand header if missing
+    if (!sidebar.querySelector('.mobile-brand-header')) {
+        const brandHeader = document.createElement('div');
+        brandHeader.className = 'mobile-brand-header';
+        
+        // Match current logo source (index has assets/logo.webp, other pages might differ)
+        const mainLogo = document.querySelector('.logo-link img, .main-header img');
+        const logoSrc = mainLogo ? mainLogo.getAttribute('src') : 'assets/logo.webp';
+        
+        brandHeader.innerHTML = `
+            <a href="index.html" class="logo-link">
+                <img src="${logoSrc}" alt="Finova Capital" class="logo-image" style="height:32px; width:auto;">
+            </a>
+        `;
+        sidebar.insertBefore(brandHeader, sidebar.firstChild);
+    }
+
+    // Convert FontAwesome contact icons to Lucide icons
+    const contactItems = sidebar.querySelectorAll('.mobile-contact-info .contact-item');
+    contactItems.forEach(item => {
+        const faIcon = item.querySelector('i.fa-solid');
+        if (faIcon) {
+            const newIcon = document.createElement('i');
+            if (faIcon.classList.contains('fa-location-dot')) {
+                newIcon.setAttribute('data-lucide', 'map-pin');
+            } else if (faIcon.classList.contains('fa-phone')) {
+                newIcon.setAttribute('data-lucide', 'phone');
+            } else if (faIcon.classList.contains('fa-envelope')) {
+                newIcon.setAttribute('data-lucide', 'mail');
+            }
+            newIcon.style.width = '16px';
+            newIcon.style.height = '16px';
+            newIcon.style.marginRight = '8px';
+            newIcon.style.color = 'var(--color-primary)';
+            
+            faIcon.parentNode.replaceChild(newIcon, faIcon);
+        }
+    });
+
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    const preventDefault = (e) => {
+        // Allow scrolling inside the sidebar, block everything else
+        if (sidebar.contains(e.target)) {
+            return;
+        }
+        e.preventDefault();
     };
 
-    hamburger.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
+    const openMenu = () => {
+        hamburger.classList.add('is-active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        sidebar.classList.add('is-active');
+        overlay.classList.add('is-active');
+        document.body.classList.add('menu-open');
+        document.documentElement.classList.add('menu-open');
 
-    closeLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('is-active');
-            sidebar.classList.remove('is-active');
-            overlay.classList.remove('is-active');
-            document.body.style.overflow = '';
-        });
+        // Block background page scroll (wheel + touch swipe)
+        window.addEventListener('wheel', preventDefault, { passive: false });
+        window.addEventListener('touchmove', preventDefault, { passive: false });
+    };
+
+    const closeMenu = () => {
+        if (!sidebar.classList.contains('is-active')) return;
+        hamburger.classList.remove('is-active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        sidebar.classList.remove('is-active');
+        overlay.classList.remove('is-active');
+        document.body.classList.remove('menu-open');
+        document.documentElement.classList.remove('menu-open');
+
+        // Restore scroll
+        window.removeEventListener('wheel', preventDefault);
+        window.removeEventListener('touchmove', preventDefault);
+    };
+
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (sidebar.classList.contains('is-active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    links.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
     });
 }
 
@@ -399,3 +484,28 @@ function initScrollProgress() {
         bar.style.width = scrolled + '%';
     });
 }
+
+// Global scroll interceptor for background locking (public site + client/admin portals)
+(function() {
+    const preventBgScroll = (e) => {
+        // 1. Public Mobile Sidebar
+        if (document.body.classList.contains('menu-open')) {
+            const sidebar = document.querySelector('.mobile-sidebar');
+            if (sidebar && sidebar.contains(e.target)) {
+                return;
+            }
+            e.preventDefault();
+        }
+        // 2. Client & Admin Dashboard Sidebars
+        if (document.body.classList.contains('sidebar-open')) {
+            const dashSidebar = document.querySelector('.dashboard-sidebar, #admin-sidebar');
+            if (dashSidebar && dashSidebar.contains(e.target)) {
+                return;
+            }
+            e.preventDefault();
+        }
+    };
+
+    window.addEventListener('wheel', preventBgScroll, { passive: false });
+    window.addEventListener('touchmove', preventBgScroll, { passive: false });
+})();
