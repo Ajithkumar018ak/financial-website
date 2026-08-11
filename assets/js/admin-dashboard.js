@@ -27,15 +27,13 @@
     function moneyK(v) { return '$' + (v / 1_000).toFixed(0) + 'K'; }
 
     // ══════════════════════════════════════════════════════
-    //  1.  ADMIN NAVIGATION TAB SWITCHER (override base)
+    //  1.  ADMIN NAVIGATION TAB SWITCHER
     // ══════════════════════════════════════════════════════
     function initAdminTabs() {
-        const tabLinks = document.querySelectorAll('.dashboard-menu-link');
+        const tabLinks = document.querySelectorAll('.admin-menu-link');
         const panels   = document.querySelectorAll('.dashboard-panel');
         const titleEl  = document.getElementById('admin-page-title');
         const bcEl     = document.getElementById('admin-breadcrumb-current');
-        const sidebar  = document.getElementById('admin-sidebar');
-        const overlay  = document.getElementById('admin-sidebar-overlay');
 
         tabLinks.forEach(link => {
             link.addEventListener('click', e => {
@@ -44,8 +42,8 @@
                 if (!panelId) return;
 
                 // Active nav state
-                document.querySelectorAll('.dashboard-menu-item').forEach(li => li.classList.remove('active'));
-                link.closest('.dashboard-menu-item').classList.add('active');
+                document.querySelectorAll('.admin-menu-item').forEach(li => li.classList.remove('active'));
+                link.closest('.admin-menu-item').classList.add('active');
 
                 // Show/hide panels
                 panels.forEach(p => p.classList.remove('active'));
@@ -57,9 +55,10 @@
                 if (titleEl) titleEl.textContent = name;
                 if (bcEl)    bcEl.textContent = name;
 
-                // Close mobile sidebar
-                if (sidebar) sidebar.classList.remove('is-active');
-                if (overlay) overlay.classList.remove('is-active');
+                // Close mobile sidebar drawer via shared function
+                if (typeof window._adminCloseSidebar === 'function') {
+                    window._adminCloseSidebar();
+                }
 
                 // Lazy-init charts for the panel that just became visible
                 initChartsForPanel(panelId);
@@ -68,27 +67,77 @@
     }
 
     // ══════════════════════════════════════════════════════
-    //  2.  MOBILE SIDEBAR
+    //  2.  MOBILE SIDEBAR — clean state management
     // ══════════════════════════════════════════════════════
     function initAdminMobileSidebar() {
         const hamburger = document.getElementById('admin-hamburger');
         const sidebar   = document.getElementById('admin-sidebar');
-        const overlay   = document.getElementById('admin-sidebar-overlay');
+        const overlay   = document.querySelector('.sidebar-overlay');
 
         if (!hamburger || !sidebar) return;
 
-        hamburger.addEventListener('click', () => {
-            sidebar.classList.toggle('is-active');
-            if (overlay) overlay.classList.toggle('is-active');
+        function openSidebar() {
+            sidebar.classList.add('open');
+            document.body.classList.add('sidebar-open');
+            if (overlay) {
+                overlay.classList.add('active');
+            }
+            hamburger.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            document.body.classList.remove('sidebar-open');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        function toggleSidebar() {
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        // Hamburger click
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSidebar();
         });
 
+        // Overlay click
         if (overlay) {
-            overlay.addEventListener('click', () => {
-                sidebar.classList.remove('is-active');
-                overlay.classList.remove('is-active');
+            overlay.addEventListener('click', function() {
+                closeSidebar();
             });
         }
+
+        // ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                closeSidebar();
+            }
+        });
+
+        // Click outside sidebar (but not on hamburger)
+        document.addEventListener('click', function(e) {
+            if (
+                sidebar.classList.contains('open') &&
+                !sidebar.contains(e.target) &&
+                e.target !== hamburger &&
+                !hamburger.contains(e.target)
+            ) {
+                closeSidebar();
+            }
+        });
+
+        // Expose closeSidebar so tab switcher can call it
+        window._adminCloseSidebar = closeSidebar;
     }
+
 
     // ══════════════════════════════════════════════════════
     //  3.  CLIENT TABLE SEARCH (admin-clients panel)

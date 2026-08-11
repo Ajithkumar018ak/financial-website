@@ -85,6 +85,16 @@ function initDashboardTabs() {
             const sidebar = document.querySelector('.dashboard-sidebar');
             if (sidebar) {
                 sidebar.classList.remove('is-active');
+                sidebar.classList.remove('open');
+            }
+            const overlay = document.querySelector('.sidebar-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            document.body.classList.remove('sidebar-open');
+            const toggleBtn = document.querySelector('.mobile-menu-toggle, .dashboard-sidebar-toggle');
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-expanded', 'false');
             }
         });
     });
@@ -92,21 +102,60 @@ function initDashboardTabs() {
    2. Mobile Dashboard Sidebar Toggle
    ========================================== */
 function initMobileDashboardSidebar() {
-    const toggleBtn = document.querySelector('.dashboard-sidebar-toggle');
+    const toggleBtn = document.querySelector('.mobile-menu-toggle, .dashboard-sidebar-toggle');
     const sidebar = document.querySelector('.dashboard-sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
 
     if (!toggleBtn || !sidebar) return;
 
-    toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('is-active');
+    function openSidebar() {
+        sidebar.classList.add('open');
+        sidebar.classList.add('is-active');
+        if (overlay) overlay.classList.add('active');
+        document.body.classList.add('sidebar-open');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        sidebar.classList.remove('is-active');
+        if (overlay) overlay.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = sidebar.classList.contains('open') || sidebar.classList.contains('is-active');
+        if (isOpen) {
+            closeSidebar();
+        } else {
+            openSidebar();
+        }
     });
+
+    if (overlay) {
+        overlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeSidebar();
+        });
+    }
 
     // Close sidebar on clicks outside
     document.addEventListener('click', (e) => {
-        if (sidebar.classList.contains('is-active') && 
+        const isOpen = sidebar.classList.contains('open') || sidebar.classList.contains('is-active');
+        if (isOpen && 
             !sidebar.contains(e.target) && 
             !toggleBtn.contains(e.target)) {
-            sidebar.classList.remove('is-active');
+            closeSidebar();
+        }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+        const isOpen = sidebar.classList.contains('open') || sidebar.classList.contains('is-active');
+        if (e.key === 'Escape' && isOpen) {
+            closeSidebar();
         }
     });
 }
