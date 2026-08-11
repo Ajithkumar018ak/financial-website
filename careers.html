@@ -68,7 +68,7 @@
             </nav>
 
             <div class="nav-actions">
-                <a href="login.html" class="btn btn-sm btn-outline-white btn-login-desktop">Client Portal</a>
+                <a href="login.html" class="btn btn-sm btn-outline-white btn-login-desktop">LOGIN</a>
                 <button class="hamburger" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -91,8 +91,8 @@
             <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
         </ul>
         <div class="mobile-nav-actions">
-            <a href="login.html" class="btn btn-primary">Client Portal</a>
-            <a href="contact.html" class="btn btn-outline">Book Consultation</a>
+            <a href="login.html" class="btn btn-primary">LOGIN</a>
+            <a href="404.html" class="btn btn-outline">Book Consultation</a>
         </div>
     </aside>
 
@@ -137,8 +137,8 @@
 
                 <!-- CTAs -->
                 <div class="fv-hero__actions">
-                    <a href="#open-positions" class="fv-hero__btn-primary">View Open Positions</a>
-                    <a href="#join-finova" class="fv-hero__btn-secondary">Join Finova</a>
+                    <a href="404.html" class="fv-hero__btn-primary">View Open Positions</a>
+                    <a href="404.html" class="fv-hero__btn-secondary">Join Finova</a>
                 </div>
             </div>
 
@@ -321,19 +321,20 @@
                             onsubmit="event.preventDefault(); alert('Application submitted successfully. Our HR team will reach out to you within 3 business days.'); this.reset();">
                             <div class="form-group">
                                 <label class="form-label" for="app-name">Full Name</label>
-                                <input type="text" id="app-name" placeholder="Johnathan Doe" class="form-control"
-                                    required>
+                                <input type="text" id="app-name" class="form-control" placeholder="Enter your full name"
+                                    required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label class="form-label" for="app-email">Email Address</label>
-                                    <input type="email" id="app-email" placeholder="john@domain.com"
+                                    <input type="email" id="app-email" placeholder="Enter your email address"
                                         class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="app-phone">Phone Number</label>
-                                    <input type="tel" id="app-phone" placeholder="(555) 019-2834" class="form-control"
-                                        required>
+                                    <input type="tel" id="app-phone" class="form-control"
+                                        placeholder="Enter your phone number" maxlength="10" inputmode="numeric"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                                 </div>
                             </div>
                             <div class="form-group">
