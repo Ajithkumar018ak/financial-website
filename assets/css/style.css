@@ -194,14 +194,15 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 10000;
     transition: var(--transition-medium);
     padding: 1.5rem 0;
+    background-color: rgba(7, 24, 39, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .main-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid var(--border-color);
     padding: 0.8rem 0;
     box-shadow: var(--shadow-soft);
@@ -209,7 +210,8 @@ img {
 
 /* In dark background sections (e.g. Hero, login page header overlap) */
 .main-header.nav-dark:not(.scrolled) {
-    background: transparent;
+    background-color: rgba(7, 24, 39, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .main-header.nav-dark:not(.scrolled) .nav-link {
@@ -224,14 +226,64 @@ img {
     color: var(--color-text-white);
 }
 
-.main-header.nav-dark:not(.scrolled) .btn-outline {
-    border-color: rgba(255, 255, 255, 0.3);
-    color: var(--color-text-white);
+/* Scrolled state links and logo styling */
+.main-header.scrolled .nav-link {
+    color: var(--color-text-muted) !important;
 }
 
-.main-header.nav-dark:not(.scrolled) .btn-outline:hover {
-    background-color: var(--color-text-white);
-    color: var(--color-hero-bg);
+.main-header.scrolled .nav-link:hover {
+    color: var(--color-text-main) !important;
+}
+
+.main-header.scrolled .nav-item.active .nav-link {
+    color: var(--color-primary) !important;
+}
+
+/* Logo layout & display toggle */
+.main-header .logo-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-header .logo-image {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.main-header .logo-light {
+    display: block;
+}
+
+.main-header .logo-dark {
+    display: none;
+}
+
+.main-header.scrolled .logo-light {
+    display: none !important;
+}
+
+.main-header.scrolled .logo-dark {
+    display: block !important;
+}
+
+/* Premium Login Button - Desktop */
+.main-header .btn-login-desktop {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-text-white) !important;
+    opacity: 1 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast) !important;
+}
+
+.main-header .btn-login-desktop:hover {
+    background-color: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+    color: var(--color-text-white) !important;
+    transform: translateY(-2px) !important;
 }
 
 .header-container {
@@ -362,15 +414,16 @@ img {
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
-    width: min(60vw, 360px) !important;
+    width: min(86vw, 360px) !important;
+    max-width: 360px !important;
     height: 100dvh !important;
     max-height: 100dvh !important;
     background-color: var(--color-section-bg-1) !important;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15) !important;
-    z-index: 10001 !important;
+    z-index: 10002 !important;
     transform: translateX(100%) !important;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    padding: 0 !important;
+    padding: 28px 22px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
@@ -386,8 +439,9 @@ img {
 
 /* Compact Brand Header Area */
 .mobile-brand-header {
-    padding: 20px 20px 12px !important;
+    padding: 0 0 16px 0 !important;
     border-bottom: 1px solid var(--border-color) !important;
+    margin-bottom: 16px !important;
     display: flex !important;
     align-items: center !important;
 }
@@ -402,12 +456,11 @@ img {
     list-style: none !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 4px !important;
-    padding: 12px 4px !important;
+    gap: 8px !important;
+    padding: 0 !important;
     margin: 0 !important;
 }
 
-.mobile-nav-item a,
 .mobile-nav-link {
     display: flex !important;
     align-items: center !important;
@@ -434,9 +487,9 @@ img {
 .mobile-nav-actions {
     display: flex !important;
     flex-direction: column !important;
-    gap: 10px !important;
-    margin-top: 16px !important;
-    padding: 0 20px !important;
+    gap: 12px !important;
+    margin-top: 24px !important;
+    padding: 0 !important;
 }
 
 .mobile-nav-actions .btn {
@@ -473,92 +526,99 @@ img {
 
 /* Scroll Lock Body State */
 html.menu-open,
-body.menu-open {
+body.menu-open,
+html.sidebar-open,
+body.sidebar-open {
     overflow: hidden !important;
     touch-action: none !important;
     height: 100% !important;
 }
 
-/* Mobile Sidebar Contact Info Override */
+/* Mobile Sidebar Contact Info */
 .mobile-sidebar .mobile-contact-info {
-    margin-top: 18px !important;
-    padding: 18px 20px 24px !important;
+    margin-top: 28px !important;
+    padding-top: 24px !important;
     border-top: 1px solid var(--border-color) !important;
 }
 
-.mobile-sidebar .mobile-contact-info .contact-item {
+.mobile-sidebar .contact-item {
     display: flex !important;
     align-items: flex-start !important;
     gap: 10px !important;
-    margin-bottom: 10px !important;
-    font-size: 0.9rem !important;
-    line-height: 1.4 !important;
-    color: var(--color-text-muted) !important;
+    margin-bottom: 14px !important;
 }
 
-.mobile-sidebar .mobile-contact-info i {
+.mobile-sidebar .contact-item i {
     color: var(--color-primary) !important;
     font-size: 16px !important;
     min-width: 18px !important;
     margin-top: 2px !important;
 }
 
-.mobile-sidebar .mobile-contact-info a {
-    color: var(--color-text-main) !important;
+.mobile-sidebar .contact-item span,
+.mobile-sidebar .contact-item a {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    word-break: break-word !important;
+    color: var(--color-text-muted) !important;
     text-decoration: none !important;
     transition: color 0.2s ease !important;
     font-weight: 500 !important;
 }
 
-.mobile-sidebar .mobile-contact-info a:hover {
+.mobile-sidebar .contact-item a:hover {
     color: var(--color-primary) !important;
 }
 
-/* Small Viewport Heights Adaptation */
-@media (max-height: 700px) and (max-width: 767px) {
-    .mobile-sidebar {
-        padding-bottom: 12px !important;
-    }
+/* Shared layout system variables */
+:root {
+    --page-padding: 44px;
+    --navbar-gap: 60px;
+    --section-gap: 100px;
+    --header-height: 88px;
+}
 
-    .mobile-brand-header {
-        padding: 14px 20px 10px !important;
-    }
-
-    .mobile-nav-menu {
-        padding: 6px 4px !important;
-        gap: 2px !important;
-    }
-
-    .mobile-nav-item a {
-        min-height: 40px !important;
-        padding: 8px 16px !important;
-        font-size: 0.95rem !important;
-    }
-
-    .mobile-nav-actions {
-        margin-top: 10px !important;
-        gap: 8px !important;
-    }
-
-    .mobile-nav-actions .btn {
-        min-height: 42px !important;
-        padding: 10px 16px !important;
-    }
-
-    .mobile-sidebar .mobile-contact-info {
-        margin-top: 12px !important;
-        padding: 12px 20px 16px !important;
-    }
-
-    .mobile-sidebar .mobile-contact-info .contact-item {
-        margin-bottom: 7px !important;
+@media (max-width: 992px) {
+    :root {
+        --page-padding: 32px;
+        --navbar-gap: 48px;
+        --section-gap: 76px;
+        --header-height: 72px;
     }
 }
 
-/* Grid & Section Spacing rules (Prevent Blending & Keep Separation) */
-section {
-    padding: var(--spacing-xl) 0;
-    position: relative;
+@media (max-width: 640px) {
+    :root {
+        --page-padding: 20px;
+        --navbar-gap: 36px;
+        --section-gap: 64px;
+        --header-height: 72px;
+    }
+}
+
+/* Base layouts */
+.container, .page-container {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: var(--page-padding) !important;
+    padding-right: var(--page-padding) !important;
+    box-sizing: border-box !important;
+}
+
+section, .section {
+    padding-top: calc(var(--section-gap) / 2) !important;
+    padding-bottom: calc(var(--section-gap) / 2) !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+/* Offset the top section of all public pages from the fixed navbar */
+.fv-hero, .subpage-hero {
+    padding-top: calc(var(--header-height) + var(--navbar-gap)) !important;
+    padding-bottom: calc(var(--section-gap) / 2) !important;
+    box-sizing: border-box !important;
 }
 
 /* Ensure no visual blending by alternating section colors and defining explicit offsets */
@@ -580,19 +640,11 @@ section {
 .section-hero {
     background-color: var(--color-hero-bg);
     color: var(--color-text-white);
-    padding: var(--spacing-xxl) 0 var(--spacing-xl) 0;
 }
 
 .section-cta {
     background-color: var(--color-cta-dark);
     color: var(--color-text-white);
-    padding: var(--spacing-xl) 0;
-}
-
-.container {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
 }
 
 /* Page Headers for subpages */
@@ -1236,12 +1288,10 @@ body.preloader-complete .main-header {
 
 @keyframes premium-header-fade-in {
     from {
-        opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-100%);
     }
 
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -1647,6 +1697,7 @@ select {
 
 /* Tablet (768px - 991px) */
 @media (max-width: 991px) {
+
     .card-grid,
     .premium-grid-4,
     .premium-grid-3,
@@ -1654,7 +1705,7 @@ select {
     .blog-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
-    
+
     .premium-grid-2 {
         grid-template-columns: 1fr !important;
     }
@@ -1662,6 +1713,7 @@ select {
 
 /* Mobile (max-width: 767px) */
 @media (max-width: 767px) {
+
     .card-grid,
     .premium-grid-4,
     .premium-grid-3,
@@ -1699,6 +1751,7 @@ section,
 }
 
 @media (max-width: 767px) {
+
     section,
     .section-padding {
         padding: 32px 0 !important;
@@ -1734,6 +1787,7 @@ main,
 }
 
 @media (max-width: 992px) {
+
     main,
     .main-content {
         padding-top: 70px !important;
@@ -1749,12 +1803,13 @@ main,
 }
 
 @media (max-width: 767px) {
+
     .form-grid,
     .form-row {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
     }
-    
+
     .form-grid input,
     .form-grid select,
     .form-grid textarea,
@@ -1772,4 +1827,251 @@ body.sidebar-open {
     overflow: hidden !important;
     touch-action: none !important;
     height: 100% !important;
+}
+
+/* ==========================================================================
+   Custom Header Overrides for Stacking Context & Responsive Behaviors
+   ========================================================================== */
+
+/* Maintain constant blur on header to prevent GPU crash, configure background visibility */
+.main-header {
+    z-index: 10000 !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+.main-header.scrolled {
+    z-index: 10000 !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+body.menu-open .main-header {
+    z-index: 10003 !important;
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-bottom: none !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+body.menu-open .hamburger span {
+    background-color: var(--color-text-main) !important;
+}
+
+body.menu-open .main-header .logo-light {
+    display: block !important;
+}
+
+body.menu-open .main-header .logo-dark {
+    display: none !important;
+}
+
+/* Z-Index Stacking Rules */
+.sidebar-overlay {
+    z-index: 10001 !important;
+}
+
+.mobile-sidebar {
+    z-index: 10002 !important;
+}
+
+.hamburger {
+    z-index: 10004 !important;
+}
+
+/* Tablet responsiveness: reduce navbar spacing to prevent item wrapping */
+@media (max-width: 1200px) and (min-width: 993px) {
+    .nav-menu {
+        gap: 1.2rem !important;
+    }
+    .header-container {
+        padding: 0 var(--spacing-sm) !important;
+    }
+}
+
+/* ── RESPONSIVE HERO TYPOGRAPHY ── */
+.fv-hero__title, .hero-title, .hero h1 {
+    font-size: clamp(42px, 9vw, 82px) !important;
+    line-height: 1.05 !important;
+}
+
+@media (max-width: 640px) {
+    .fv-hero__title, .hero-title, .hero h1 {
+        font-size: clamp(38px, 11vw, 58px) !important;
+        line-height: 1.08 !important;
+    }
+}
+
+.fv-hero__desc, .hero-desc, .hero p {
+    max-width: 680px !important;
+    line-height: 1.65 !important;
+}
+
+@media (max-width: 640px) {
+    .fv-hero__desc, .hero-desc, .hero p {
+        font-size: 15px !important;
+        line-height: 1.65 !important;
+    }
+}
+
+/* ── RESPONSIVE ACTION BUTTONS ── */
+.fv-hero__actions, .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .fv-hero__actions, .hero-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+    
+    .fv-hero__actions > a,
+    .fv-hero__actions > button,
+    .hero-actions > a,
+    .hero-actions > button,
+    .hero-actions .btn,
+    .fv-hero__btn-primary,
+    .fv-hero__btn-secondary {
+        width: 100% !important;
+        min-height: 52px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+}
+
+/* ── DASHBOARD LAYOUT & SPACING SYSTEM OVERRIDES ── */
+body#admin-dashboard-root .admin-content, 
+body#user-dashboard-root .user-main, 
+.dashboard-content {
+    padding: 40px !important;
+    margin-top: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Spacing between headers, titles, and card grids */
+body#user-dashboard-root .dashboard-panel > div:first-child, 
+body#admin-dashboard-root .admin-section-header, 
+.dashboard-header {
+    margin-bottom: 32px !important;
+}
+
+body#user-dashboard-root .dashboard-panel > .dash-kpi-grid, 
+body#admin-dashboard-root .admin-kpi-4, 
+body#admin-dashboard-root .admin-kpi-6, 
+.dashboard-grid {
+    margin-top: 28px !important;
+}
+
+@media (min-width: 992px) {
+    body#admin-dashboard-root .admin-content {
+        margin-top: var(--admin-header-height) !important;
+    }
+    body#user-dashboard-root .user-main {
+        padding-top: calc(var(--header-height) + 40px) !important;
+    }
+}
+
+@media (max-width: 992px) {
+    body#user-dashboard-root .dashboard-layout, 
+    body#admin-dashboard-root .admin-shell {
+        display: block !important;
+    }
+
+    body#user-dashboard-root .dashboard-sidebar, 
+    body#user-dashboard-root .sidebar, 
+    body#admin-dashboard-root .admin-sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: min(82vw, 320px) !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        transform: translateX(-100%) !important;
+        z-index: 2000 !important;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        overflow-y: auto !important;
+    }
+
+    body#user-dashboard-root.sidebar-open .dashboard-sidebar,
+    body#user-dashboard-root.sidebar-open .sidebar,
+    body#admin-dashboard-root.sidebar-open .admin-sidebar,
+    body#user-dashboard-root .dashboard-sidebar.open,
+    body#user-dashboard-root .sidebar.open,
+    body#admin-dashboard-root .admin-sidebar.open,
+    body.sidebar-open .dashboard-sidebar,
+    body.sidebar-open .sidebar,
+    body.sidebar-open .admin-sidebar {
+        transform: translateX(0) !important;
+    }
+
+    body#user-dashboard-root .dashboard-main, 
+    body#user-dashboard-root .user-main, 
+    body#admin-dashboard-root .admin-shell, 
+    body#admin-dashboard-root .admin-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 28px 20px !important;
+        box-sizing: border-box !important;
+    }
+    
+    body#user-dashboard-root .user-main {
+        padding-top: calc(var(--header-height) + 28px) !important;
+    }
+    
+    body#admin-dashboard-root .admin-content {
+        padding-top: calc(var(--admin-header-height) + 28px) !important;
+    }
+
+    body#admin-dashboard-root .admin-topbar, 
+    body#user-dashboard-root .dashboard-navbar.header, 
+    body#user-dashboard-root .header {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        padding-left: var(--page-padding) !important;
+        padding-right: var(--page-padding) !important;
+        box-sizing: border-box !important;
+    }
+    
+    body#user-dashboard-root .dashboard-panel > div:first-child, 
+    body#admin-dashboard-root .admin-section-header, 
+    .dashboard-header {
+        margin-bottom: 24px !important;
+    }
+}
+
+/* ── DASHBOARD CARD & GRID RESPONSIVENESS ── */
+@media (max-width: 768px) {
+    .dash-kpi-grid, 
+    .admin-kpi-4, 
+    .admin-kpi-6, 
+    .portfolio-cards-grid, 
+    .admin-grid-2, 
+    .admin-grid-3, 
+    .dash-chart-section, 
+    .reports-chart-grid, 
+    .admin-alloc-grid, 
+    .op-health-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .dash-kpi-grid, 
+    .admin-kpi-4, 
+    .admin-kpi-6, 
+    .portfolio-cards-grid, 
+    .admin-grid-3, 
+    .reports-chart-grid, 
+    .admin-alloc-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
 }

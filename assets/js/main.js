@@ -127,9 +127,7 @@ function initMobileNav() {
         const brandHeader = document.createElement('div');
         brandHeader.className = 'mobile-brand-header';
         
-        // Match current logo source (index has assets/logo.webp, other pages might differ)
-        const mainLogo = document.querySelector('.logo-link img, .main-header img');
-        const logoSrc = mainLogo ? mainLogo.getAttribute('src') : 'assets/logo.webp';
+        const logoSrc = 'assets/logo2.webp';
         
         brandHeader.innerHTML = `
             <a href="index.html" class="logo-link">

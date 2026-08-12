@@ -1,12 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Page Not Found | Finova Capital</title>
+
+    <title>404 Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/components.css">
@@ -15,7 +18,6 @@
 
     <!-- 404 PREMIUM ANIMATIONS — scoped exclusively to .error-* classes -->
     <style>
-
         /* 1. Layout context for animated background */
         .error-layout {
             position: relative;
@@ -42,7 +44,7 @@
             height: 520px;
             top: -120px;
             left: 50%;
-            background: radial-gradient(circle, rgba(15,111,255,0.09) 0%, rgba(56,189,248,0.04) 60%, transparent 100%);
+            background: radial-gradient(circle, rgba(15, 111, 255, 0.09) 0%, rgba(56, 189, 248, 0.04) 60%, transparent 100%);
             animation: eorb1 14s ease-in-out infinite alternate;
         }
 
@@ -51,21 +53,43 @@
             height: 300px;
             bottom: -80px;
             left: 25%;
-            background: radial-gradient(circle, rgba(15,111,255,0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(15, 111, 255, 0.06) 0%, transparent 70%);
             animation: eorb2 18s ease-in-out infinite alternate;
             animation-delay: -6s;
         }
 
         @keyframes eorb1 {
-            0%   { transform: translateX(-50%) translateY(0) scale(1); opacity: 0.55; }
-            50%  { transform: translateX(-50%) translateY(-24px) scale(1.04); opacity: 0.65; }
-            100% { transform: translateX(-50%) translateY(8px) scale(0.97); opacity: 0.45; }
+            0% {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 0.55;
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-24px) scale(1.04);
+                opacity: 0.65;
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(8px) scale(0.97);
+                opacity: 0.45;
+            }
         }
 
         @keyframes eorb2 {
-            0%   { transform: translateY(0) scale(1); opacity: 0.35; }
-            50%  { transform: translateY(-18px) scale(1.06); opacity: 0.5; }
-            100% { transform: translateY(10px) scale(0.95); opacity: 0.3; }
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.35;
+            }
+
+            50% {
+                transform: translateY(-18px) scale(1.06);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(10px) scale(0.95);
+                opacity: 0.3;
+            }
         }
 
         /* 3. Card wrapper — entrance animation + hover */
@@ -83,8 +107,15 @@
         }
 
         @keyframes ecard {
-            from { opacity: 0; transform: translateY(28px) scale(0.97); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+            from {
+                opacity: 0;
+                transform: translateY(28px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* 4. Soft animated glow ring */
@@ -105,11 +136,14 @@
         }
 
         @keyframes eglow {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow:
                     0 0 0 1px rgba(15, 111, 255, 0.06),
                     0 8px 32px rgba(15, 111, 255, 0.06);
             }
+
             50% {
                 box-shadow:
                     0 0 0 1px rgba(15, 111, 255, 0.14),
@@ -123,8 +157,15 @@
         }
 
         @keyframes eillus {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 6. Badge entrance */
@@ -134,8 +175,15 @@
         }
 
         @keyframes ebadge {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 7. 404 heading — entrance + slow professional float */
@@ -147,13 +195,27 @@
         }
 
         @keyframes enum {
-            from { opacity: 0; transform: scale(0.84) translateY(12px); }
-            to   { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.84) translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         @keyframes efloat {
-            0%, 100% { transform: translateY(0px); }
-            50%      { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         /* 8. Body description entrance */
@@ -162,8 +224,15 @@
         }
 
         @keyframes ebody {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 9. Buttons row entrance */
@@ -172,8 +241,15 @@
         }
 
         @keyframes ebtns {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 10. Button hover lift */
@@ -193,6 +269,7 @@
 
         /* 11. Reduced motion — full accessibility compliance */
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -208,14 +285,15 @@
             .error-card-glow {
                 padding: 2rem 1.25rem;
             }
+
             .error-bg-orb-1 {
                 width: 320px;
                 height: 320px;
             }
         }
-
     </style>
 </head>
+
 <body>
 
     <!-- Preloader Overlay -->
@@ -223,8 +301,11 @@
         <div class="preloader-content">
             <div class="preloader-graphics">
                 <svg class="preloader-svg" viewBox="0 0 100 100" fill="none">
-                    <path class="building-path" d="M20 75 V45 H80 V75 M15 75 H85 M35 75 V45 M50 75 V45 M65 75 V45 M25 45 L50 25 L75 45" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path class="graph-path" d="M10 80 L30 60 L45 70 L70 45 L90 15" stroke="#0F6FFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="building-path"
+                        d="M20 75 V45 H80 V75 M15 75 H85 M35 75 V45 M50 75 V45 M65 75 V45 M25 45 L50 25 L75 45"
+                        stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="graph-path" d="M10 80 L30 60 L45 70 L70 45 L90 15" stroke="#0F6FFF" stroke-width="3.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
             <div class="preloader-percentage-container">
@@ -233,7 +314,7 @@
             <div class="preloader-bar">
                 <div id="preloader-progress" class="preloader-progress"></div>
             </div>
-            <span class="preloader-title">Finova Capital</span>
+            <span class="preloader-title">FINANCIAL</span>
         </div>
     </div>
 
@@ -259,27 +340,41 @@
                     <line x1="20" y1="110" x2="180" y2="110" stroke="#E2E8F0" stroke-dasharray="4 4" />
                     <line x1="20" y1="140" x2="180" y2="140" stroke="#E2E8F0" stroke-dasharray="4 4" />
                     <!-- Broken Trend Line -->
-                    <path d="M20 50 L60 80 L90 60 L120 110 M120 110 L150 140 L180 135" stroke="#64748B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20 50 L60 80 L90 60 L120 110 M120 110 L150 140 L180 135" stroke="#64748B" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round" />
                     <!-- Broken Alert Warning Icon -->
                     <circle cx="120" cy="110" r="16" fill="#EF4444" />
                     <path d="M120 103 v9 M120 117 h.01" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
                     <!-- Financial Building Columns -->
-                    <path d="M40 140 H160 M50 140 V105 H150 V140 M65 140 V105 M85 140 V105 M105 140 V105 M125 140 V105 M50 105 L100 85 L150 105" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4" />
+                    <path
+                        d="M40 140 H160 M50 140 V105 H150 V140 M65 140 V105 M85 140 V105 M105 140 V105 M125 140 V105 M50 105 L100 85 L150 105"
+                        stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        opacity="0.4" />
                 </svg>
 
                 <!-- Badge -->
-                <span class="badge badge-danger error-badge-anim" style="margin-bottom:1rem;">Index Allocation Error</span>
+                <span class="badge badge-danger error-badge-anim" style="margin-bottom:1rem;">Index Allocation
+                    Error</span>
 
                 <!-- 404 heading — separate entrance + slow float -->
-                <h1 class="error-404-heading" style="font-family:var(--font-heading); font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:1rem; color:var(--color-text-main);">404 - Page Not Found</h1>
+                <h1 class="error-404-heading"
+                    style="font-family:var(--font-heading); font-size:2.8rem; font-weight:800; line-height:1.1; margin-bottom:1rem; color:var(--color-text-main);">
+                    404 - Page Not Found</h1>
 
                 <!-- Description -->
-                <p class="card-desc error-body-anim" style="font-size:1.05rem; margin-bottom:2rem; max-width:480px; margin-left:auto; margin-right:auto;">The database or wealth folder route you seek cannot be allocated by our servers. This could be due to a regulatory directory update or a modified URL structure.</p>
+                <p class="card-desc error-body-anim"
+                    style="font-size:1.05rem; margin-bottom:2rem; max-width:480px; margin-left:auto; margin-right:auto;">
+                    The database or wealth folder route you seek cannot be allocated by our servers. This could be due
+                    to a regulatory directory update or a modified URL structure.</p>
 
                 <!-- Buttons -->
                 <div class="error-btns-anim" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-                    <a href="index.html" class="btn btn-primary"><i data-lucide="home" style="width:16px;"></i> Return to Home</a>
-                    <a href="index.html" class="btn btn-outline"><i data-lucide="arrow-left" style="width:16px;"></i> Go Back</a>
+                    <a href="index.html" class="btn btn-outline back-home"><i data-lucide="home"
+                            style="width:16px;"></i> Back to Home</a>
+                    <a href="#" id="back-dashboard" class="btn btn-primary" style="display:none;">
+                        <i data-lucide="layout" style="width:16px;"></i>
+                        <span id="back-dashboard-text">Back to User Dashboard</span>
+                    </a>
                 </div>
 
             </div>
@@ -288,5 +383,36 @@
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const from = params.get("from");
+
+            const backLink = document.querySelector("#back-dashboard");
+            const backText = document.querySelector("#back-dashboard-text");
+            const homeLink = document.querySelector(".back-home");
+
+            if (from === "admin") {
+                backLink.href = "dashboard-admin.html";
+                backText.textContent = "Back to Admin Dashboard";
+                backLink.style.display = "inline-flex";
+            } else if (from === "user") {
+                backLink.href = "dashboard-user.html";
+                backText.textContent = "Back to User Dashboard";
+                backLink.style.display = "inline-flex";
+            } else {
+                backLink.style.display = "none";
+                if (homeLink) {
+                    homeLink.className = "btn btn-primary back-home";
+                }
+            }
+
+            // Re-initialize Lucide icons to draw the icon in the new link if visible
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
+
 </html>
