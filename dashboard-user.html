@@ -2352,8 +2352,11 @@
                                             placeholder="Consult advisor regarding this message..."
                                             style="flex-grow:1; border:1px solid var(--border-color); border-radius:6px; padding:0.6rem 0.8rem; outline:none; font-family:var(--font-body); font-size:0.85rem; height:50px; resize:none;"></textarea>
                                         <button type="button" id="btn-msg-reply-send" class="btn btn-primary"
-                                            style="border-radius:6px; align-self:end; display:inline-flex; align-items:center; gap:4px; padding: 0.6rem 1rem;"><i
-                                                data-lucide="send" style="width:14px;"></i> Send</button>
+                                            onclick="window.location.href='404.html?from=user';"
+                                            style="border-radius:6px; align-self:end; display:inline-flex; align-items:center; gap:4px; padding:0.6rem 1rem;">
+                                            <i data-lucide="send" style="width:14px;"></i>
+                                            Send
+                                        </button>
                                     </div>
                                 </div>
                                 <div
@@ -2364,9 +2367,16 @@
                                         consult link</span>
                                     <div style="display:flex; gap:0.4rem;">
                                         <button class="btn btn-xs btn-outline" id="btn-msg-unread"
-                                            style="border-radius:4px; font-weight:700;">Mark Unread</button>
+                                            onclick="window.location.href='404.html?from=user';"
+                                            style="border-radius:4px; font-weight:700;">
+                                            Mark Unread
+                                        </button>
+
                                         <button class="btn btn-xs btn-outline" id="btn-msg-archive"
-                                            style="border-radius:4px; font-weight:700;">Archive</button>
+                                            onclick="window.location.href='404.html?from=user';"
+                                            style="border-radius:4px; font-weight:700;">
+                                            Archive
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -2423,8 +2433,10 @@
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="margin-top:1rem;">Save Portal
-                            Preferences</button>
+                        <button type="submit" class="btn btn-primary"
+                            onclick="window.location.href='404.html?from=user'; return false;" style="margin-top:1rem;">
+                            Save Portal Preferences
+                        </button>
                     </form>
                 </div>
             </div>

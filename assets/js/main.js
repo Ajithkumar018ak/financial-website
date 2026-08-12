@@ -122,20 +122,7 @@ function initMobileNav() {
     hamburger.setAttribute('aria-controls', 'mobile-sidebar');
     sidebar.setAttribute('id', 'mobile-sidebar');
 
-    // Dynamically insert mobile brand header if missing
-    if (!sidebar.querySelector('.mobile-brand-header')) {
-        const brandHeader = document.createElement('div');
-        brandHeader.className = 'mobile-brand-header';
-        
-        const logoSrc = 'assets/logo2.webp';
-        
-        brandHeader.innerHTML = `
-            <a href="index.html" class="logo-link">
-                <img src="${logoSrc}" alt="Finova Capital" class="logo-image" style="height:32px; width:auto;">
-            </a>
-        `;
-        sidebar.insertBefore(brandHeader, sidebar.firstChild);
-    }
+  
 
     // Convert FontAwesome contact icons to Lucide icons
     const contactItems = sidebar.querySelectorAll('.mobile-contact-info .contact-item');
