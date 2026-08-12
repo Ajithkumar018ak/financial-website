@@ -178,6 +178,7 @@ function initMobileNav() {
         overlay.classList.add('is-active');
         document.body.classList.add('menu-open');
         document.documentElement.classList.add('menu-open');
+        document.body.style.overflow = "hidden";
 
         // Block background page scroll (wheel + touch swipe)
         window.addEventListener('wheel', preventDefault, { passive: false });
@@ -192,6 +193,7 @@ function initMobileNav() {
         overlay.classList.remove('is-active');
         document.body.classList.remove('menu-open');
         document.documentElement.classList.remove('menu-open');
+        document.body.style.overflow = "";
 
         // Restore scroll
         window.removeEventListener('wheel', preventDefault);

@@ -760,26 +760,50 @@
 
                     <!-- Form 3: Register Form -->
                     <form id="register-form" class="auth-form" style="display:none;"
-                        onsubmit="event.preventDefault(); alert('Account request submitted. A compliance coordinator will email you verification links.'); showForm('client');">
+                        onsubmit="return handleRegisterSubmit(event);">
                         <h3
                             style="font-family:var(--font-heading); font-weight:700; margin-bottom:0.5rem; font-size:1.4rem;">
                             Request Portal Account</h3>
-                        <p class="card-desc" style="margin-bottom:1.5rem;">Submit your tax details to establish
+                        <p class="card-desc" style="margin-bottom:1.5rem;">Submit your details to establish
                             credentials.</p>
 
-                        <div class="form-group">
-                            <label class="form-label" for="reg-name">Full Name</label>
-                            <input type="text" id="reg-name" class="form-control" placeholder="name" required>
+                        <!-- First Name | Last Name (two-column on desktop) -->
+                        <div class="form-row reg-name-row">
+                            <div class="form-group">
+                                <label class="form-label" for="reg-first-name">First Name</label>
+                                <input type="text" id="reg-first-name" name="firstName" class="form-control"
+                                    placeholder="First name" autocomplete="given-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg-last-name">Last Name</label>
+                                <input type="text" id="reg-last-name" name="lastName" class="form-control"
+                                    placeholder="Last name" autocomplete="family-name" required>
+                            </div>
                         </div>
+
+                        <!-- Email (full width) -->
                         <div class="form-group">
                             <label class="form-label" for="reg-email">Email Address</label>
-                            <input type="email" id="reg-email" class="form-control"
-                                placeholder="client@institutional.com" required>
+                            <input type="email" id="reg-email" name="email" class="form-control"
+                                placeholder="client@institutional.com" autocomplete="email" required>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="reg-password">Password</label>
-                            <input type="password" id="reg-password" class="form-control"
-                                placeholder="Enter your password" required>
+
+                        <!-- Password | Confirm Password (two-column on desktop) -->
+                        <div class="form-row reg-pass-row">
+                            <div class="form-group">
+                                <label class="form-label" for="reg-password">Password</label>
+                                <input type="password" id="reg-password" name="password" class="form-control"
+                                    placeholder="Create a password" autocomplete="new-password" required
+                                    oninput="validateRegisterPasswords();">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reg-confirm-password">Confirm Password</label>
+                                <input type="password" id="reg-confirm-password" name="confirmPassword"
+                                    class="form-control" placeholder="Repeat your password"
+                                    autocomplete="new-password" required
+                                    oninput="validateRegisterPasswords();">
+                                <span id="reg-pass-error" class="reg-pass-error" aria-live="polite"></span>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:1rem;">Request
@@ -1078,6 +1102,36 @@
                 tabsBar.style.display = 'none';
                 document.getElementById('forgot-form').style.display = 'block';
             }
+        }
+    </script>
+
+    <!-- Register Form: Password Validation -->
+    <script>
+        function validateRegisterPasswords() {
+            var pw  = document.getElementById('reg-password');
+            var cpw = document.getElementById('reg-confirm-password');
+            var err = document.getElementById('reg-pass-error');
+            if (!pw || !cpw || !err) return true;
+            if (cpw.value.length === 0) {
+                err.textContent = '';
+                cpw.classList.remove('reg-input-error');
+                return true;
+            }
+            if (pw.value !== cpw.value) {
+                err.textContent = 'Passwords do not match.';
+                cpw.classList.add('reg-input-error');
+                return false;
+            }
+            err.textContent = '';
+            cpw.classList.remove('reg-input-error');
+            return true;
+        }
+
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            if (!validateRegisterPasswords()) return false;
+            alert('Account request submitted. A compliance coordinator will email you verification links.');
+            showForm('client');
         }
     </script>
 </body>
