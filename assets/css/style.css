@@ -413,8 +413,9 @@ img {
 .mobile-sidebar {
     position: fixed !important;
     top: 0 !important;
-    right: 0 !important;
-
+    right: 0!important;
+    width: 50dvh;
+    max-width: 50dvh;
     height: 100dvh !important;
     max-height: 100dvh !important;
     background-color: var(--color-section-bg-1) !important;
@@ -2935,7 +2936,7 @@ select {
         right: 0 !important;
         left: auto !important;
 
-        width: min(86vw, 360px) !important;
+        width: min(60vw, 360px) !important;
         height: 100dvh !important;
         max-height: 100dvh !important;
 
