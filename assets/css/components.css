@@ -938,14 +938,14 @@
 }
 
 .logo-ticker-item {
-    width: 250px;
+    width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo-ticker-item img {
-    height: 100px;
+    height: 80px;
     transition: var(--transition-fast);
 }
 

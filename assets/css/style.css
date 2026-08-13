@@ -3027,3 +3027,169 @@ select {
 
 
 
+@media (max-width: 768px) {
+
+    .premium-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .premium-stat-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .premium-stat-card .stat-icon {
+        margin: 0 auto 10px;
+    }
+
+    .premium-stat-card .stat-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .premium-stat-card .stat-label,
+    .premium-stat-card .stat-value {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    #risk-quiz-card,
+    #risk-results-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 15px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    #risk-form,
+    .risk-quiz-step {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .risk-question-title {
+        width: 100% !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        text-align: left !important;
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .risk-options-list {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .risk-option-label {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 13px 12px !important;
+        margin: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .risk-option-input {
+        width: 16px !important;
+        height: 16px !important;
+        min-width: 16px !important;
+        flex: 0 0 16px !important;
+        margin: 3px 0 0 0 !important;
+    }
+
+    .risk-quiz-navigation {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-top: 18px !important;
+    }
+
+    .risk-quiz-navigation .btn {
+        min-width: 0 !important;
+        flex: 1 !important;
+        padding: 11px 10px !important;
+        font-size: 12px !important;
+        white-space: normal !important;
+    }
+
+    /* Step 1 Next button */
+    #risk-step-1 .risk-quiz-navigation {
+        justify-content: flex-end !important;
+    }
+
+    #risk-step-1 .risk-next-btn {
+        flex: 0 1 auto !important;
+    }
+
+    /* Results */
+    #risk-results-panel {
+        text-align: center !important;
+    }
+
+    #risk-results-panel .calculator-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    #risk-results-panel .calculator-grid > div {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #risk-results-panel .calculator-grid > div:first-child {
+        height: 240px !important;
+    }
+
+    #riskAllocChart {
+        max-width: 100% !important;
+    }
+
+    #risk-results-panel .calculator-grid > div:last-child {
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    #risk-results-panel .calculator-grid > div:last-child h4,
+    #risk-results-panel .calculator-grid > div:last-child p {
+        text-align: center !important;
+    }
+
+    #risk-results-panel .calculator-grid > div:last-child > div {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+
+}
