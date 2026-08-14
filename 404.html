@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -376,10 +376,10 @@
                 <div class="error-btns-anim" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
                     <a href="index.html" class="btn btn-outline back-home"><i data-lucide="home"
                             style="width:16px;"></i> Back to Home</a>
-                    <a href="#" id="back-dashboard" class="btn btn-primary" style="display:none;">
-                        <i data-lucide="layout" style="width:16px;"></i>
-                        <span id="back-dashboard-text">Back to User Dashboard</span>
-                    </a>
+                   <a href="#" id="back-dashboard" class="btn btn-primary" style="display:none !important;">
+    <i data-lucide="layout" style="width:16px;"></i>
+    <span id="back-dashboard-text"></span>
+</a>
                 </div>
 
             </div>
@@ -387,37 +387,53 @@
 
     </div>
 
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const from = params.get("from");
+<script src="assets/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-            const backLink = document.querySelector("#back-dashboard");
-            const backText = document.querySelector("#back-dashboard-text");
-            const homeLink = document.querySelector(".back-home");
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from");
 
-            if (from === "admin") {
-                backLink.href = "dashboard-admin.html";
-                backText.textContent = "Back to Admin Dashboard";
-                backLink.style.display = "inline-flex";
-            } else if (from === "user") {
-                backLink.href = "dashboard-user.html";
-                backText.textContent = "Back to User Dashboard";
-                backLink.style.display = "inline-flex";
-            } else {
-                backLink.style.display = "none";
-                if (homeLink) {
-                    homeLink.className = "btn btn-primary back-home";
-                }
-            }
+    const backLink = document.querySelector("#back-dashboard");
+    const backText = document.querySelector("#back-dashboard-text");
+    const homeLink = document.querySelector(".back-home");
 
-            // Re-initialize Lucide icons to draw the icon in the new link if visible
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
-    </script>
+    /* Always hide dashboard button first */
+    if (backLink) {
+        backLink.style.setProperty("display", "none", "important");
+    }
+
+    /* Normal Back to Home button */
+    if (homeLink) {
+        homeLink.href = "index.html";
+        homeLink.style.display = "inline-flex";
+    }
+
+    /* Admin */
+    if (from === "admin" && backLink) {
+
+        backLink.href = "dashboard-admin.html";
+        backText.textContent = "Back to Admin Dashboard";
+
+        backLink.style.setProperty("display", "inline-flex", "important");
+    }
+
+    /* User */
+    else if (from === "user" && backLink) {
+
+        backLink.href = "dashboard-user.html";
+        backText.textContent = "Back to User Dashboard";
+
+        backLink.style.setProperty("display", "inline-flex", "important");
+    }
+
+    /* Lucide icons */
+    if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+    }
+
+});
+</script>
 </body>
 
 </html>
