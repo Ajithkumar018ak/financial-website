@@ -496,3 +496,28 @@ function initScrollProgress() {
     window.addEventListener('wheel', preventBgScroll, { passive: false });
     window.addEventListener('touchmove', preventBgScroll, { passive: false });
 })();
+
+
+window.addEventListener("scroll", () => {
+    const header = document.querySelector(".header");
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+
+
+
+function saveClientLogin() {
+    const email = document.getElementById("client-email").value.trim();
+
+    // Email-ல் @க்கு முன்னாடி இருக்கும் name
+    const name = email.split("@")[0];
+
+    localStorage.setItem("loggedInUserName", name);
+
+    window.location.href = "dashboard-user.html";
+}

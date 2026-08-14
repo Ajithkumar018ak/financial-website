@@ -694,6 +694,7 @@
     margin-bottom: 2rem;
 }
 
+
 /* Animated background blobs for Hero */
 .hero-glow-blob {
     position: absolute;
@@ -1048,3 +1049,5 @@ body {
         margin-bottom: 14px !important;
     }
 }
+
+

@@ -280,17 +280,22 @@
             }
         }
 
-        /* 12. Mobile responsive */
-        @media (max-width: 600px) {
-            .error-card-glow {
-                padding: 2rem 1.25rem;
-            }
+      /* 12. Mobile responsive */
+@media (max-width: 900px) {
 
-            .error-bg-orb-1 {
-                width: 320px;
-                height: 320px;
-            }
-        }
+    .error-card-glow {
+        padding: 2.5rem 1.5rem;
+        width: 92%;
+        max-width: 500px;
+    }
+
+    .error-bg-orb-1 {
+        width: 380px;
+        height: 380px;
+    }
+}
+
+
     </style>
 </head>
 
@@ -319,7 +324,7 @@
     </div>
 
     <!-- Error Page Core Layout -->
-    <div class="error-layout">
+    <div class="error-layout error-page-full">
 
         <!-- Animated background radial lights (aria-hidden, purely decorative) -->
         <div class="error-bg-light" aria-hidden="true">

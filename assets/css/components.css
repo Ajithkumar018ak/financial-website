@@ -926,31 +926,36 @@
 /* Trusted Logos Ticker (Stripe-like sliding logo ribbon) */
 .logo-ticker-container {
     overflow: hidden;
-    padding: 1.5rem 0;
+    padding: 35px 0;
     background-color: var(--color-section-bg-3);
     border-bottom: 1px solid var(--border-color);
 }
 
 .logo-ticker-track {
     display: flex;
-    width: calc(250px * 14);
+    width: max-content;
     animation: scroll-ticker 35s linear infinite;
 }
 
 .logo-ticker-item {
-    width: 300px;
+    width: 220px;
+    min-width: 220px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 180px;
 }
 
 .logo-ticker-item img {
-    height: 80px;
+    height: 60px;
+    width: auto;
+    object-fit: contain;
     transition: var(--transition-fast);
 }
 
 .logo-ticker-item img:hover {
-    filter: grayscale(0%) opacity(80%);
+    filter: grayscale(0%) opacity(100%);
 }
 
 @keyframes scroll-ticker {

@@ -957,3 +957,21 @@ function initClientDetailModal() {
         }
     });
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const clientName = localStorage.getItem("loggedInUserName");
+
+    if (clientName) {
+        document.getElementById("clientName").textContent = clientName;
+    }
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const name = localStorage.getItem("loggedInUserName");
+
+    if (name) {
+        document.getElementById("clientName").textContent = name;
+    }
+});
